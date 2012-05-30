@@ -37,7 +37,7 @@ G1_nul = roots(G1.num);
 G1_pol = roots(G1.den);
 
 // - - - - - - - Regler - - - - - - - - - - - - - - - -//
-K=4.35;
+K=1;
 alphanull = 3.7//-G1_pol(1);
 betapol = -0.1;
 K1 = K*(s+alphanull)*1/(s+betapol);
@@ -64,6 +64,8 @@ clf(3);scf(3);
  
 //legend("Offener Regelkreis",3);
 [w, db, phi] = bode_w(offenerKreis, 10^(-3), 10^3);
+[w, db, phi] = bode_w(G1, 10^(-3), 10^3);
+//[w, db, phi] = bode_w(K1, 10^(-3), 10^3);
 xgrid(3);
 
 // - - - - - - - Sprungantwort- - - - - - - - - - - - -//
