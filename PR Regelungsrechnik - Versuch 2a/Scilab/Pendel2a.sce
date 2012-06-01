@@ -65,7 +65,6 @@ clf(3);scf(3);
 //legend("Offener Regelkreis",3);
 [w, db, phi] = bode_w(offenerKreis, 10^(-3), 10^3);
 [w, db, phi] = bode_w(G1, 10^(-3), 10^3);
-bode(-1*K1);
 xgrid(3);
 
 // - - - - - - - Sprungantwort- - - - - - - - - - - - -//
