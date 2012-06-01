@@ -37,9 +37,9 @@ G1_nul = roots(G1.num);
 G1_pol = roots(G1.den);
 
 // - - - - - - - Regler - - - - - - - - - - - - - - - -//
-K=4.35;
-alphanull = 3.7//-G1_pol(1);
-betapol = -0.1;
+K=1;
+alphanull = 16//-G1_pol(1);
+betapol = -0.2;
 K1 = K*(s+alphanull)*1/(s+betapol);
 
 // - - - - - - - Nyquistkurve - - - - - - - - - - - - -//
@@ -53,10 +53,10 @@ xgrid();
 
 // - - - - - - - WOK - - - - - - - - - - - - - - - - -//
 
-clf(13);scf(13);
-evans(offenerKreis,100);
-legend("WOK des offenen Regelkreises",3);
-xgrid();
+//clf(13);scf(13);
+//evans(offenerKreis,100);
+//legend("WOK des offenen Regelkreises",3);
+//xgrid();
 
 // - - - - - - - Bodeplot - - - - - - - - - - - - - - -//
 
@@ -64,6 +64,8 @@ clf(3);scf(3);
  
 //legend("Offener Regelkreis",3);
 [w, db, phi] = bode_w(offenerKreis, 10^(-3), 10^3);
+[w, db, phi] = bode_w(G1, 10^(-3), 10^3);
+bode(-1*K1);
 xgrid(3);
 
 // - - - - - - - Sprungantwort- - - - - - - - - - - - -//
@@ -78,8 +80,8 @@ h1=csim('step',t1,GKgeschlossen);
 
 //Plotten der Sprungantwort auf den Geschlossenen Kreis
 
-clf(15);scf(15);
-plot2d(t1,h1)
+//clf(15);scf(15);
+//plot2d(t1,h1)
 
 // - - - - - - - Stoersprungantwort - - - - - - - - - - -//
 
@@ -95,8 +97,8 @@ t2=[0:0.01:40];
 h2=csim('step',t2,Gstoer);
 
 
-clf(16);scf(16);
-plot2d(t2,h2)
+//clf(16);scf(16);
+//plot2d(t2,h2)
 
 // - - - - - - - Sensitivitätsfunktion - - - - - - - - - - -//
 
