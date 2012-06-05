@@ -79,12 +79,14 @@ h1=csim('step',t1,GKgeschlossen);
 
 //Plotten der Sprungantwort auf den Geschlossenen Kreis
 
-//clf(15);scf(15);
-//plot2d(t1,h1)
+clf(15);scf(15);
+plot2d(t1,h1)
+
+//integrate('step','t',0, max(t1));
 
 // - - - - - - - Stoersprungantwort - - - - - - - - - - -//
 
-xtitle("Sprungantwort des Geschlossene Kreises","Zeit [s]","Ankerstrom [A]");
+xtitle("Sprungantwort des Geschlossene Kreises","Zeit [s]","Winkel ");
 xgrid();
 
 //Übertragungsfunktion der Störfunktion bei einer Störung auf den Eingang des 
@@ -96,8 +98,8 @@ t2=[0:0.01:40];
 h2=csim('step',t2,Gstoer);
 
 
-//clf(16);scf(16);
-//plot2d(t2,h2)
+clf(16);scf(16);
+plot2d(t2,h2)
 
 // - - - - - - - Sensitivitätsfunktion - - - - - - - - - - -//
 
