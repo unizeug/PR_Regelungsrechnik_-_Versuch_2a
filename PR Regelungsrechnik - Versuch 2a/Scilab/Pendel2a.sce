@@ -47,9 +47,9 @@ K1 = K*(s+alphanull)*1/(s+betapol);
 offenerKreis_1 = G1*K1;
 offenerKreis = syslin('c',real(offenerKreis_1.num),real(offenerKreis_1.den))
 // Plotten der Wurzelortskurve (WOK) von Gui*K
-clf(2);scf(2);
-nyquist(offenerKreis)
-xgrid();
+//clf(2);scf(2);
+//nyquist(offenerKreis)
+//xgrid();
 
 // - - - - - - - WOK - - - - - - - - - - - - - - - - -//
 
@@ -60,12 +60,12 @@ xgrid();
 
 // - - - - - - - Bodeplot - - - - - - - - - - - - - - -//
 
-clf(3);scf(3);
+//clf(3);scf(3);
  
 //legend("Offener Regelkreis",3);
-[w, db, phi] = bode_w(offenerKreis, 10^(-3), 10^3);
-[w, db, phi] = bode_w(G1, 10^(-3), 10^3);
-xgrid(3);
+//[w, db, phi] = bode_w(offenerKreis, 10^(-3), 10^3);
+//[w, db, phi] = bode_w(G1, 10^(-3), 10^3);
+//xgrid(3);
 
 // - - - - - - - Sprungantwort- - - - - - - - - - - - -//
 
@@ -79,8 +79,8 @@ h1=csim('step',t1,GKgeschlossen);
 
 //Plotten der Sprungantwort auf den Geschlossenen Kreis
 
-clf(15);scf(15);
-plot2d(t1,h1)
+//clf(15);scf(15);
+//plot2d(t1,h1)
 
 //integrate('step','t',0, max(t1));
 
@@ -98,8 +98,8 @@ t2=[0:0.01:40];
 h2=csim('step',t2,Gstoer);
 
 
-clf(16);scf(16);
-plot2d(t2,h2)
+//clf(16);scf(16);
+//plot2d(t2,h2)
 
 // - - - - - - - Sensitivitätsfunktion - - - - - - - - - - -//
 
@@ -107,3 +107,12 @@ plot2d(t2,h2)
 Si = 1/(1+G1*K1)
 //Komplimentäre Sensitivitätsfunktion
 Tw = (G1*K1)/(1+G1*K1)
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+// - - - - - - - Positionsregelung - - - - - - - - - - - - -//
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+// Übertragungsfunktion des inneren Reglers dz/dt zu phi
+Ginnen = K1*(1/s)/(1+K1*G1);
