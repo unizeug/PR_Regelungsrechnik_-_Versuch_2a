@@ -1,7 +1,7 @@
 // Fehlermeldung bei neudefinition vermeiden
 funcprot(0);
 
-function polvorgabe=globalPlot(tr,D)
+function pole=polvorgabe(tr,D)
 
     s = poly(0,'s');
     
@@ -27,7 +27,7 @@ function polvorgabe=globalPlot(tr,D)
     C_1 = w0^2 / (  (s^2 + 2*D*w0*s + w0^2) );
     C =  (a1*a2*a3*a4*a5*a6) * C_1 /( (s-a1) * (s-a2) * (s-a3)* (s-a4) * (s-a5) * (s-a6) ); // anstatt der kompensation vorne kann man auch das hier schreiben: ((1/-a1)*s+1)
     
-    polvorgabe = [RP; a1; a2; a3; a4; a5; a6];
+    pole = [RP; a1; a2; a3; a4; a5; a6];
     
     t=[0:0.01:15];
     

@@ -138,10 +138,13 @@ for i = 1:2*n+1
 end
 
 // erstellen des Polvorgabevektors
-cvek=zeros(2*n,1);
-cvek(1,1) = 1;
-cvek(2,1) = 2;
-cvek(3,1) = 3;
+
+cvek = polvorgabe(4,0.97)
+
+//cvek=zeros(2*n,1);
+//cvek(1,1) = 1;
+//cvek(2,1) = 2;
+//cvek(3,1) = 3;
 
 kcoeff=inv(As)*cvek;
 Kpos = syslin('c',kcoeff(n+1)*s^(n-1)+kcoeff(n+2)*s^(n-2) + kcoeff(n+3)*s^(n-3)+kcoeff(n+4)*s^(n-4),kcoeff(1)*s^(n-1)+kcoeff(2)*s^(n-2)+kcoeff(3)*s^(n-3)+kcoeff(4)*s^(n-4));
@@ -163,16 +166,16 @@ S = 1/(1+Ginnen*Kpos)
 T = (Ginnen*Kpos)/(1+Ginnen*Kpos)
 
 clf(6);scf(6);
-bode_w_farbe(S, -3, 3, 'Bodeplot', 'false', 1000, 2);
-bode_w_farbe(T, -3, 3, 'Bodeplot', %f, 1000, 5);
-legend("Sensitivitätsfunktion","Komplimentäre Sensitivitätsfunktion",3);
+//bode_w_farbe(S, -3, 3, 'Bodeplot', 'false', 1000, 2);
+//bode_w_farbe(T, -3, 3, 'Bodeplot', %f, 1000, 5);
+//legend("Sensitivitätsfunktion","Komplimentäre Sensitivitätsfunktion",3);
 xgrid();
 
 SI = 1/(1+Ginnen*KposI)
 TI = (Ginnen*KposI)/(1+Ginnen*KposI)
 
 clf(7);scf(7);
-bode_w_farbe(SI, -3, 3, 'Bodeplot', 'false', 1000, 2);
-bode_w_farbe(TI, -3, 3, 'Bodeplot', %f, 1000, 5);
-legend("Sensitivitätsfunktion","Komplimentäre Sensitivitätsfunktion",3);
+//bode_w_farbe(SI, -3, 3, 'Bodeplot', 'false', 1000, 2);
+//bode_w_farbe(TI, -3, 3, 'Bodeplot', %f, 1000, 5);
+//legend("Sensitivitätsfunktion","Komplimentäre Sensitivitätsfunktion",3);
 xgrid();
