@@ -82,12 +82,11 @@ h1=csim('step',t1,GKgeschlossen);
 //clf(15);scf(15);
 //plot2d(t1,h1)
 
-//integrate('step','t',0, max(t1));
 
 // - - - - - - - Stoersprungantwort - - - - - - - - - - -//
-
-xtitle("Sprungantwort des Geschlossene Kreises","Zeit [s]","Winkel ");
-xgrid();
+//
+//xtitle("Sprungantwort des Geschlossene Kreises","Zeit [s]","Winkel ");
+//xgrid();
 
 //Übertragungsfunktion der Störfunktion bei einer Störung auf den Eingang des 
 //Leistungsverstärkers
@@ -116,3 +115,64 @@ Tw = (G1*K1)/(1+G1*K1)
 
 // Übertragungsfunktion des inneren Reglers dz/dt zu phi
 Ginnen = K1*(1/s)/(1+K1*G1);
+
+// - - - - Reglerentwurf ohne Integrator - - - - - - - - - -//
+// Ordnung der Strecke
+ordGden = length(roots(Ginnen.den))
+
+n=ordGden
+// erstellen der Streckenmatrix
+As=zeros(2*n,2*n);
+//As(Zeile,Spalte)
+for i = 1:2*n+1
+    for j = 1:2*n
+        if i<n+2 then
+            if j < n+1 then
+                As(i+j-1,j) = coeff(Ginnen.den,n+1-i);
+            end
+            if j > n then
+                As(i+j-1-n,j) = coeff(Ginnen.num,n+1-i);
+            end
+        end
+    end
+end
+
+// erstellen des Polvorgabevektors
+cvek=zeros(2*n,1);
+cvek(1,1) = 1;
+cvek(2,1) = 2;
+cvek(3,1) = 3;
+
+kcoeff=inv(As)*cvek;
+Kpos = syslin('c',kcoeff(n+1)*s^(n-1)+kcoeff(n+2)*s^(n-2) + kcoeff(n+3)*s^(n-3)+kcoeff(n+4)*s^(n-4),kcoeff(1)*s^(n-1)+kcoeff(2)*s^(n-2)+kcoeff(3)*s^(n-3)+kcoeff(4)*s^(n-4));
+
+
+// - - - - Reglerentwurf mit Integrator - - - - - - - - - -//
+// Ordnung der Strecke
+
+// erstellen der Streckenmatrix
+AsI=As
+
+//kcoeff=invr(AsI)*cvek;
+kcoeff=inv(AsI)*cvek;
+KposI = syslin('c',kcoeff(n+1)*s^(n-1)+kcoeff(n+2)*s^(n-2) + kcoeff(n+3)*s^(n-3)+kcoeff(n+4)*s^(n-4),s*(kcoeff(1)*s^(n-1)+kcoeff(2)*s^(n-2)+kcoeff(3)*s^(n-3)+kcoeff(4)*s^(n-4)));
+
+// - -  Sensitivitätsfunktion und kompl. Sensistivitätsfunktion - -//
+
+S = 1/(1+Ginnen*Kpos)
+T = (Ginnen*Kpos)/(1+Ginnen*Kpos)
+
+clf(6);scf(6);
+bode_w_farbe(S, -3, 3, 'Bodeplot', 'false', 1000, 2);
+bode_w_farbe(T, -3, 3, 'Bodeplot', %f, 1000, 5);
+legend("Sensitivitätsfunktion","Komplimentäre Sensitivitätsfunktion",3);
+xgrid();
+
+SI = 1/(1+Ginnen*KposI)
+TI = (Ginnen*KposI)/(1+Ginnen*KposI)
+
+clf(7);scf(7);
+bode_w_farbe(SI, -3, 3, 'Bodeplot', 'false', 1000, 2);
+bode_w_farbe(TI, -3, 3, 'Bodeplot', %f, 1000, 5);
+legend("Sensitivitätsfunktion","Komplimentäre Sensitivitätsfunktion",3);
+xgrid();
