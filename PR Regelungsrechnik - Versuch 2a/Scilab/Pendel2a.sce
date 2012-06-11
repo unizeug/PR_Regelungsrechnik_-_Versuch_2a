@@ -166,12 +166,22 @@ S = 1/(1+Ginnen*Kpos)
 T = (Ginnen*Kpos)/(1+Ginnen*Kpos)
 
 clf(6);scf(6);
-bode(S);
+//bode(S);
 
 //bode_w_farbe(S, -3, 3, 'Bodeplot', 'false', 1000, 2);
 //bode_w_farbe(T, -3, 3, 'Bodeplot', %f, 1000, 5);
-legend("Sensitivitätsfunktion","Komplimentäre Sensitivitätsfunktion",3);
-xgrid();
+//legend("Sensitivitätsfunktion","Komplimentäre Sensitivitätsfunktion",3);
+//xgrid();
+
+
+// Spungantwort
+t3=[0:0.01:40];
+h3=csim('step',t3,T);
+
+scf(66);clf(66);
+plot2d(t3,h3)
+
+
 
 SI = 1/(1+Ginnen*KposI)
 TI = (Ginnen*KposI)/(1+Ginnen*KposI)
