@@ -119,7 +119,7 @@ xrightmargin=-1.5cm
         
         \TODO{Dirk: Bitte die Skizze der Pol-Nullstellenverteilung der Strecke einfügen} \\
         
-	\end{quote}
+	\end{quote} %Ende Subsection Linearisierung
 	
 	\subsection{Wurzelortskurve}
     Aufgabe:\\
@@ -137,236 +137,48 @@ xrightmargin=-1.5cm
 	
 	\end{quote} %Ende Subsection WOK
 	
-	\subsection{Anti-Windup-Schaltung in Scicos erstellen}
+	\subsection{Nyquistkriterium}
 	Aufgabe:\\
-    Erweitern Sie Ihre Reglerstruktur in Scicos um eine Anti-Windup-Schaltung. Beziehen Sie sowohl
-    den äußeren als auch den inneren Regler in die Schaltung ein. Realisieren Sie dafür den inneren und äußeren
-    PI-Regler in einer Parallelform mit P- und I-Anteil.
-	\begin{quote}
+    Machen Sie sich mit dem allgemeinen Nyquistkriterium vertraut! Skizzieren Sie mit der zuvor bestimmten
+    Pol-/Nullstellenverteilung des Reglers das Nyquistdiagramm des offenen Regelkreises. Gegebenenfalls kann eine
+    konkrete Realisierung des Reglers angenommen werden, um das Nyquistdiagramm zeichnen zu können. Welche Bedingungen
+    werden nach dem Nyquistkriterium an die Ortskurve der offenen Kette hinsichtlich der Stabilität gestellt und wie
+    kann man dieses Bedingungen im Bodediagramm wiederfinden?
+	\begin{quote} 
 		
 		
-	\end{quote}
+	\end{quote} %Ende Subsection Nyquist
 	
-\end{quote}
+	\subsection{Frequenzkennlinienentwurf}
+    \begin{quote}
+        
+    \end{quote}  % Ende Subsection Frequenzkennlinienentwurf
+    
+    \subsection{Störverhalten}
+    Aufgabe\\
+    Untersuchen Sie das Verhalten des Regelkreises bei konstanten Ausgangsstörungen (z.B. durch Messfehler oder Wagen
+    auf geneigter Ebene). Wie verhalten sich Wagenposition, Winkel und Wagengeschwindigkeit?
+    \begin{quote}
+        
+    \end{quote}  % Ende Subsection Störverhalten
+    
+    \subsection{Führungsverhalten}
+    Aufgabe\\
+    Untersuchen Sie das Verhalten des Regelkreises gegenüber konstanten Sollvorgaben ungleich Null. Wie verhalten sich
+    Wagenposition, Winkel und Wagengeschwindigkeit?
+    \begin{quote}
+        
+    \end{quote}  % Ende Subsection Führungsverhalten
+	
+\end{quote} %Ende Section Vorbereitungsaufgaben 
 
 %--------------------------------------------------------------------
 %--------------------------------------------------------------------
 
 \section{Ergebnisse}
 \begin{quote}
-    
-    
-    \subsection{Regler mit guten Störeigenschaften}
-    Implementieren Sie ihre Kaskadenregelung mit innerem und äußerem Regler und der
-    Anti-Windup-Schaltung in Scicos und erstellen Sie mit dem Betreuer das echtzeitfähige
-    Programm zur Motoransteuerung. Verwenden Sie für den äußeren Regler zunächst die
-    Parameter aus Aufgabe \ref{2f}.
-    
-    
-    \begin{quote}
-        
-        \subsubsection{Führungssprungantwort}
-        Nehmen Sie die Führungssprungantwort des Drehzahlregelkreises auf. Schalten Sie dafür den Sollwert der
-        Winkelgeschwindigkeit von $0 \mathrm{\frac{rad}{s}}$ auf $150 \mathrm{\frac{rad}{s}}$ Nehmen Sie zusätzlich zu der
-        Regelgröße auch die Stellgröße $r_i$ des Regelkreises auf.
-        Beschreiben und diskutieren Sie das Regelkreisverhalten! Vergleichen Sie das Ergebnis mit der Simulation des
-        Führungsverhaltens aus der Vorbereitungsaufgabe \ref{2f}!
-        
-        \begin{quote}
-            
-        \begin{center}
-        \begin{tabular}{ll}
-        
-        \hspace{-4.5cm}
-            \begin{minipage}{0.6\textwidth}
-                
-                \begin{figure}[H]
-                    \label{fig:sprung_w}
-                    \includegraphics[scale=0.7, trim = 8mm 5mm 15mm 10mm, clip]{Bilder/sprung_w}
-                    \caption{Sprungantwort der Winkelgeschwindigkeit}
-                \end{figure}
-                
-            \end{minipage}
-            
-            \begin{minipage}{0.6\textwidth}
-                \begin{figure}[H]
-                    \label{fig:sprung_i}
-                    \includegraphics[scale=0.7, trim = 8mm 5mm 15mm 10mm, clip]{Bilder/sprung_i}
-                    \caption{Sprungantwort des Stroms}
-                \end{figure}
-                
-            \end{minipage}
-            
-        \end{tabular}
-        \end{center}
-        
-        \vspace{2em}
-        
-        Die Sprungantworten erfüllen alle gestellten Bedingungen. Die Geschwindigkeit ändert sich etwas langsamer als
-        simuliert, erreicht jedoch schon nach \si{0,35}{s} den angestrebten Wert von $150 \mathrm{\frac{rad}{s}}$. Die geringe
-        Abweichung ist mit höherer Trägheit und mehr Reibmoment gegenüber der Simulation zu erklären.\\
-        Auch die Sprungantwort des Stroms stellt sich mit nur geringem Überschwingen sehr schnell wieder ein.
-        
-        
-        
-        \end{quote}
-        
-        
-        \subsubsection{Störsprungantwort}
-        Nehmen Sie die Störsprungantwort des Systems auf. Betreiben Sie den Motor bei einer Winkelgeschwindigkeit von $150
-        \mathrm{\frac{rad}{s}}$ und lösen Sie die Rückhaltevorrichtung der Bremse um ein sprunghaftes Lastmoment zu erhalten.
-        Nehmen Sie zusätzlich zu der Regelgröße auch die Stellgröße $r_i$ des Regelkreises auf. Beschreiben und diskutieren Sie
-        das Regelkreisverhalten! Vergleichen Sie das Ergebnis mit der Simulation des Störverhaltens aus der Vorbereitungsaufgabe
-        \ref{2f}!
-        
-        \begin{quote}
-            
-        \begin{center}
-        \begin{tabular}{ll}
-        
-        \hspace{-4.5cm}
-            \begin{minipage}{0.6\textwidth}
-                
-                \begin{figure}[H]
-                    \label{fig:stoersprung_w}
-                    \includegraphics[scale=0.7, trim = 8mm 5mm 15mm 10mm, clip]{Bilder/stoersprung_w}
-                    \caption{Störsprungantwort der Winkelgeschwindigkeit}
-                \end{figure}
-                
-            \end{minipage}
-            
-            \begin{minipage}{0.6\textwidth}
-                \begin{figure}[H]
-                    \label{fig:stoersprung_i}
-                    \includegraphics[scale=0.7, trim = 8mm 5mm 15mm 10mm, clip]{Bilder/stoersprung_i}
-                    \caption{Störsprungantwort des Stroms}
-                \end{figure}
-                
-            \end{minipage}
-            
-        \end{tabular}
-        \end{center}
-        \vspace{2em}
-        
-        Wie auch schon bei letzten Versuch beobachtet reagiert die Störsprungantwort des Reglers sogar etwas schneller als wir es
-        simuliert haben. Dies hängt wiederum mit ungenauigkeiten der Realen bauteile zusammen, welche sich in diesem Fall zu
-        unseren Gunsten auswirken.
-        
-        
-        \end{quote}
-    
-    \end{quote}
-    
-    
-    \subsection{Regler mit schlechten Störeigenschaften}
-    Untersuchen Sie nun den Regelkreis mit den zuerst bestimmten Parametern aus Aufgabe
-    \ref{2d}. Nehmen Sie die Störsprungantwort des Systems auf. Wie äußert sich das unbefriedigende Störverhalten in der Praxis?
-    Vergleichen Sie das Ergebnis mit der Simulation des Störverhaltens aus der Vorbereitungsaufgabe \ref{2e}!
-    
-    \begin{quote}
-        
-        Dieser Versuchsteil hat leider nicht den gewünschten bzw. erwarteten Erfolg gebracht. Erwartet hätten wir einen
-        ähnlich schnelle Führungssprungantwort wie mit dem guten Regler jedoch eine sehr viel langsamere
-        Störsprungantwort. Der Versuch hat jedoch schon eine sehr langsame Führungssprungantwort, mit
-        einer Ausregelzeit weit größer als $20 s$, ergeben. Laut unserer Simulation hätte sich hingegen eine Ausregelzeit von
-        unter $0.1 s$ einstellen sollen. Den Fehler für diese Abweichung konnten wir nicht identifizieren.\vspace{1em}
-        
-        Unerklärlich war außerdem, dass die Änderung des Vorzeichens in der Rückführung des PT1-Gliedes im Scicos Modell
-        keine Auswirkung auf das Regelverhalten hatte.\vspace{1em}
-        
-        Da wir leider keine vernünftigen Messergebnisse von diesem Versuch haben können wir weder etwas plotten noch
-        analysieren.
-        
-        
-    \end{quote}
-    
-    
-    \subsection{Test der Anti-Windup-Schaltung}
-    Testen Sie ihre Anti-Windup-Schaltung mit den Parametern aus Aufgabe \ref{2f}. Betreiben Sie den Motor bei einer
-    Winkelgeschwindigkeit von $150 \mathrm{\frac{rad}{s}}$ und halten Sie die Scheibe sehr kurz fest um sie danach sofort wieder
-    freizugeben. Wiederholen Sie den Versuch mit deaktivierter Anti-Windup-Schaltung! Nehmen Sie neben der Winkelgeschwindigkeit
-    und dem Ankerstrom die Stellgrößen vor und nach der Beschränkung auf. Beschreiben und vergleichen Sie das Regelkreisverhalten
-    mit und ohne Anti-Windup-Schaltung!
-    
-    \begin{quote}
-        
-        Bei diesem Versuch haben wir den laufenden Motor nicht nur durch eine Last in seiner Umdrehung gestört sondern ihn durch
-        festhalten der Schwungscheibe kurz angehalten. Dadurch haben wir den Regler gezwungen so stark auf diese Störung zu
-        reagieren, dass er mit seiner inneren Stellgröße $u$ in die Begrenzung von \si{\pm5}{V} geht. Diesen Versuch haben wir
-        sowohl mit eingeschalteter als auch mit ausgeschalteter Wind-up Schaltung durchgeführt.\\
-        Die Messergebniss der zwei Versuche sehen Folgendermaßen aus:
-
-        \begin{figure}[H]
-        \centering
-            \label{fig:w}
-            \includegraphics[scale=0.8, trim = 0.5cm 0.5cm 2cm 0.5cm, clip]
-            {./Bilder/windup_sprungantwort_Geschwindigkeit}
-            \caption{Störsprungantwort der Geschwindigkeit}
-        \end{figure}
-        
-        \begin{figure}[H]
-        \centering
-            \includegraphics[scale=0.8, trim = 0.5cm 0.5cm 2cm 0.5cm, clip]
-            {./Bilder/windup_sprungantwort_sollstrom}
-            \caption{Störsprungantwort des Sollstroms}
-        \end{figure}
-        
-        \begin{figure}[H]
-        \centering
-            \includegraphics[scale=0.8, trim = 0.5cm 0.5cm 2cm 0.5cm, clip]
-            {./Bilder/windup_sprungantwort_Spannung}
-            \caption{Störsprungantwort der Spannung}
-        \end{figure}
-        
-
-        \begin{figure}[H]
-        \centering
-            \includegraphics[scale=0.8, trim = 0.5cm 0.5cm 2cm 0.5cm, clip]
-            {./Bilder/windup_sprungantwort_Strom}
-            \caption{Störsprungantwort des Stroms}
-        \end{figure}
-        
-        In der Grafik \ref{fig:w} sieht man klar, wann die Schwungscheibe 
-        von $150 \frac{rad}{s}$ auf $0\frac{rad}{s}$ abgebremst wird. Als reaktion darauf versucht
-        der Regler den Motor anzuregen. Dazu steigt der Sollstrom an, weshalb wiederum die Spannung sprungartig
-        ansteigt. Hierbei wiederum gerät die Spannung in die Begrenzung.\\
-        
-        \subsubsection{aktive anti-Windup Schaltung}
-		\begin{quote}
-            Im Falle der aktivierten anti-Wind-up Schaltung bremst diese sofort die Intregratoren der beiden
-            Stellgrößen, sodass nicht über die physikalische Beschränkung hinaus integriert wird. Dadurch stimmen die
-            physikalischen Größen und die Stellgrößen weiterhin überein. Dies verhindert, dass die Regler mit ihren Reglgrößen
-            über ihr Ziel hinausschießen.\\
-            Dieser Effekt lässt sich sehr gut an den Grünen Linien in der Sprungantwort der Spannung sowie der
-            Sprunganwort des Sollstroms erkennen.\\
-            Auch an der Drehgeschwindigkeit lässt sich dieses abbremsen erkennen, da die Grüne Linie langsamer aus der
-            Störung rauskommt als die Blaue. Dafür schafft sie es jedoch, sobald die gewünschte Drehzahl erreicht ist, die
-            Beschleunigung komplett abzubremsen und hat somit die Störung ausgeregelt.\vspace{1em}
-			
-		\end{quote}
-		
-		\subsubsection{deaktive anti-Winfup Schaltung}
-		\begin{quote}
-            Im Gegensatz dazu versucht der Regler ohne anti-Windup die Störung auszugleichen als ob es keine Begrenzung gäbe. Das
-            wiederum hat zur Folge, dass der Regler annimmt der Ankerstrom würde nicht ausreichen um gegenzusteuern und
-            deshalb die Stellgröße weiter aufintegriert.\\
-            Sobald der Regler sich der angestrebten Winkelgeschwindigkeit nähert, müsste er anfangen gegenzusteuern um 
-            Überschwingen zu vermeiden. Da der Integrator des inneren Reglers inzwischen aber einen sehr hohen Wert angenommen
-            hat, hat das gegensteuern zwar einen Einfluss auf den Integrator bzw. die theoretische Stellgröße, nicht jedoch auf
-            die physikalische.\\
-            Durch das fehlende Gegensteuern schwingt die Regelgröße über. Der Regler benötigt somit, falls er es überhaup schafft,
-            sehr lange um die ursprüngliche Störung auszuregeln.\\
-            Das Überschwingen lässt sich in allen vier Messerten erkennen.
-		\end{quote}
-        
-    \end{quote}
-
-
-    
-    
-    
-    
-\end{quote}
+ 
+\end{quote} %Ende Section Ergebnisse
 
 %--------------------------------------------------------------------
 %--------------------------------------------------------------------
@@ -384,16 +196,17 @@ xrightmargin=-1.5cm
 %--------------------------------------------------------------------
 %--------------------------------------------------------------------
 \begin{thebibliography}{999}
-\bibitem {Ueberschwingweite} Prof. Dr.-Ing. Raisch, Jörg; Dipl.-Ing. Hess, Anne-Katrin; Dipl.-Ing. Seel, Thomas:
-Grundlagen der Regelungstechnik - 4.Praktikum, S.5
-\bibitem {Ausregelzeit} Prof. Dr.-Ing. Raisch, Jörg; Dipl.-Ing. Hess, Anne-Katrin; Dipl.-Ing. Seel, Thomas:
-Grundlagen der Regelungstechnik - 4.Praktikum, S.5
+%\bibitem {Ueberschwingweite} Prof. Dr.-Ing. Raisch, Jörg; Dipl.-Ing. Hess, Anne-Katrin; Dipl.-Ing. Seel, Thomas:
+%Grundlagen der Regelungstechnik - 4.Praktikum, S.5
+%\bibitem {Ausregelzeit} Prof. Dr.-Ing. Raisch, Jörg; Dipl.-Ing. Hess, Anne-Katrin; Dipl.-Ing. Seel, Thomas:
+%Grundlagen der Regelungstechnik - 4.Praktikum, S.5
 
 %\usepackage{url}
 
 
-\bibitem{krachler}Christian Krachler:
-\href{http://www.krachler.com/fileadmin/user_upload/arbeiten/Reglersynthese_Christian_Krachler.pdf}{Reglersynthese nach dem Frequenzkennlinienverfahren}, S16, S22, 08.05.2012
+%\bibitem{krachler}Christian Krachler:
+%\href{http://www.krachler.com/fileadmin/user_upload/arbeiten/Reglersynthese_Christian_Krachler.pdf}{Reglersynthese nach
+% dem Frequenzkennlinienverfahren}, S16, S22, 08.05.2012
 
 %http://krachler.com/fileadmin/user\_upload/arbeiten/Reglersynthese\_Christian\_Krachler.pdf
 
