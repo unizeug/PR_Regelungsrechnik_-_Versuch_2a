@@ -6,7 +6,7 @@
 // ############################################################################
 
 // Boris: cd "/Users/borishenckell/Documents/eclipse workspace/PR_Regelungsrtechnik_-_Versuch_1b/PR Regelungsrechnik - Versuch 2a"
-// Dirk: cd "/media/daten/workspace/PR_Regelungsrechnik_-_Versuch_1b/PR Regelungsrechnik - Versuch 1b/Scilab/"
+// Dirk: cd "/media/daten/workspace/PR_Regelungsrechnik_-_Versuch_2a/PR Regelungsrechnik - Versuch 2a/Scilab/"
 
 
 // Fehlermeldung bei neudefinition vermeiden
@@ -166,9 +166,11 @@ S = 1/(1+Ginnen*Kpos)
 T = (Ginnen*Kpos)/(1+Ginnen*Kpos)
 
 clf(6);scf(6);
+bode(S);
+
 //bode_w_farbe(S, -3, 3, 'Bodeplot', 'false', 1000, 2);
 //bode_w_farbe(T, -3, 3, 'Bodeplot', %f, 1000, 5);
-//legend("Sensitivitätsfunktion","Komplimentäre Sensitivitätsfunktion",3);
+legend("Sensitivitätsfunktion","Komplimentäre Sensitivitätsfunktion",3);
 xgrid();
 
 SI = 1/(1+Ginnen*KposI)
