@@ -38,15 +38,15 @@ G1_pol = roots(G1.den);
 
 // - - - - - - - Regler - - - - - - - - - - - - - - - -//
 K=1;
-alphanull = 16//-G1_pol(1);
+alphanull = 20//-G1_pol(1);
 betapol = -0.2;
 K1 = K*(s+alphanull)*1/(s+betapol);
 
 // - - - - - - - Nyquistkurve - - - - - - - - - - - - -//
 
-offenerKreis_1 = G1*K1;
-offenerKreis = syslin('c',real(offenerKreis_1.num),real(offenerKreis_1.den))
-// Plotten der Wurzelortskurve (WOK) von Gui*K
+//offenerKreis_1 = G1*K1;
+//offenerKreis = syslin('c',real(offenerKreis_1.num),real(offenerKreis_1.den))
+//// Plotten der Wurzelortskurve (WOK) von Gui*K
 //clf(2);scf(2);
 //nyquist(offenerKreis)
 //xgrid();
@@ -60,9 +60,8 @@ offenerKreis = syslin('c',real(offenerKreis_1.num),real(offenerKreis_1.den))
 
 // - - - - - - - Bodeplot - - - - - - - - - - - - - - -//
 
-//clf(3);scf(3);
- 
-//legend("Offener Regelkreis",3);
+//clf(3);scf(3); 
+////legend("Offener Regelkreis",3);
 //[w, db, phi] = bode_w(offenerKreis, 10^(-3), 10^3);
 //[w, db, phi] = bode_w(G1, 10^(-3), 10^3);
 //xgrid(3);
@@ -74,13 +73,19 @@ GKgeschlossen = (G1*K1/(1+G1*K1))
 GKgeschlossen = syslin('c',real(GKgeschlossen.num),real(GKgeschlossen.den))
 
 //erstellen der Sprungantwort auf den Geschlossenen Kreis
+
 t1=[0:0.01:40];
-h1=csim('step',t1,GKgeschlossen);
+u=ones(1,length(t1))*0.1;
+//h1=csim('step',t1,GKgeschlossen);
+h2=csim(u,t1,GKgeschlossen);
 
 //Plotten der Sprungantwort auf den Geschlossenen Kreis
 
 //clf(15);scf(15);
 //plot2d(t1,h1)
+
+//clf(16);scf(16);
+//plot2d(t1,h2)
 
 
 // - - - - - - - Stoersprungantwort - - - - - - - - - - -//
@@ -139,8 +144,10 @@ end
 
 // erstellen des Polvorgabevektors
 
-cvek = polvorgabe(4,0.97)
-
+croots = polvorgabe(4,0.97)
+wunsch=poly(croots,'s','r')
+cvek1=coeff(wunsch)
+cvek=cvek1([8 7 6 5 4 3 2 1])';
 //cvek=zeros(2*n,1);
 //cvek(1,1) = 1;
 //cvek(2,1) = 2;
@@ -162,17 +169,23 @@ KposI = syslin('c',kcoeff(n+1)*s^(n-1)+kcoeff(n+2)*s^(n-2) + kcoeff(n+3)*s^(n-3)
 
 // - -  Sensitivitätsfunktion und kompl. Sensistivitätsfunktion - -//
 
-S = 1/(1+Ginnen*Kpos)
-T = (Ginnen*Kpos)/(1+Ginnen*Kpos)
+//S = 1/(1+Ginnen*Kpos)
+S = Ginnen.den*Kpos.den/(Ginnen.num*Kpos.num+Ginnen.den*Kpos.den);
+//T = (Ginnen*Kpos)/(1+Ginnen*Kpos)
+T = Ginnen.num*Kpos.num/(Kpos.num*Ginnen.num+Kpos.den*Ginnen.den);
+
 
 clf(6);scf(6);
 //bode_w_farbe(S, -3, 3, 'Bodeplot', 'false', 1000, 2);
-//bode_w_farbe(T, -3, 3, 'Bodeplot', %f, 1000, 5);
+bode(T);
 //legend("Sensitivitätsfunktion","Komplimentäre Sensitivitätsfunktion",3);
 xgrid();
 
-SI = 1/(1+Ginnen*KposI)
-TI = (Ginnen*KposI)/(1+Ginnen*KposI)
+//SI = 1/(1+Ginnen*KposI)
+S = Ginnen.den*KposI.den/(Ginnen.num*KposI.num+Ginnen.den*KposI.den);
+//TI = (Ginnen*KposI)/(1+Ginnen*KposI)
+TI = Ginnen.num*KposI.num/(KposI.num*Ginnen.num+KposI.den*Ginnen.den)
+
 
 clf(7);scf(7);
 //bode_w_farbe(SI, -3, 3, 'Bodeplot', 'false', 1000, 2);
