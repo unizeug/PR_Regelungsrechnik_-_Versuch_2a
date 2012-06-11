@@ -6,7 +6,7 @@
 // ############################################################################
 
 // Boris: cd "/Users/borishenckell/Documents/eclipse workspace/PR_Regelungsrtechnik_-_Versuch_1b/PR Regelungsrechnik - Versuch 2a"
-// Dirk: cd "/media/daten/workspace/PR_Regelungsrechnik_-_Versuch_2a/PR Regelungsrechnik - Versuch 2a/Scilab/"
+// Dirk: cd "/media/daten/workspace/PR_Regelungsrechnik_-_Versuch_1b/PR Regelungsrechnik - Versuch 1b/Scilab/"
 
 
 // Fehlermeldung bei neudefinition vermeiden
@@ -84,8 +84,8 @@ h2=csim(u,t1,GKgeschlossen);
 //clf(15);scf(15);
 //plot2d(t1,h1)
 
-//clf(16);scf(16);
-//plot2d(t1,h2)
+clf(15);scf(15);
+plot2d(t1,h2)
 
 
 // - - - - - - - Stoersprungantwort - - - - - - - - - - -//
@@ -102,8 +102,8 @@ t2=[0:0.01:40];
 h2=csim('step',t2,Gstoer);
 
 
-//clf(16);scf(16);
-//plot2d(t2,h2)
+clf(16);scf(16);
+plot2d(t2,h2)
 
 // - - - - - - - Sensitivitätsfunktion - - - - - - - - - - -//
 
@@ -176,25 +176,13 @@ T = Ginnen.num*Kpos.num/(Kpos.num*Ginnen.num+Kpos.den*Ginnen.den);
 
 
 clf(6);scf(6);
-//bode(S);
-
 //bode_w_farbe(S, -3, 3, 'Bodeplot', 'false', 1000, 2);
 bode(T);
 //legend("Sensitivitätsfunktion","Komplimentäre Sensitivitätsfunktion",3);
-//xgrid();
-
-
-// Spungantwort
-t3=[0:0.01:40];
-h3=csim('step',t3,T);
-
-scf(66);clf(66);
-plot2d(t3,h3)
-
-
+xgrid();
 
 //SI = 1/(1+Ginnen*KposI)
-S = Ginnen.den*KposI.den/(Ginnen.num*KposI.num+Ginnen.den*KposI.den);
+SI = Ginnen.den*KposI.den/(Ginnen.num*KposI.num+Ginnen.den*KposI.den);
 //TI = (Ginnen*KposI)/(1+Ginnen*KposI)
 TI = Ginnen.num*KposI.num/(KposI.num*Ginnen.num+KposI.den*Ginnen.den)
 

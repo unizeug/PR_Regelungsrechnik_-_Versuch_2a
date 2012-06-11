@@ -56,386 +56,86 @@ xrightmargin=-1.5cm
 \section{Vorbereitungsaufgaben}
 \begin{quote}
 	\hspace{-2em}
-	\subsection{Übertragungsfunktion}
+	\subsection{Linearisierung}
     Aufgabe:\\
     Linearisieren Sie das nichtlineare Modell um die Ruhelage ($z, \varphi$) = ($0, 0$) und berechnen Sie die
     Transferfunktion von der Stellgröße $u$ zum Ausgang $\varphi$. Skizzieren Sie die Pol-/Nullstellenverteilung des
     Systems.
 	\begin{quote}
-	   Als Stellgröße $u$
-        \begin{equation*}
-            \begin{split}
-                x(t) = 
-                    \begin {pmatrix}
-                        \omega(t)\\
-                    \end{pmatrix}
-            \end{split}
-        \end{equation*}
-        
-        Die Stellgröße $u(t)$ ist der Ankerstrom $i_A(t)$.
-        \begin{equation*}
-            \begin{split}
-                u(t) = i_A (t)
-            \end{split}
-        \end{equation*}
-        
-        Als Ausgangsgröße $y(t)$ wird die Winkelgeschwindigkeit $\omega(t)$ genommen.
-        \begin{equation*}
-            \begin{split}
-                y(t) = \omega(t)
-            \end{split}
-        \end{equation*}
-        
-        Daraus ergibt sich folgendes Zustandesmodell:
-        \begin{equation*}
-            \begin{split}
-                   \dot{x} &=
-                   \begin{pmatrix}
-                        \dot{\omega}(t)\\
-                   \end{pmatrix}\\ &=
-                   \begin{pmatrix}
-                        -\frac{c_\mu}{\frac{1}{2}M_s r^2_s + J_m}\\
-                   \end{pmatrix} x(t) +
-                   \begin{pmatrix}
-                       \frac{k_m}{\frac{1}{2}M_sr^2_s + J_m}\\
-                   \end{pmatrix} u(t) +
-                   \begin{pmatrix}
-                       \frac{-1}{\frac{1}{2}M_sr^2_s + J_m}\\
-                   \end{pmatrix} m_L(t)\\
-                   y(t) &= 
-                   \begin{pmatrix}
-                        1\\
-                   \end{pmatrix} x(t) + 0 \p u(t)
-            \end{split}
-        \end{equation*}
-        
-        Daraus folgt die Übertragungsfunktion $G_2$:
-        \begin{equation*}
+	   Das folgende Systemmodell war in dem Aufgabenblatt gegeben:
+	   \begin{equation*}
         	\begin{split}
-        		G_2 (s) = \frac{2351,6287}{0,0178492 + s}
+        		\dot{z} &= u\\
+        		\ddot{z} &=\frac{\mathrm d\dot{z}}{\mathrm d t} = \frac{\mathrm du}{\mathrm d t}\\
+        		\ddot{\varphi} &= \frac{1}{J_s + m_P a^2} ( m_P a (\ddot{z}cos(\varphi) +g sin(\varphi))-c\dot{\varphi})
         	\end{split}
         \end{equation*}
         
-        Nun können wir $G_\omega^{'}$ berechnen:
-	
-		\begin{equation*}
+        Als Ziel der Linearisierung streben wir eine Übertragungsfunktion der Form 
+        \begin{equation*}
         	\begin{split}
-        		G_\omega^{'} (s) &= T_1(s) G_2(s) = \frac{G_1 (s) K_1(s)}{1 + G_1 (s) K_1 (s)} G_2 (s)\\ \\
-        		&= \frac{475559.23}{3.6095577 + 202.24332s + s^2}
+        		\frac{Y(s)}{U(s)}
         	\end{split}
         \end{equation*}
-		
+        
+        an. Da unser Regelgröße $Y(s)$ der Winkel $\varphi(s)$ ist und unsere Stellgröße $U(s)$ die Wagengeschwindigkeit
+        $\dot{Z}(s)$ versuchen wir das bekannte Systemmodell nur in abhängigkeit dieser beiden Größen darzustellen.\\
+        Dazu definieren wir:
+        \begin{equation*}
+        	\begin{split}
+        		\ddot{\varphi} = f(\ddot{z}, \varphi, \dot{\varphi})
+        	\end{split}
+        \end{equation*}
+        
+        Nun beginnen wir mit der Linearisierung.
+        
+        \begin{equation*}
+        	\begin{split}
+        		\Delta \ddot{\varphi} &= \left \frac{\delta f}{\delta \ddot{z}} \Delta \ddot{z} \right|_{AP} + \left
+        		\frac{\delta f}{\delta \varphi} \Delta \varphi \right|_{AP} + \left \frac{\delta f}{\delta \dot{\varphi}}
+        		\Delta \dot{z} \right|{AP}\\
+        		&= \frac{m_p a \cdot cos(0)}{J_s + m_P a^2} \cdot \Delta \ddot{z} + \frac{m_P a}{J_s + m_P a^2} (-\ddot{z}
+        		\cdot sin(0) + g \cdot cos(0)) \cdot \Delta \varphi - \frac{c}{J_s + m_P a^2} \cdot \Delta \dot{\varphi}\\
+        		&= \frac{1}{J_s + m_P a^2} \left ( m_p a \Delta \cdot \ddot{z} + m_P a g \Delta \cdot \varphi - c \Delta
+        		\cdot \dot{\varphi} \right)\\
+        	\end{split}
+        \end{equation*}
+        
+        Diese Gleichung transformieren wir mittels Laplace.
+        
+        \begin{equation*}
+        	\begin{split}
+        		s^2 \Delta \varphi - s \varphi(0) - \dot{\varphi}(0) &= \frac{1}{J_s + m_P a^2} \left (  m_p a (s \Delta
+        		\dot{Z} - Z(0)) + m_p a g \Delta \varphi - c (s \Delta \varphi - \varphi(0)) \right)\\
+        		\\
+        		\Delta \varphi (s^2 + c s - \frac{m_P a g}{J_s + m_P a^2}) &= \frac{m_p a s}{J_s + m_P a^2} \Delta \dot{Z}\\
+        		\\
+        		\frac{\Delta \varphi}{\Delta \dot{Z}} = \frac{Y(s)}{U(s)} &= \frac{\frac{m_p a s}{J_s + m_P a^2}}{s^2 + c s -
+        		\frac{m_P a g}{J_s + m_P a^2}}\\
+        		\\
+        		\frac{Y(s)}{U(s)} &= \frac{m_p a s}{(J_s + m_p a^2) s^2 + s c - m_p a g}
+        	\end{split}
+        \end{equation*}
+        
+        \TODO{Dirk: Bitte die Skizze der Pol-Nullstellenverteilung der Strecke einfügen} \\
         
 	\end{quote}
 	
-	\subsection{Regler}
+	\subsection{Wurzelortskurve}
     Aufgabe:\\
-    Als Drehzahlregler soll ein PI-Glied\\
+    Machen Sie sich mit den Konstruktionsregeln für Wurzelortskurven vertraut! Gegeben sei der folgende Regler\\
     \begin{equation*}
         \begin{split}
-            K_\omega (s) = k_\omega \frac{s-s_{0,\omega}}{s}, \hspace{2em} k_\omega, s_{0,\omega} \in \mathbb{R}
+            G_r(s) = K\frac{s + \alpha}{s + \beta}, \ \ K,\alpha, \beta \in  \Re
         \end{split}
     \end{equation*}
-    verwendet werden.
+    mit $K > 0$. Entscheiden Sie anhand des Wurzelortskurvenverfahrens über die notwendige Lage der Reglerpolstelle
+    und -nullstelle, damit das geregelte System für eine genügend große Verstärkung $K$ stabilisiert werden kann.
+    Bestimmen Sie nur, in welcher Hälfte der s-Ebene jeweils die Pol- und die Nullstelle liegen muss und nicht die
+    genaue Position.
 	\begin{quote}
-		
-		\subsubsection{Sinnvolle Reglerstruktur?}
-        Aufgabe:\\
-        Begründen Sie, warum diese Reglerstruktur sinnvoll ist.\\
-		\begin{quote}
-			Die zu regelnde Strecke $G_\omega^{'}$ weist zwei Pole auf der negativen Reellen achse auf und zwar bei:\\
-            \\
-			$pol_{G\omega^{'}}_1 = - 0,0178492$\\
-			\\
-			$pol_{G\omega^{'}}_2 = - 202.22547$\\
-			\\
-			Mit der gewählten Reglerstruktur haben wir die Möglichkeit einerseits den langsamsten Pol der Strecke zu eliminieren
-			und zusätzlich einen Integrierenden Anteil in den Regler zu bringen. Dadurch wird eine bleibende Regelabweichung
-			verhindert.\\
-			Die resultierende Wurzelortskurve des Kreises zeigt, dass für eine gewisse mindestverstärkung der Regelkreis
-			asymptotisch stabil bleibt.
-		\end{quote}
-		
-		\subsubsection{Bode-Diagramm}
-        Aufgabe:\\
-        Der Reglerentwurf soll nach dem Frequenzkennlinienverfahren durchgeführt werden. Zeichnen Sie dafür zunächst
-        das Bode-Diagramm von $G_\omega^{'}$.\\   
-        \begin{quote}
-            \begin{figure}[H]
-            \centering
-                \includegraphics[scale=0.5, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/BodevonGstrich}
-                    \caption{caption}
-                    \label{fig:BodevonGstrich}
-            \end{figure}
-       
-        \end{quote}
-
-        \subsubsection{Reglerentwurf}
-        Aufgabe:\\        
-        Wählen Sie zunächst das aus der Vorlesung bekannte Entwurfsvorgehen, indem Sie mit der Nullstelle $s_{0,\omega}$
-        des Reglers die langsamste Polstelle der Strecke kürzen. Bestimmen Sie dann mit Hilfe von Simulationen die
-        Verstärkung $k_\omega$ so, dass der geschlossene Regelkreis eine Ausregelzeit von etwa $0.6$ Sekunden aufweist
-        und das Ü̈berschwingen einen Wert von $20\%$ nicht übersteigt. Rufen Sie sich in Erinnerung, wie die
-        Kenngrößen ``Überschwingweite'' , ``Ausregelzeit'' , ``Phasenreserve'' und ``Durchtrittsfrequenz''
-        miteinander in Beziehung stehen!
-        \begin{quote} 
-
-            \vspace{1em}
-            ``Überschwingweite'': Bei der Überschwingweite handelt es sich um die maximale Abweichung der Reglegröße vom
-            Sollwert, $\Delta y = max(y) - y_{soll}$, nach dem die Relgröße die Sollgröße überschritten hat.
-            \cite{Ueberschwingweite}\\
-  
-            
-            \vspace{1em}
-            ``Ausregelzeit'' : Die Ausregelzeit ist die Zeit bis die Regelgröße nach einer sprungförmigen Änderung der
-            Führungs- oder Störgröße einen Toleranzbereich um den Sollwert erreicht und diesen Toleranzbereich anschließend
-            nicht mehr verläßt.
-            \cite{Ausregelzeit}\\
-
-            
-            \vspace{1em}
-            ``Durchtrittsfrequenz'': Bei der Durchtrittsfrequenz handelt es sich um diejenige Frequenz bei der der
-            Amplitudenfrequenzgang die $0dB$ Achse schneidet.\\
-
-            \vspace{1em}
-            ``Phasenreserve'': Die Phasenreserve ist der Abstand des Phasengangs zu $180^\circ$ auf höhe der Durchtrittsfrequenz.
-            ($\varphi_R = 180^° - \varphi(\omega_D)$)\\
-            
-            
-            \vspace{2em}
-            Phasenreserve und Überschwingweite hängen folgendermaßen zusammen:\\
-            \begin{equation*}
-                \begin{split}
-                \varphi_R [^\circ] + e_{max} [\%] \approx 70
-                \end{split}
-            \end{equation*}
-            
-            \vspace{1em}
-            Auch Amplitudenreserve und Anstiegszeit hängen voneinander ab. Je kürzer die Anstiegszeit ist desto
-            höher ist die maximale Überschwingweite und desto geringer ist auch die Amplitudenreserve. In
-            der Praxis wird oft auch der Zusammenhang von Durchtrittsfrequenz und Anstiegszeit
-            verwendet:
-            \begin{equation*}
-            \begin{split}
-                \omega_D = \frac{1}{T_{a,50}} \p (1,5- \frac{e_{max} [\%]}{250})
-            \end{split}
-            \end{equation*}
-            \cite{krachler}
-        \end{quote}
-
-		
-		Zum Reglerentwurf:\vspace{1em}
-		
-		Das Bode-Diagramm des Reglers $K_2$ mit einer Verstärkung von $1$ und das resultierende Diagramm für $G_\omega^{'}
-		K_2$ sehen folgendermaßen aus:
-		\begin{figure}[H]
-        \centering
-            \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/K2GstrichVersion1verstaerkung1}
-                \caption{Bode-Diagramm Gstrich, K2 und Gstrich K2}
-        \end{figure}
-    
-        Um unsere Anforderungen zu erfüllen, streben wir eine Phasenreserve von ca. $60^{\circ}$ an. Aus dem Bodediagramm
-        wird ersichtlich, dass der Regler $K_\omega$ dazu eine Verstärkung von ca. $-20dB$ benötigt.\\
-        Die Änderung der Verstärkung hat folgende Auswirkung auf den Bodeplot:
-        \begin{figure}[H]
-        \centering
-            \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/BodeGschlossenverstaerkt}
-                \caption{Bodeplot geschlossener Kreis}
-        \end{figure}
-        
-        Mit dieser Verstärkung ergibt sich folgende Sprungantwort:
-        \begin{figure}[H]
-        \centering
-            \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/Sprungantwortlangsam}
-                \caption{Sprungantwort}
-        \end{figure}
-        
-        
-        
-        \subsubsection{Erstellen der Führungsübertragungsfunktion}
-        \label{2d}
-        Aufgabe:\\
-        Bei Sprüngen der Führungsgröße $r_\omega$ von $0$ auf Werte bis zu $180 \frac{rad}{s}$ soll die Stellgrößenbeschränkung
-        von $−5V < u < 5V$ nicht verletzt werden. Überprüfen Sie simulativ, ob Ihr Regler diese Forderung erfüllt. Falls nicht,
-        korrigieren Sie ihre Reglerparameter, sodass die Forderung erfüllt wird.
-        Wie lautet die Übertragungsfunktion $\overline{T}_\omega$ des bis hierhin entworfenen geschlossenen Regelkreises?
-        \begin{quote}
-            
-            \begin{equation*}
-            	\begin{split}
-            		\overline{T}_\omega &= \frac{G_\omega^{'} K_\omega}{1 + G_\omega^{'} K_\omega}\\ \\
-            		&= \frac{47555.923}{47555.923 + 202.22547 s + s^2}
-            	\end{split}
-            \end{equation*}
-        \end{quote}
-        
-        \subsubsection{Erstellen der Störübertragungsfunktion}
-        \label{2e}
-        Aufgabe:\\
-        Berechnen Sie die Störübertragungsfunktion $\overline{G}_{m\omega} (s) = \frac{\Omega(s)}{M_L (s)}$ vom
-        Lastmoment $m_L$ auf die Winkelgeschwindigkeit $\omega$. Simulieren Sie die Störsprungantwort. Warum ist das
-        Störverhalten des entworfenen Regelkreises nicht brauchbar? Was fällt Ihnen auf, wenn Sie die Pole von
-        $\overline{T}_\omega$ und $\overline{G}_{m\omega}$ vergleichen?
-		\begin{quote}
-			\begin{equation*}
-            	\begin{split}
-            		\overline{G}_{m\omega} (s) &= \frac{\Omega(s)}{M_L (s)} = \frac{\frac{1}{km}G_{i\omega}}{1+ G_\omega^{'}
-            		K_\omega}\\ \\
-            		&= \frac{9023894.2s + 44622.936s^2}{848.83396 + 47559.532s + 202.24332s^2 + s^3}
-            	\end{split}
-            \end{equation*}
-            
-            Die Störsprungantwort sieht folgendermaßen aus:
-            \begin{figure}[H]
-                \centering
-                    \includegraphics[scale=0.5, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/Stoersprungantwortlangsam}
-                        \caption{Langsame Stoersprungantwort}
-                        \label{fig:filename}
-            \end{figure}
-            
-            Es fällt auf, dass die Störsprungantwort extrem langsam, und daher vermultich nicht zu gebrauchen ist. Selbst
-            nach über \SI{150}{s} hat der Regler es, in der Simulation, nicht geschafft die Störung auszuregeln.\vspace{1em}
-            
-            Ob eine solch langsame Störsprungantwort zu gebrauchen ist hängt selbstverständlich von dem Problem ab für
-            das der Regler entworfen werden soll. Da unsere Führungssprungantwort aber eine Ausregelzeit von $0,6s$
-            aufweisen sollte und unsere Störsprungantwort eine Ausregelzeit größer als $150 s$ aufweist erfüllt
-            dieser Regler nicht die Anforderungen.\vspace{1em}
-            
-            Beim Vergleichen der Polstellen von $\overline{T}_\omega$ und $\overline{G}_{m\omega}$ fällt auf, dass
-            $\overline{G}_{m\omega}$ neben den zwei Polstellen von $\overline{T}_{m\omega}$ eine zusätzliche Polstelle hat.\\
-            
-            $\overline{T}_\omega$ hat die Polstellen:\\
-            \begin{equation*}
-                \begin{split}
-                    pol \overline{T}_\omega (1) &= - 101.11273 + 193.21526i\\
-                    pol \overline{T}_\omega (2) &= - 101.11273 - 193.21526i\\
-                \end{split}
-            \end{equation*}\\
-            
-             Während $\overline{G}_{m\omega}$ folgende Polstellen besitzt:\\
-             
-            \begin{equation*}
-                \begin{split}
-                    pol \overline{G}_{m\omega} (1) &= - 101.11273 + 193.21526i\\
-                    pol \overline{G}_{m\omega} (2) &= - 101.11273 + 193.21526i\\
-                    pol \overline{G}_{m\omega} (3) &= - 0.0178492\\
-                \end{split}
-            \end{equation*}
-            
-            Diese zusätzliche Postelle von $\overline{G}_{m\omega}$ ist die langsame Polstelle der Strecke
-            $G_\omega^{'}$, die wir bei dieser Reglerentwicklung mit der Nullstelle des Reglers eliminieren wollten.\\
-            In der Übertragungsfunktion des Geschlossenen Kreises kürzt sich die Nullstelle des Reglers mit der
-            Postelle der Strecke. Deshalb taucht diese Polstelle nicht mehr als Polstelle von $\overline{T}_\omega$
-            auf. Bei der Störübertragungsfunktion $\overline{G}_{m\omega}$ hingegen kürzt sich diese Polstelle nicht
-            raus und beeinflusst die Störsprungantwort sehr negativ.\\
-            
-            
-            Im folgenden wird allgemein gezeigt, wie sich bei der komplimentären Sensitivitätsfunktion Pole der Strecke
-            mit Nullstellen des Reglers kürzen, bei Sörübertragungsfunktionen dieser Form jedoch erhalten bleiben.\\
-            Der Regler $K$ und die Strecke $G$ seinen folgendermaßen dargestellt. Die Pole der Strecke in $N_G$ werden
-            durch gleich viele Nullstellen im Regler in $Z_K$ kompensiert.
-            \begin{equation*}
-            	\begin{split}
-            		K &= \frac{Z_K}{N_K}\\
-            		G &= \frac{Z_G}{N_G}\\
-            	\end{split}
-            \end{equation*}
-            
-            Für die Sensitivitätsfunktion heißt das:
-            
-            \begin{equation*}
-            	\begin{split}
-                    T &= \frac{GK}{1+GK} = \frac{\frac{Z_K}{N_K} \frac{Z_G}{N_G}}{1 + \frac{Z_K}{N_K}
-                    \frac{Z_G}{N_G}}\\
-                    &= \frac{Z_G Z_K}{N_G N_K + Z_G Z_K}\\
-                    &= \frac{Z_G}{N_K + Z_G}
-            	\end{split}
-            \end{equation*}
-                        
-            Die Pole und Nullstellen in $N_G$ und $Z_K$ kürzen sich raus.\\
-            
-            Für die Störübertragungsfunktion hingengen ergibt sich:
-            \begin{equation*}
-            	\begin{split}
-            		G_{m\omega} &= \frac{G}{1 + GK} = \frac{\frac{Z_G}{N_G}}{1 + \frac{Z_K}{N_K}\frac{Z_G}{N_G}}\\
-            		&= \frac{Z_G N_K}{N_G N_K + Z_G Z_K}
-            	\end{split}
-            \end{equation*}
-            
-            In diesem Fall fehlt die Nullstellen des Reglers im Zähler der Störübertragungsfunktion. Daher bleiben die
-            Polstellen in $G_{m\omega}$ erhalten.
-            
-            
-		\end{quote}
-		
-		\subsubsection{Korrektur der Führungs- und Störübertragungsfunktion}
-		\label{2f}
-		Aufgabe:\\
-	    Überlegen Sie mit Hilfe der Wurzelortskurve, wie die Nullstelle $s_{0,\omega}$ des Reglers verschoben werden muss, um
-	    das Störverhalten zu verbessern. Wählen Sie $s_{0,\omega}$ und $k_\omega$ neu, sodass alle vorher genannten
-	    Forderungen an das Führungsverhalten weiterhin erfüllt werden. Wie lauten die neue
-	    Führungsübertragungsfunktion $T_\omega$ und die neue Störübertragungsfunktion $G_{m\omega}$ und deren Pole?
-		\begin{quote}
-		\vspace{1em}
-        Nun verschieben wir die Nullstelle weiter in den Negativen bereich, wodurch das neue $T_\omega$ und das neue $G_{m\omega}$ gleich
-        viele Pole haben. Das liegt daran, dass bei $T_\omega$ kein Pol mehr eliminiert wird.\\
-        Mit der Nullstelle $s_{0\omega}$ bei $-10$ und mit einer Verstärkung von $\frac{1}{45}$ ergibt sich folgende
-        Störsprungantwort.
-			
-			\begin{figure}[H]
-            \centering
-                \includegraphics[scale=0.5, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/Stoersprungantwortschnell}
-                    \caption{schnelle Störsprungantwort}
-                    \label{fig:Stoersprungantwortschnell}
-            \end{figure}
-            
-            Diese Störsprungantwort hat eien Ausregelzeit von $0,5s$ und reagiert damit um Größenordnungen schneller
-            als bei unserer ersten Reglerentwicklung.\vspace{1em}
-            
-            Auch die Sprungantwort erfüllt mit diesen Werten alle Bedingungen:
-            \begin{figure}[H]
-            \centering
-                \includegraphics[scale=0.5, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/Sprungantwortschnell}
-                    \caption{Sprungantwort}
-                    \label{fig:./Bilder/Sprungantwortschnell}
-            \end{figure}
-    
-    
-            Die aus diesen Voraussetzungen entstehenden Übertragungsfunktionen $T_\omega$ und $G_{m\omega}$ lauten:\\
-            
-            \begin{equation*}
-            	\begin{split}
-            		T_\omega = \frac{105679.83 + 10567.983s}{105679.83 + 10571.592s + 202.24332s^2 + s^3}\\ \\
-            		G_{m\omega} = \frac{9023894.2s + 44622.936s^2}{105679.83 + 10571.592s + 202.24332s^2 + s^3}
-            	\end{split}
-            \end{equation*}\\
-            
-            Am selben Nenner von $T_\omega$ und $G_{m\omega}$ lässt sich erkennen, dass die beiden Übertragungsfunktionen die
-            Selben Polstellen besitzen.\\
-            
-            $T_\omega$ hat die Polstellen:\\
-            
-            \begin{equation*}
-                \begin{split}
-                    pol T_\omega (1) &= - 123.67194\\
-                    pol T_\omega (2) &= - 65.531604\\
-                    pol T_\omega (3) &= - 13.039776\\                   
-                \end{split}
-            \end{equation*}\\
-            
-            Während $G_{m\omega}$ folgende Polstellen besitzt:\\
-            
-            \begin{equation*}
-                \begin{split}
-                    pol G_{m\omega} (1) &= - 123.67194\\
-                    pol G_{m\omega} (2) &= - 65.531604\\                
-                    pol G_{m\omega} (3) &= - 13.039776\\              
-                \end{split}
-            \end{equation*}
-            
-		\end{quote}
-		
-	\end{quote}
+	
+	\end{quote} %Ende Subsection WOK
 	
 	\subsection{Anti-Windup-Schaltung in Scicos erstellen}
 	Aufgabe:\\
