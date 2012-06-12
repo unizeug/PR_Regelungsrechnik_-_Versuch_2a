@@ -180,10 +180,10 @@ t3=[0:0.01:40];
 h3=csim('step',t2,T);
 
 
-clf(116);scf(116);
-plot2d(t3,h3)
-
-clf(6);scf(6);
+//clf(116);scf(116);
+//plot2d(t3,h3)
+//
+//clf(6);scf(6);
 //bode_w_farbe(S, -3, 3, 'Bodeplot', 'false', 1000, 2);
 //legend("Sensitivitätsfunktion","Komplimentäre Sensitivitätsfunktion",3);
 xgrid();
@@ -194,7 +194,7 @@ SI = syslin('c',Ginnen.den*KposI.den/(Ginnen.num*KposI.num+Ginnen.den*KposI.den)
 TI = syslin('c',Ginnen.num*KposI.num/(KposI.num*Ginnen.num+KposI.den*Ginnen.den))
 
 
-clf(7);scf(7);
+//clf(7);scf(7);
 //bode_w_farbe(SI, -3, 3, 'Bodeplot', 'false', 1000, 2);
 //bode_w_farbe(TI, -3, 3, 'Bodeplot', %f, 1000, 5);
 //legend("Sensitivitätsfunktion","Komplimentäre Sensitivitätsfunktion",3);
