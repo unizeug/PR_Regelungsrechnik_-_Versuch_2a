@@ -117,7 +117,14 @@ xrightmargin=-1.5cm
         	\end{split}
         \end{equation*}
         
-        \TODO{Dirk: Bitte die Skizze der Pol-Nullstellenverteilung der Strecke einfügen} \\
+        \begin{figure}[H]
+        \centering
+            \includegraphics[scale=1, trim = 3cm 21.5cm 9cm 2cm, clip]{Bilder/Polnullstellen_G}
+                \caption{Polnullstellendiagramm der Strecke}
+                \label{fig:Polnullstellen_G}
+        \end{figure}
+         \\ %scale=1, trim = 2cm 21.5cm 9cm 2cm, clip
+        
         
 	\end{quote} %Ende Subsection Linearisierung
 	
@@ -132,9 +139,40 @@ xrightmargin=-1.5cm
     mit $K > 0$. Entscheiden Sie anhand des Wurzelortskurvenverfahrens über die notwendige Lage der Reglerpolstelle
     und -nullstelle, damit das geregelte System für eine genügend große Verstärkung $K$ stabilisiert werden kann.
     Bestimmen Sie nur, in welcher Hälfte der s-Ebene jeweils die Pol- und die Nullstelle liegen muss und nicht die
-    genaue Position.
-	\begin{quote}
-	
+    genaue Position.\\
+    
+    \begin{quote}
+        
+        
+        Um herauszufinden wo die Pol- und Nullstelle des Reglers liegen müssen, Skizzieren wir zunächst alle vier Möglichkeiten.
+        
+        
+        \begin{figure}[H]
+        \centering
+            \includegraphics[scale=1, trim = 2cm 16.7cm 9cm 2cm, clip]{Bilder/WOK_GK_phi}
+                \caption{WOK: a)\ $\alpha > 0,\ \beta < 0$; \ \ b) $\alpha < 0,\ \beta > 0$}
+                \label{fig:WOK_GK_phi}
+        \end{figure}
+        
+        Die Wurzelortskurve \ref{fig:WOK_GK_phi}a) mit $\alpha > 0,\ \beta < 0$ zeigt, dass bei genügend hoher Verstärkung die
+        beiden instabilen Pole in die linke Halbebene wandern und der geschlossene Regelkreis somit stabil wäre. Daher wär diese
+        Wahl der Pol-/Nullstellen möglich.\\\\
+        An der Skizze \ref{fig:WOK_GK_phi}b) kann man hingegen sehen, dass die Polstelle der Strecke auch für unendlich hohe
+        Verstärkung in der positiven Halbebene bleibt.
+        
+        
+        \begin{figure}[H]
+        \centering
+            \includegraphics[scale=1, trim = 2cm 16.7cm 9cm 2cm, clip]{Bilder/WOK_GK_phi_2}
+                \caption{WOK: c)\ $\alpha > 0,\ \beta > 0$; \ d) $\alpha < 0,\ \beta < 0$}
+                \label{fig:WOK_GK_phi_2}
+        \end{figure}
+        
+        
+        Die Grafik \ref{fig:WOK_GK_phi_2}c) lässt erkennen, dass die unstabile Polstelle der Strecke erst für eine Verstärkung von
+        unendlich im Uhrsprung ist und das System dan auch nur Stabil und nicht asymptotisch Stabil wäre.
+        
+        
 	\end{quote} %Ende Subsection WOK
 	
 	\subsection{Nyquistkriterium}
@@ -145,7 +183,14 @@ xrightmargin=-1.5cm
     werden nach dem Nyquistkriterium an die Ortskurve der offenen Kette hinsichtlich der Stabilität gestellt und wie
     kann man dieses Bedingungen im Bodediagramm wiederfinden?
 	\begin{quote} 
-	   \TODO{Dirk: bitte eine Skizze von einer passenden Nyquistortskurve reinstellen} \\
+	   
+\begin{figure}[H]
+    \centering
+        \includegraphics[scale=1, trim = 3cm 21.5cm 9cm 1.5cm, clip]{Bilder/Nyquist_kurve}
+            \caption{caption}
+            \label{fig:Nyquist_kurve}
+    \end{figure}
+    
 	   
         Anhand der Nyquistortskurve lässt sich die Stabilität eines geschlossenen Regelkreises für eine feste
         Verstärkung ermitteln. Dazu darf die Nyquistortskurve nicht durch den kritischen Punkt ($-1,0$) laufen und muss
