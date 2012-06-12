@@ -15,9 +15,9 @@ function pole=polvorgabe(tr,D)
     rRP = real(RP(1));    
     
     
-    add = 0.2; // unterschied der zusätzlichen Polstellen
+    add = 1; // unterschied der zusätzlichen Polstellen
     
-    a1 = rRP*6;
+    a1 = rRP*13;
     a2 = a1 - add;
     a3 = a2 - add;
     a4 = a3 - add;

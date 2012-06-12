@@ -223,7 +223,50 @@ xrightmargin=-1.5cm
 	
 	\subsection{Frequenzkennlinienentwurf}
     \begin{quote}
-        In diesem Aufgabenteil wurde uns 5 Bedingungen die beim folgenden Reglerentwurf zu 
+        In diesem Aufgabenteil wurde uns 5 Bedingungen gegeben die beim folgenden Reglerentwurf zu berücksichtigen
+        waren. Die Erfüllung dieser Bedingungen kontrollieren wir an der Nyquistortskurve sowie dem Bodediagramm.\\
+        Wir beginnen mit dem Bode Diagramm bei einer Verstärkung von $1$. Eine der Bedingungen war es bei einer Frequenz
+        von $220 \frac{rad}{s}$ eine Dämpfung von $-42 dB$ zu erzeugen. Da diese Dämpung gerade so bei der Verstärkung
+        von $1$ erfüllt wird wissen wir, dass wir die Verstärkung bei $1$ belassen und für die weiteren Bedingungen die
+        Position der Pol- und der Nullstelle des Reglers verändern müssen.\vspace{1em}
+        
+        Durch einiges Probieren setzen wir die Polstelle auf die Position $0.2$ und die Nullstelle auf die Position
+        $-20$.
+        
+        Daraus resultiert folgende Wurzelortskurve:
+        
+        \begin{figure}[H]
+        \centering
+            \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/WOK}
+                \caption{Wurzelortskurve}
+        \end{figure}
+        
+        Es ist ersichtlich, dass der geschlossene regelkreis für eine genügend große Verstärkung stabil
+        wird.\vspace{1em}
+        
+        Außerdem ergibt sich auch folgende Nyquistkurve:
+        
+        \begin{figure}[H]
+        \centering
+            \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/Nyquistkurve}
+                \caption{Nyquistkurve}
+        \end{figure}
+        
+        Da Scilab die Nyquistkurve von $-\infty$ bis $\infty$ berechnet benötigen wir eine Phasendrehung von $4/pi$, die
+        wir auch haben, um ein stabiles System zu haben.\vspace{1em}
+        
+        Abschließend ergibt sich das folgende Bodediagramm aus den Werten:
+        
+        \begin{figure}[H]
+        \centering
+            \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/Bodediagramm}
+                \caption{Bodediagramm}
+        \end{figure}
+        
+        Die Amplitudenreserve beträgt: $-4.2035059 dB$ und die Phasenreserve $8.8051927 ^{\circ}$. Für alle Frequenzen
+        größer als $4\frac{rad}{s}$ ist der Amplitudengang kleiner als $0dB$. Außerdem ist die Dämpfung bei der Frequenz
+        $220 \frac{rad}{s}$ ca. $-43.3 dB$. Somit sind alle Vorgaben erfüllt. 
+    
     \end{quote}  % Ende Subsection Frequenzkennlinienentwurf
     
     \subsection{Störverhalten}
