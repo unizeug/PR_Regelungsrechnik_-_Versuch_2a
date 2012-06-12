@@ -145,6 +145,32 @@ xrightmargin=-1.5cm
     werden nach dem Nyquistkriterium an die Ortskurve der offenen Kette hinsichtlich der Stabilität gestellt und wie
     kann man dieses Bedingungen im Bodediagramm wiederfinden?
 	\begin{quote} 
+	   \TODO{Dirk: bitte eine Skizze von einer passenden Nyquistortskurve reinstellen} \\
+        Anhand der Nyquistortskurve lässt sich die Stabilität eines geschlossenen Regelkreises für eine feste
+        Verstärkung ermitteln. Dazu darf die Nyquistortskurve nicht durch den kritischen Punkt ($-1,0$) laufen und muss
+        die Phasendrehung bezüglich des kritischen Punktes genau $\pi \cdot (r_G + r_K)$ betragen.\\
+        $r_G$ und $r_K$ sind in diesem fall die Anzahl der Polstellen mit positiven Realteil der Strecke bzw des
+        Reglers.
+        Außerdem lassen wir die Nyquistorstkurve von $0$ bis $\infty$ laufen. Würden wir sie von $-\infty$ bis $\infty$
+        laufen lassen müsste die Phasendrehung $2\pi (r_G + r_K)$ sein.\vspace{1em}
+		
+		In unserem Fall haben wir eine Polstelle der Strecke und eine Polstelle des Reglers mit positivem Realteil. Daher
+		benötigen wir eine Nyquistortskurve die nicht durch den kritischen Punkt läuft und eine Phasendrehung von $2\pi$ hat um ein stabilen geschlossenen Regelkreis zu haben.\\
+		Diese Bedingung prüfen wir bei dem Reglerentwurf im nächsten Aufgabenabschnitt.\vspace{1em}
+		
+		Nachdem die Stabitität des geschlossenen Regelkreises bestätigt wurde lässt sich an der Nyquistortskurve noch weitere
+		Informationen, wie die Phasenreserve und die Amplitudenreserve, ablesen. Die Phasenreserve des Regelkreises erkennt
+		man an dem Winkel zwischen dem Schnittpunkt der Nyquistortskurve und dem Einheitskreis und der negativen reellen
+		Achse. Die Amplitudenreserve widerum erkennt man an dem Kehrwert des Abstandes zwischen der y-Achse und dem
+		Schnittpunkt der Ortskurve mit der negativen reellen Achse.\\
+		Die Phasenreserve und die Amplitudenreserve lassen sich auch an dem Bodediagramm ablesen. Diesesmal ist die
+		Phasenreserve die Differenz der Phase zu $180^{\circ}$ bei der bzw. den Durchstrittsfrequenzen. Die Amplitudenreserve
+		ist die Differenz des Amplitudenganges bezüglich $0dB$ bei der Frequenz von $180^{\circ}$.\vspace{1em}
+		
+		Wie oben beschrieben erwarten wir für unseren stabilen Regelkreis eine Phasendrehung von $2\pi$. Daraus resultiert
+		automatisch, dass die Nyquistortskurve zweimal den Einheitskreis schneiden wird. Diese beiden Schnittpunkte mit dem
+		Einheitskreis werden in dem Bodediagramm durch einen zweifache Schnittstelle mit der $0dB$ Achse im Amplitudengang zu
+		sehen sein.
 		
 		
 	\end{quote} %Ende Subsection Nyquist
