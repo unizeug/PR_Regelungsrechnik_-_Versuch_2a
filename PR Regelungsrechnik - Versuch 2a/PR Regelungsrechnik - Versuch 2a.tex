@@ -292,7 +292,14 @@ xrightmargin=-1.5cm
     auf geneigter Ebene). Wie verhalten sich Wagenposition, Winkel und Wagengeschwindigkeit?
     \begin{quote}
         In diesem Aufgabenteil haben wir das Verhalten des bisherigen Regelkreises auf eine Ausgangsstörung untersucht.
-        Dazu haben wir das nichtlineare Modell in Xcos nachgearbeitet und das Sprungverhalten untersucht.
+        Dazu haben wir das nichtlineare Modell in Xcos nachgearbeitet und das Sprungverhalten untersucht. Leider hat
+        sich herausgestellt, dass das von uns erstellte nichtlineare Modell der Strecke fehlerhaft ist und nicht die
+        erwarteten Werte ausgibt. Selbst nach langem suchen und der Hilfe unseres Tutors haben wir den Fehler nicht
+        gefunden. Daher erstellen wir die in diesem Versuch benutzten Plots mit dem nichtlinearen Modell unseres
+        Tutors.\vspace{1em}
+        
+        
+         
     \end{quote}  % Ende Subsection Störverhalten
     
     \subsection{Führungsverhalten}
@@ -302,25 +309,56 @@ xrightmargin=-1.5cm
     
     \begin{quote}
     
+        Um die Führungssprungantwort dieses Regelkreises zu bestimmen geben wir einen Sprung auf die Führungsgröße des
+        Winkelreglers. Der Regler ist ausgelegt auf ein Einzugsbereich von einigen Grad. Da die Führungsgröße jedoch in
+        $rad$ gemessen wird wäre ein Sprung auf $1 rad$ bzw. $1\cdot \frac{180}{\pi} ^{\circ}= 57.29578^{\circ}$ viel zu
+        groß für den Regler. Daher geben wir einen Sprung von $0$ auf $2^{\circ} = 0.0349066 rad$ auf die
+        Führungsgröße.\vspace{1em}
         
+        Zuerst schauen wir uns die Antwort des Winkels auf diesen Sprung an.
         
         \begin{figure}[H]
         \centering
             \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/Winkelregler_Winkel}
                 \caption{Winkelregler Winkel}
         \end{figure}
+        
+        Es ist zu sehen, dass der Regeler den Winkel nicht wie bei den bisher behandelten Reglern auf die Führungsgröße
+        hochregelt, sondern den Winkel sofort auf $0^{\circ}$ zurückregelt. Da wir versuchen das Pendel in seiner
+        instabilen Ruhelage von $0^{\circ}$ zu halten ist dieses Verhalten gewünscht.\vspace{1em}
+        
+        Als nächstes betrachten wir die Wagengeschwindigkeit.
     
+        \begin{figure}[H]
+        \centering
+            \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/Winkelregler_Wagengeschwindigkeit}
+                \caption{Winkelregler Wagengeschwindigkeit}
+        \end{figure}
+        
+        Es ist zu sehen, dass der Wagen am Anfang des Ausregelvorgangs zügig seine Geschwindigkeit ändert. Interessant
+        ist, dass er gegen Ende des Ausregelvorgangs bei einer konstanten Geschwindigkeit angekommen ist und auf dieser
+        bleibt. Die Ursache dafür ist, dass unser Regler zu diesem Zeitpunkt lediglich das Ziel hat auf eine
+        Winkelposition von $0^{\circ}$ zu regeln. Die Position des Pendels wird noch nicht berücksichtigt. Daher ist es
+        für den Regler vollkommen ausreichend das Pendel unter konstanter Geschwindigkeit bei der gewünschten
+        Winkelposition zu belassen.\\
+        Müsste der Regler die Geschwindikeit wieder auf $0$ drosseln müsste er das Verhalten des Pendels wieder regeln.
+        Ohne einen weiteren äußeren Regler wird das nicht passieren.\vspace{1em}
+        
+        Als letztes betrachten wir die Position des Wagens.
+
         \begin{figure}[H]
         \centering
             \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/Winkelregler_Position}
                 \caption{Winkelregler Position}
         \end{figure}
         
-        \begin{figure}[H]
-        \centering
-            \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/Winkelregler_Wagengeschwindigkeit}
-                \caption{Winkelregler Wagengeschwindigkeit}
-        \end{figure}
+        Da wir bei der Wagengeschwindigkeit herausgefunden haben, dass der Regler bei einer konstanten Geschwindigkeit
+        bleiben wird ist es nur logisch, dass der Wagen dadurch seine Position immer weiter von dem Ursprun entfernt.
+        genau dieses Verhalten ist in der Grafik zu sehen. Theoretisch haben wir somit einen Funktionstüchtigen Regler
+        entworfen. Jedoch zeit diese Grafik die Schwierigkeit des bisherigen Entwurfs. Dieser Regler würde unendlich
+        viel platz benötigen. Um diese Problematik in den Griff zu kriegen werden wir noch einen äußeren Regler für die
+        Positionsregelung entwerfen.
+
         
     \end{quote}  % Ende Subsection Führungsverhalten
 	
@@ -349,7 +387,7 @@ xrightmargin=-1.5cm
 
 %--------------------------------------------------------------------
 %--------------------------------------------------------------------
-\begin{thebibliography}{999}
+%\begin{thebibliography}{999}
 %\bibitem {Ueberschwingweite} Prof. Dr.-Ing. Raisch, Jörg; Dipl.-Ing. Hess, Anne-Katrin; Dipl.-Ing. Seel, Thomas:
 %Grundlagen der Regelungstechnik - 4.Praktikum, S.5
 %\bibitem {Ausregelzeit} Prof. Dr.-Ing. Raisch, Jörg; Dipl.-Ing. Hess, Anne-Katrin; Dipl.-Ing. Seel, Thomas:
@@ -368,7 +406,7 @@ xrightmargin=-1.5cm
 %Name, Vorname.; evtl. Name2, Vorname2.: Titel des Dokumentes
 %oder Buches, Zeitschrift/Verlag/URL (Auflage, Erscheinungsort, -jahr), ggf. Seitenzahlen
 %\bibitem [Wiki10] {DigitaleMesskette2} \url{www.wikipedia.org}, Zugriff 22.03.2010
-\end{thebibliography}
+%\end{thebibliography}
 
 
 \end{document}
