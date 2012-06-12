@@ -384,10 +384,77 @@ xrightmargin=-1.5cm
         
         Die Störsprungantworten verhalten sich genau sich wie die Führungssprungantworten und damit genauso wie wir es
         erwartet haben.
-    
-        
-         
+ 
     \end{quote}  % Ende Subsection Störverhalten
+    \vspace{1em}
+    
+    \textbf{Von hier an ergänzen wir das System mit einem Positionsregler}.
+    
+    
+    \subsection{Übertragungsverhalten des inneren Kreises}
+    Aufgabe:\\
+    Bestimmen Sie das linearisierte Übertragungsverhalten des inneren Regelkreises am Arbeitspunkt ($\varphi, z$) =
+    ($0, 0$) mit dem Regler $G_r(s)$ aus dem Versuch 1a. Gesucht ist die Transferfunktion vom Sollwinkel $\varphi_r$ auf
+    die Wagenpositions $z$.\\
+    Welche Ordnung hat der geschlossene innere Regelkreis?
+    \begin{quote}
+        Die Transferfunktion vom Sollwinkel zur Wagenposition lässt sich durch das Blockschaltbild des Reglers ablesen. 
+        
+        \begin{figure}[H]
+        \centering
+            \includegraphics[scale=0.3, trim = 0cm 12cm 0cm 0cm, clip]{./Bilder/Blockschaltbild}
+                \caption{Blockschaltbild}
+        \end{figure}
+    
+        Hieraus ergibt sich die Transferfunktion:
+
+        \begin{equation*}
+        	\begin{split}
+        		\frac{z}{\varphi_r} = \frac{G_r \frac{1}{s}}{1 + G_r G_s}
+        	\end{split}
+        \end{equation*}
+        
+        Als zweite Möglichkeit lässt sich die Transferfunktion auch aus den Formeln herleiten.
+
+        \begin{equation*}
+        	\begin{split}
+        		z &= \frac{1}{s} \dot{z}\\
+        		z &= G_r e\\
+        		e &= \varphi_r - \varphi\\
+        		\varphi &= G_s \dot{z}\\
+        		\\
+        		\Rightarrow z &= \frac{1}{s} \G_r e = \frac{1}{s} G_r (\varphi_r -\varphi)\\
+        		&= \frac{1}{s} G_r(\varphi_r - G_s \dot{z})\\
+        		&= \frac{1}{s} G_r(\varphi_r - G_s s z)\\
+        		&= \frac{1}{s} G_r \varphi_r - \frac{1}{s} G_r G_s s z\\
+        		z(1+G_r G_s) &= \frac{1}{s}G_r \varphi_r\\
+        		\frac{z}{\varphi_r} &= \frac{\frac{1}{s}G_r}{1 + G_r G_s}\\
+        	\end{split}
+        \end{equation*}
+        
+    \end{quote}  % Ende Subsection Übertragungsverhalten
+    
+    \subsection{Polvorgabe mit und ohne Reglerintegrator}
+    Aufgabe:\\
+    Entwerfen Sie einen Regler $G_{rPOS}$ mittels Polvorgabe für den äußeren Regelkreis mit und ohne Reglerintegrator!
+    Führen Sie keine Pol-/Nullstellen-Kürzungen beim Reglerentwurf durch! Schreiben Sie eine Scilab-Routine zur
+    Bestimmung der Reglerpolynome. Verwenden Sie hier für die Sylvestermatrix.\vspace{1em}
+    
+    Wie wirken sich Ausgangsstörungen des inneren Regelkreises auf die stationäre Genauigkeit des äußeren Kreises bei
+    den beiden Reglern aus?
+    \begin{quote}
+    
+    \subsection{Darstellung von Empfindlichkeits- und komplementärer Empfindlichkeitsfunktion}
+    Aufgabe:\\
+    Wiederholen Sie die Begriffe Empfindlichkeits- und komplementäre Empfindlichkeitsfunktion. Was sagen diese
+    Übertragungsfunktionen aus? Stellen Sie für die zuvor entworfenden Regler den Amplitudengang von Empfindlichkeits-
+    und komplementärer Empfindlichkeitsfunktion dar (Betrag der Verstärkung nicht in $dB$, logarithmische Frequenz in
+    $\frac{rad}{s}$).
+    \begin{quote}
+        
+    \end{quote}  % Ende Subsection
+        
+    \end{quote}  % Ende Subsection Polvorgabe
 	
 \end{quote} %Ende Section Vorbereitungsaufgaben 
 
@@ -402,9 +469,10 @@ xrightmargin=-1.5cm
 %--------------------------------------------------------------------
 %--------------------------------------------------------------------
 
-
-
-% \begin{quote}
+\section{Scilabcode}
+\begin{quote}
+	\TODO{Scilabcode einfügen} \\
+	% \begin{quote}
 %     \lstinputlisting[
 %         caption={Scilab-script},
 %         label=lst:scilab]
@@ -412,8 +480,13 @@ xrightmargin=-1.5cm
 %         
 % \end{quote}
 
+	
+\end{quote} %Ende section
+
 %--------------------------------------------------------------------
-%--------------------------------------------------------------------
+%--------------------------------------------------------------------    
+
+
 %\begin{thebibliography}{999}
 %\bibitem {Ueberschwingweite} Prof. Dr.-Ing. Raisch, Jörg; Dipl.-Ing. Hess, Anne-Katrin; Dipl.-Ing. Seel, Thomas:
 %Grundlagen der Regelungstechnik - 4.Praktikum, S.5
