@@ -16,6 +16,7 @@ funcprot(1);
 exec("bode_w_farbe.sci", -1);
 exec("bode_w.sci", -1);
 exec("globalPlot.sci", -1);
+exec("scicos_model_Einfachpendel_neu.sce", -1);
 
 PROCESS_PLOTS = 1;
 
@@ -46,7 +47,7 @@ K1 = K*(s+alphanull)*1/(s+betapol);
 
 //offenerKreis_1 = G1*K1;
 //offenerKreis = syslin('c',real(offenerKreis_1.num),real(offenerKreis_1.den))
-//// Plotten der Wurzelortskurve (WOK) von Gui*K
+////// Plotten der Wurzelortskurve (WOK) von Gui*K
 //clf(2);scf(2);
 //nyquist(offenerKreis)
 //xgrid();
@@ -59,9 +60,9 @@ K1 = K*(s+alphanull)*1/(s+betapol);
 //xgrid();
 
 // - - - - - - - Bodeplot - - - - - - - - - - - - - - -//
-
+//
 //clf(3);scf(3); 
-////legend("Offener Regelkreis",3);
+//////legend("Offener Regelkreis",3);
 //[w, db, phi] = bode_w(offenerKreis, 10^(-3), 10^3);
 //[w, db, phi] = bode_w(G1, 10^(-3), 10^3);
 //xgrid(3);
@@ -170,21 +171,27 @@ KposI = syslin('c',kcoeff(n+1)*s^(n-1)+kcoeff(n+2)*s^(n-2) + kcoeff(n+3)*s^(n-3)
 // - -  Sensitivitätsfunktion und kompl. Sensistivitätsfunktion - -//
 
 //S = 1/(1+Ginnen*Kpos)
-S = Ginnen.den*Kpos.den/(Ginnen.num*Kpos.num+Ginnen.den*Kpos.den);
+S = syslin('c',Ginnen.den*Kpos.den/(Ginnen.num*Kpos.num+Ginnen.den*Kpos.den));
 //T = (Ginnen*Kpos)/(1+Ginnen*Kpos)
-T = Ginnen.num*Kpos.num/(Kpos.num*Ginnen.num+Kpos.den*Ginnen.den);
+T = syslin('c',Ginnen.num*Kpos.num/(Kpos.num*Ginnen.num+Kpos.den*Ginnen.den));
 
+//erstellen der Spungantwort auf die Störung
+t3=[0:0.01:40];
+h3=csim('step',t2,T);
+
+
+clf(116);scf(116);
+plot2d(t3,h3)
 
 clf(6);scf(6);
 //bode_w_farbe(S, -3, 3, 'Bodeplot', 'false', 1000, 2);
-bode(T);
 //legend("Sensitivitätsfunktion","Komplimentäre Sensitivitätsfunktion",3);
 xgrid();
 
 //SI = 1/(1+Ginnen*KposI)
-SI = Ginnen.den*KposI.den/(Ginnen.num*KposI.num+Ginnen.den*KposI.den);
+SI = syslin('c',Ginnen.den*KposI.den/(Ginnen.num*KposI.num+Ginnen.den*KposI.den));
 //TI = (Ginnen*KposI)/(1+Ginnen*KposI)
-TI = Ginnen.num*KposI.num/(KposI.num*Ginnen.num+KposI.den*Ginnen.den)
+TI = syslin('c',Ginnen.num*KposI.num/(KposI.num*Ginnen.num+KposI.den*Ginnen.den))
 
 
 clf(7);scf(7);
