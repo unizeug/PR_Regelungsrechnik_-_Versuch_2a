@@ -286,28 +286,20 @@ xrightmargin=-1.5cm
     
     \end{quote}  % Ende Subsection Frequenzkennlinienentwurf
     
-    \subsection{Störverhalten}
-    Aufgabe\\
-    Untersuchen Sie das Verhalten des Regelkreises bei konstanten Ausgangsstörungen (z.B. durch Messfehler oder Wagen
-    auf geneigter Ebene). Wie verhalten sich Wagenposition, Winkel und Wagengeschwindigkeit?
-    \begin{quote}
-        In diesem Aufgabenteil haben wir das Verhalten des bisherigen Regelkreises auf eine Ausgangsstörung untersucht.
-        Dazu haben wir das nichtlineare Modell in Xcos nachgearbeitet und das Sprungverhalten untersucht. Leider hat
-        sich herausgestellt, dass das von uns erstellte nichtlineare Modell der Strecke fehlerhaft ist und nicht die
-        erwarteten Werte ausgibt. Selbst nach langem suchen und der Hilfe unseres Tutors haben wir den Fehler nicht
-        gefunden. Daher erstellen wir die in diesem Versuch benutzten Plots mit dem nichtlinearen Modell unseres
-        Tutors.\vspace{1em}
-        
-        
-         
-    \end{quote}  % Ende Subsection Störverhalten
-    
     \subsection{Führungsverhalten}
     Aufgabe\\
     Untersuchen Sie das Verhalten des Regelkreises gegenüber konstanten Sollvorgaben ungleich Null. Wie verhalten sich
     Wagenposition, Winkel und Wagengeschwindigkeit?
     
     \begin{quote}
+        In diesem Aufgabenteil haben wir das Verhalten des bisherigen Regelkreises auf einen Führungssprung untersucht.
+        Dazu haben wir das nichtlineare Modell in Xcos nachgearbeitet und das Sprungverhalten untersucht. Leider hat
+        sich herausgestellt, dass das von uns erstellte nichtlineare Modell der Strecke fehlerhaft ist und nicht die
+        erwarteten Werte ausgibt. Selbst nach langem suchen und der Hilfe unseres Tutors haben wir den Fehler nicht
+        gefunden. Daher erstellen wir die in diesem Versuch benutzten Plots mit dem nichtlinearen Modell unseres
+        Tutors.\vspace{1em}
+        
+    
     
         Um die Führungssprungantwort dieses Regelkreises zu bestimmen geben wir einen Sprung auf die Führungsgröße des
         Winkelreglers. Der Regler ist ausgelegt auf ein Einzugsbereich von einigen Grad. Da die Führungsgröße jedoch in
@@ -361,6 +353,41 @@ xrightmargin=-1.5cm
 
         
     \end{quote}  % Ende Subsection Führungsverhalten
+
+    \subsection{Störverhalten}
+    Aufgabe\\
+    Untersuchen Sie das Verhalten des Regelkreises bei konstanten Ausgangsstörungen (z.B. durch Messfehler oder Wagen
+    auf geneigter Ebene). Wie verhalten sich Wagenposition, Winkel und Wagengeschwindigkeit?
+    \begin{quote}
+        Um die Störsprungantworten mit den Führungssprungantworten vergleichbar zu machen geben wir den
+        selben Sprung auf das System. Jedoch nicht als Führungsgröße sondern als Störung am Ausgang des Systems. Eine konstante Ausgangsstörung unterscheidet sich in diesem fall lediglich in dem Vorzeichen von einem
+        Führungssprung. Aus diesem Grund erwarten wir die selben Sprungantworten.
+
+        \begin{figure}[H]
+        \centering
+            \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/Winkelregler_Stoer_Winkel}
+                \caption{Winkelregler Störspungantwort Winkel}
+        \end{figure}
+  
+        \begin{figure}[H]
+        \centering
+            \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/Winkelregler_Stoer_Wagengeschwindigkeit}
+                \caption{Winkelregler Störsprung Wagengeschwindigkeit}
+        \end{figure}  
+        
+        \begin{figure}[H]
+        \centering
+            \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/Winkelregler_Stoer_Position}
+                \caption{Winkelregler Störsprung Position}
+        \end{figure}
+        
+        
+        Die Störsprungantworten verhalten sich genau sich wie die Führungssprungantworten und damit genauso wie wir es
+        erwartet haben.
+    
+        
+         
+    \end{quote}  % Ende Subsection Störverhalten
 	
 \end{quote} %Ende Section Vorbereitungsaufgaben 
 
