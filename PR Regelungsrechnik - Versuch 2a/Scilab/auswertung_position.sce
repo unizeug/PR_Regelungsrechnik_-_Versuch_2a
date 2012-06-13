@@ -14,7 +14,7 @@ daten2=daten2;
 
 //t=daten2(:,1); Zeit
 //z=daten2(:,2); Position
-//phi=daten2(:,3); Winkel
+//phi=daten2(:,3); Winkescill
 //w=daten2(:,4); Winkelgeschwindigkeit
 //v=daten2(:,5); Geschwindigkeit
 //s=daten2(:,6); Startsignal
@@ -55,8 +55,9 @@ clf(9);
 Z2 = z2(stoe_anfang:stoe_ende);
 
 plot2d(T2,Z2,2)
-xtitle("Position des Wagens","Zeit [s]","Position [m]");
-//legend("mit anti-Windup","ohne anti-Windup",2);
+xtitle('Position des Wagens','Zeit [s]','Position [m]');
+//legend('mit anti-Windup','ohne anti-Windup',2);
+//xs2pdf(gcf(),'../Bilder/pos_pos.pdf');
 
 
 
@@ -66,8 +67,10 @@ clf(10);
 Phi2 = phi2(stoe_anfang:stoe_ende);
 
 plot2d(T2,Phi2,2)
-xtitle("Winkel des pendels","Zeit [s]","Winkel [rad]");
-//legend("mit anti-Windup","ohne anti-Windup",1);
+xtitle('Winkel des pendels','Zeit [s]','Winkel [rad]');
+//legend('mit anti-Windup','ohne anti-Windup',1);
+//xs2pdf(gcf(),'../Bilder/pos_win.pdf');
+
 
 
 scf(11);
@@ -77,8 +80,8 @@ V2 = v2(stoe_anfang:stoe_ende);
 
 plot2d(T2,V2,2)
 xtitle("Geschwindigkeit des Wagens","Zeit [s]","Geschwindigkeit [m/s]");
-//legend("mit anti-Windup","ohne anti-Windup",1);
-
+//legend('mit anti-Windup','ohne anti-Windup',1);
+//xs2pdf(gcf(),'../Bilder/pos_gesch.pdf');
 
 scf(12);
 clf(12);
@@ -87,8 +90,9 @@ clf(12);
 Z_soll2 = z_soll2(stoe_anfang:stoe_ende);
 
 plot2d(T2,Z_soll2,2)
-xtitle("Referenzposition","Zeit [s]","Position [m]");
-//legend("m
+xtitle('Referenzposition','Zeit [s]','Position [m]');
+//legend('m
+//xs2pdf(gcf(),'../Bilder/pos_ref.pdf');
 
 
 
@@ -97,8 +101,42 @@ clf(13);
 
 plot2d(T2,Z2,2,rect=[5,-0.55,30,-0])
 plot2d(T2,Z_soll2-0.5,5,rect=[5,-0.55,30,-0])
-xtitle("Position","Zeit [s]","Position [m]");
-legend("Position des Wagens","Referenzposition",2);
+xtitle('Position','Zeit [s]','Position [m]');
+legend('Position des Wagens','Referenzposition',2);
+//xs2pdf(gcf(),'../Bilder/pos_pos_ref.pdf');
+
+
+
+
+// --- pdf abspeichern --- //
+
+//xs2pdf(9,'../Bilder/pos_pos.pdf');
+//xs2pdf(10,'../Bilder/pos_win.pdf');
+//xs2pdf(11,'../Bilder/pos_gesch.pdf');
+//xs2pdf(12,'../Bilder/pos_ref.pdf');
+//xs2pdf(13,'../Bilder/pos_pos_ref.pdf');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //scf(10);
@@ -108,8 +146,8 @@ legend("Position des Wagens","Referenzposition",2);
 //S2 = s2(stoe_anfang:stoe_ende);
 //
 //plot2d(T2,S2)
-//xtitle("Referenzwinkel","Zeit [s]","[rad/s]");
-////legend("m
+//xtitle('Referenzwinkel','Zeit [s]','[rad/s]');
+////legend('m
 
 
 //// ## Simulation ##
@@ -122,8 +160,8 @@ legend("Position des Wagens","Referenzposition",2);
 //
 //plot2d(T2,h1+MatrizenscheissvonGmw(5),5);
 //xgrid();
-//xtitle("Störsprungantwort","Zeit [s]","Winkelgeschwindigkeit [rad/s]");
-//legend("gemessen","simuliert",1);
+//xtitle('Störsprungantwort','Zeit [s]','Winkelgeschwindigkeit [rad/s]');
+//legend('gemessen','simuliert',1);
 
 
 

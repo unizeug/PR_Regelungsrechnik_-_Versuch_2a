@@ -57,7 +57,7 @@ Z1 = z1(stoe_anfang:stoe_ende);
 plot2d(T1,Z1,2)
 xtitle("Position des Wagens","Zeit [s]","Position [m]");
 //legend("mit anti-Windup","ohne anti-Windup",1);
-
+//xs2pdf(gcf(),'../Bilder/win_pos.pdf');
 
 
 scf(6);
@@ -68,6 +68,7 @@ Phi1 = phi1(stoe_anfang:stoe_ende);
 plot2d(T1,Phi1,2)
 xtitle("Winkel des pendels","Zeit [s]","Winkel [rad]");
 //legend("mit anti-Windup","ohne anti-Windup",1);
+//xs2pdf(gcf(),'../Bilder/win_win.pdf');
 
 
 scf(7);
@@ -78,6 +79,7 @@ V1 = v1(stoe_anfang:stoe_ende);
 plot2d(T1,V1,2)
 xtitle("Geschwindigkeit des Wagens","Zeit [s]","Geschwindigkeit [m/s]");
 //legend("mit anti-Windup","ohne anti-Windup",1);
+//xs2pdf(gcf(),'../Bilder/win_gesch.pdf');
 
 
 scf(8);
@@ -88,7 +90,30 @@ Phi_soll1 = phi_soll1(stoe_anfang:stoe_ende);
 
 plot2d(T1,Phi_soll1,2)
 xtitle("Referenzwinkel","Zeit [s]","Winkel [rad]");
-//legend("m
+//legend("mit anti-Windup","ohne anti-Windup",1);
+//xs2pdf(gcf(),'../Bilder/win_ref.pdf');
+
+
+// --- pdf abspeichern --- //
+
+//xs2pdf(5,'../Bilder/win_pos.pdf');
+//xs2pdf(6,'../Bilder/win_win.pdf');
+//xs2pdf(7,'../Bilder/win_gesch.pdf');
+//xs2pdf(8,'../Bilder/win_ref.pdf');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

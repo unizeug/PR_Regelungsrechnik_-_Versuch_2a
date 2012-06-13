@@ -202,16 +202,17 @@ xrightmargin=-1.5cm
         \end{figure}
         
         Anhand der Nyquistortskurve lässt sich die Stabilität eines geschlossenen Regelkreises für eine feste
-        Verstärkung ermitteln. Dazu darf die Nyquistortskurve nicht durch den kritischen Punkt ($-1,0$) laufen und muss
-        die Phasendrehung bezüglich des kritischen Punktes genau $\pi \cdot (r_G + r_K)$ betragen.\\
-        $r_G$ und $r_K$ sind in diesem fall die Anzahl der Polstellen mit positiven Realteil der Strecke bzw des
+        Verstärkung ermitteln. Dazu darf die Nyquistortskurve nicht durch den kritischen Punkt ($-1,0$) laufen und
+        die Phasendrehung bezüglich des kritischen Punktes muss genau $\pi \cdot (r_G + r_K)$ betragen.\\
+        $r_G$ und $r_K$ sind in diesem Fall die Anzahl der Polstellen mit positiven Realteil der Strecke bzw. des
         Reglers.
         Außerdem lassen wir die Nyquistorstkurve von $0$ bis $\infty$ laufen. Würden wir sie von $-\infty$ bis $\infty$
-        laufen lassen müsste die Phasendrehung $2\pi (r_G + r_K)$ sein.\vspace{1em}
+        laufen lassen, müsste die Phasendrehung $2\pi (r_G + r_K)$ sein.\vspace{1em}
         
-        In unserem Fall haben wir eine Polstelle der Strecke und eine Polstelle des Reglers mit positivem Realteil. Daher
-        benötigen wir eine Nyquistortskurve die nicht durch den kritischen Punkt läuft und eine Phasendrehung von $2\pi$ hat um ein stabilen geschlossenen Regelkreis zu haben.\\
-        Diese Bedingung prüfen wir bei dem Reglerentwurf im nächsten Aufgabenabschnitt.\vspace{1em}
+        In unserem Fall haben wir eine Polstelle mit positivem Realteil in der Strecke und eine Polstelle im Regler. Daher
+        benötigen wir eine Nyquistortskurve die nicht durch den kritischen Punkt läuft und eine Phasendrehung von $2\pi$ hat um
+        ein stabilen geschlossenen Regelkreis zu haben.\\
+        Diese Bedingung prüfen wir beim Reglerentwurf im nächsten Aufgabenabschnitt.\vspace{1em}
         
         \begin{figure}[H]
         \centering
@@ -221,29 +222,30 @@ xrightmargin=-1.5cm
         \end{figure}
         
         
-        Nachdem die Stabitität des geschlossenen Regelkreises bestätigt wurde lässt sich an der Nyquistortskurve noch weitere
+        Nachdem die Stabitität des geschlossenen Regelkreises bestätigt wurde, lassen sich an der Nyquistortskurve noch weitere
         Informationen, wie die Phasenreserve und die Amplitudenreserve, ablesen. Die Phasenreserve des Regelkreises erkennt
-        man an dem Winkel zwischen dem Schnittpunkt der Nyquistortskurve und dem Einheitskreis und der negativen reellen
+        man am Winkel zwischen dem Schnittpunkt der Nyquistortskurve mit dem Einheitskreis und der negativen reellen
         Achse. (siehe Abb. \ref{fig:Nyquist_beispiel}) Die Amplitudenreserve widerum erkennt man an dem Kehrwert des Abstandes
         zwischen der y-Achse und dem Schnittpunkt der Ortskurve mit der negativen reellen Achse.\\
-        Die Phasenreserve und die Amplitudenreserve lassen sich auch an dem Bodediagramm ablesen. Diesesmal ist die
+        Die Phasenreserve und die Amplitudenreserve lassen sich auch an dem Bodediagramm ablesen. Hier ist die
         Phasenreserve die Differenz der Phase zu $180^{\circ}$ bei der bzw. den Durchstrittsfrequenzen. Die Amplitudenreserve
-        ist die Differenz des Amplitudenganges bezüglich $0dB$ bei der Frequenz von $180^{\circ}$.\vspace{1em}
+        ist die Differenz des Amplitudenganges zu $0dB$ bei der Frequenz von $180^{\circ}$.\vspace{1em}
         
         Wie oben beschrieben erwarten wir für unseren stabilen Regelkreis eine Phasendrehung von $2\pi$. Daraus resultiert
         automatisch, dass die Nyquistortskurve zweimal den Einheitskreis schneiden wird. Diese beiden Schnittpunkte mit dem
         Einheitskreis werden in dem Bodediagramm durch einen zweifache Schnittstelle mit der $0dB$ Achse im Amplitudengang zu
         sehen sein.
+        \TODO{Boris: es könnte doch auch keinen scnittpunkt geben oder?}
         
         
     \end{quote} %Ende Subsection Nyquist
     
     \subsection{Frequenzkennlinienentwurf}
     \begin{quote}
-        In diesem Aufgabenteil wurde uns 5 Bedingungen gegeben die beim folgenden Reglerentwurf zu berücksichtigen
+        In diesem Aufgabenteil wurden uns 5 Bedingungen gegeben die beim folgenden Reglerentwurf zu berücksichtigen
         waren. Die Erfüllung dieser Bedingungen kontrollieren wir an der Nyquistortskurve sowie dem Bodediagramm.\\
-        Wir beginnen mit dem Bode Diagramm bei einer Verstärkung von $1$. Eine der Bedingungen war es bei einer Frequenz
-        von $220 \frac{rad}{s}$ eine Dämpfung von $-42 dB$ zu erzeugen. Da diese Dämpung gerade so bei der Verstärkung
+        Wir beginnen mit dem Bode-Diagramm bei einer Verstärkung von $1$. Eine der Bedingungen war es, bei einer Frequenz
+        von $220 \frac{rad}{s}$ eine Dämpfung von $-42 dB$ zu erhalten. Da diese Dämpung gerade so bei der Verstärkung
         von $1$ erfüllt wird wissen wir, dass wir die Verstärkung bei $1$ belassen und für die weiteren Bedingungen die
         Position der Pol- und der Nullstelle des Reglers verändern müssen.\vspace{1em}
         
@@ -258,8 +260,7 @@ xrightmargin=-1.5cm
                 \caption{Wurzelortskurve}
         \end{figure}
         
-        Es ist ersichtlich, dass der geschlossene regelkreis für eine genügend große Verstärkung stabil
-        wird.\vspace{1em}
+        Es ist ersichtlich, dass der geschlossene regelkreis für eine genügend große Verstärkung stabil wird.\vspace{1em}
         
         Außerdem ergibt sich auch folgende Nyquistkurve:
         
@@ -269,10 +270,9 @@ xrightmargin=-1.5cm
                 \caption{Nyquistkurve}
         \end{figure}
         
-        Da Scilab die Nyquistkurve von $-\infty$ bis $\infty$ berechnet benötigen wir eine Phasendrehung von $4/pi$, die
-        wir auch haben, um ein stabiles System zu haben.\vspace{1em}
-        
-        Abschließend ergibt sich das folgende Bodediagramm aus den Werten:
+        Da Scilab die Nyquistkurve von $-\infty$ bis $\infty$ berechnet, benötigen wir eine Phasendrehung von $4\pi$ um ein
+        stabiles System zu erstellen. Diese Bedingung ist offensichtlich erfüllt.\vspace{1em}
+        Aus den Werten ergibt sich das folgende Bodediagramm:
         
         \begin{figure}[H]
         \centering
@@ -293,14 +293,12 @@ xrightmargin=-1.5cm
     
     \begin{quote}
         In diesem Aufgabenteil haben wir das Verhalten des bisherigen Regelkreises auf einen Führungssprung untersucht.
-        Dazu haben wir das nichtlineare Modell in Xcos nachgearbeitet und das Sprungverhalten untersucht. Leider hat
-        sich herausgestellt, dass das von uns erstellte nichtlineare Modell der Strecke fehlerhaft ist und nicht die
-        erwarteten Werte ausgibt. Selbst nach langem suchen und der Hilfe unseres Tutors haben wir den Fehler nicht
-        gefunden. Daher erstellen wir die in diesem Versuch benutzten Plots mit dem nichtlinearen Modell unseres
-        Tutors.\vspace{1em}
+        Dazu haben wir das nichtlineare Modell in Xcos implementiert und das Sprungverhalten simuliert und untersucht. Leider hat
+        sich herausgestellt, dass das von uns erstellte nichtlineare Modell der Strecke fehlerhaft ist und nicht das erwarteten
+        Verhalten zeigt. Selbst nach langem Suchen und der Hilfe unseres Tutors haben wir den Fehler nicht finden können. Daher
+        erstellen wir die in diesem Versuch benutzten Plots mit dem nichtlinearen Modell unseres Tutors.\vspace{1em}
         
-    
-    
+        
         Um die Führungssprungantwort dieses Regelkreises zu bestimmen geben wir einen Sprung auf die Führungsgröße des
         Winkelreglers. Der Regler ist ausgelegt auf ein Einzugsbereich von einigen Grad. Da die Führungsgröße jedoch in
         $rad$ gemessen wird wäre ein Sprung auf $1 rad$ bzw. $1\cdot \frac{180}{\pi} ^{\circ}= 57.29578^{\circ}$ viel zu
@@ -320,21 +318,21 @@ xrightmargin=-1.5cm
         instabilen Ruhelage von $0^{\circ}$ zu halten ist dieses Verhalten gewünscht.\vspace{1em}
         
         Als nächstes betrachten wir die Wagengeschwindigkeit.
-    
+        
         \begin{figure}[H]
         \centering
             \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/Winkelregler_Wagengeschwindigkeit}
                 \caption{Winkelregler Wagengeschwindigkeit}
         \end{figure}
         
-        Es ist zu sehen, dass der Wagen am Anfang des Ausregelvorgangs zügig seine Geschwindigkeit ändert. Interessant
+        Es ist zu beobachten, dass der Wagen am Anfang des Ausregelvorgangs zügig seine Geschwindigkeit ändert. Interessant
         ist, dass er gegen Ende des Ausregelvorgangs bei einer konstanten Geschwindigkeit angekommen ist und auf dieser
         bleibt. Die Ursache dafür ist, dass unser Regler zu diesem Zeitpunkt lediglich das Ziel hat auf eine
-        Winkelposition von $0^{\circ}$ zu regeln. Die Position des Pendels wird noch nicht berücksichtigt. Daher ist es
-        für den Regler vollkommen ausreichend das Pendel unter konstanter Geschwindigkeit bei der gewünschten
-        Winkelposition zu belassen.\\
-        Müsste der Regler die Geschwindikeit wieder auf $0$ drosseln müsste er das Verhalten des Pendels wieder regeln.
-        Ohne einen weiteren äußeren Regler wird das nicht passieren.\vspace{1em}
+        Winkelposition von $0^{\circ}$ zu regeln. Die Position des Wagens wird noch nicht berücksichtigt. Daher ist es
+        für den Regler vollkommen ausreichend das Pendel unter konstanter Gesamtgeschwingigkeit des Systems bei der
+        gewünschten Winkelposition zu belassen.\\
+        Der Regler bremst den Wagen nicht wieder ab, da das Pendel durch die Massenträgheit sofort wieder kippen würde.
+        \vspace{1em}
         
         Als letztes betrachten wir die Position des Wagens.
 
@@ -345,30 +343,31 @@ xrightmargin=-1.5cm
         \end{figure}
         
         Da wir bei der Wagengeschwindigkeit herausgefunden haben, dass der Regler bei einer konstanten Geschwindigkeit
-        bleiben wird ist es nur logisch, dass der Wagen dadurch seine Position immer weiter von dem Ursprun entfernt.
-        genau dieses Verhalten ist in der Grafik zu sehen. Theoretisch haben wir somit einen Funktionstüchtigen Regler
-        entworfen. Jedoch zeit diese Grafik die Schwierigkeit des bisherigen Entwurfs. Dieser Regler würde unendlich
-        viel platz benötigen. Um diese Problematik in den Griff zu kriegen werden wir noch einen äußeren Regler für die
+        bleiben wird, ist es nur logisch, dass der Wagen sich dadurch immer weiter vom Ursprung entfernt.
+        Genau dieses Verhalten ist in der Grafik zu sehen. Theoretisch haben wir somit einen funktionstüchtigen Regler
+        entworfen, jedoch zeigt diese Grafik auch die Schwierigkeit des bisherigen Entwurfs. Dieser Regler würde unendlich
+        viel Platz benötigen. Um diese Problematik in den Griff zu bekommen werden wir noch einen äußeren Regler für die
         Positionsregelung entwerfen.
-
+        
         
     \end{quote}  % Ende Subsection Führungsverhalten
-
+    
     \subsection{Störverhalten}
     Aufgabe\\
     Untersuchen Sie das Verhalten des Regelkreises bei konstanten Ausgangsstörungen (z.B. durch Messfehler oder Wagen
     auf geneigter Ebene). Wie verhalten sich Wagenposition, Winkel und Wagengeschwindigkeit?
     \begin{quote}
-        Um die Störsprungantworten mit den Führungssprungantworten vergleichbar zu machen geben wir den
-        selben Sprung auf das System. Jedoch nicht als Führungsgröße sondern als Störung am Ausgang des Systems. Eine konstante Ausgangsstörung unterscheidet sich in diesem fall lediglich in dem Vorzeichen von einem
-        Führungssprung. Aus diesem Grund erwarten wir die selben Sprungantworten.
-
+        Um die Störsprungantworten mit den Führungssprungantworten vergleichbar zu machen geben wir den selben Sprung auf das
+        System. Jedoch nicht als Führungsgröße sondern als Störung am Ausgang des Systems. Eine konstante Ausgangsstörung
+        unterscheidet sich in diesem Fall lediglich in dem Vorzeichen von einem Führungssprung. Aus diesem Grund erwarten wir die
+        selben Sprungantworten.
+        
         \begin{figure}[H]
         \centering
             \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/Winkelregler_Stoer_Winkel}
                 \caption{Winkelregler Störspungantwort Winkel}
         \end{figure}
-  
+        
         \begin{figure}[H]
         \centering
             \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/Winkelregler_Stoer_Wagengeschwindigkeit}
@@ -382,9 +381,9 @@ xrightmargin=-1.5cm
         \end{figure}
         
         
-        Die Störsprungantworten verhalten sich genau sich wie die Führungssprungantworten und damit genauso wie wir es
+        Die Störsprungantworten verhalten sich genau wie die Führungssprungantworten und damit genauso wie wir es
         erwartet haben.
- 
+        
     \end{quote}  % Ende Subsection Störverhalten
     \vspace{1em}
     
@@ -398,7 +397,7 @@ xrightmargin=-1.5cm
     die Wagenpositions $z$.\\
     Welche Ordnung hat der geschlossene innere Regelkreis?
     \begin{quote}
-        Die Transferfunktion vom Sollwinkel zur Wagenposition lässt sich durch das Blockschaltbild des Reglers ablesen. 
+        Die Transferfunktion vom Sollwinkel zur Wagenposition lässt sich sehr gut am Blockschaltbild des Reglers ablesen. 
         
         \begin{figure}[H]
         \centering
@@ -417,19 +416,19 @@ xrightmargin=-1.5cm
         Als zweite Möglichkeit lässt sich die Transferfunktion auch aus den Formeln herleiten.
 
         \begin{equation*}
-        	\begin{split}
-        		z &= \frac{1}{s} \dot{z}\\
-        		z &= G_r e\\
-        		e &= \varphi_r - \varphi\\
-        		\varphi &= G_s \dot{z}\\
-        		\\
-        		\Rightarrow z &= \frac{1}{s} \G_r e = \frac{1}{s} G_r (\varphi_r -\varphi)\\
-        		&= \frac{1}{s} G_r(\varphi_r - G_s \dot{z})\\
-        		&= \frac{1}{s} G_r(\varphi_r - G_s s z)\\
-        		&= \frac{1}{s} G_r \varphi_r - \frac{1}{s} G_r G_s s z\\
-        		z(1+G_r G_s) &= \frac{1}{s}G_r \varphi_r\\
-        		\frac{z}{\varphi_r} &= \frac{\frac{1}{s}G_r}{1 + G_r G_s}\\
-        	\end{split}
+            \begin{split}
+                z &= \frac{1}{s} \dot{z}\\
+                z &= G_r e\\
+                e &= \varphi_r - \varphi\\
+                \varphi &= G_s \dot{z}\\
+                \\
+                \Rightarrow z &= \frac{1}{s} \G_r e = \frac{1}{s} G_r (\varphi_r -\varphi)\\
+                &= \frac{1}{s} G_r(\varphi_r - G_s \dot{z})\\
+                &= \frac{1}{s} G_r(\varphi_r - G_s s z)\\
+                &= \frac{1}{s} G_r \varphi_r - \frac{1}{s} G_r G_s s z\\
+                z(1+G_r G_s) &= \frac{1}{s}G_r \varphi_r\\
+                \frac{z}{\varphi_r} &= \frac{\frac{1}{s}G_r}{1 + G_r G_s}\\
+            \end{split}
         \end{equation*}
         
         Der Geschlossene innere Regelkreis hat demnach die Ordnung $4$.
@@ -445,6 +444,26 @@ xrightmargin=-1.5cm
     Wie wirken sich Ausgangsstörungen des inneren Regelkreises auf die stationäre Genauigkeit des äußeren Kreises bei
     den beiden Reglern aus?
     \begin{quote}
+        
+        Das Führungsverhalten des äußeren Regelkreises soll dem eines dominierenden komplexen Polpaars ent- sprechen mit einer
+        ungefähren Anstiegszeit von 4s und einer Dämpfung von 0,97.
+        
+        
+        \begin{equation*}
+            \begin{split}
+                tr &= 4s\\
+                D &= 0.97\\
+                \\
+                w_0 &= \frac{1}{t_r} * exp( D/sqrt(1-D^2) * acos(D) )\\
+            \end{split}
+        \end{equation*}
+        
+        
+        Da der Regler aber mehr pole
+        nenner
+        
+        dominantes polpaar
+        
         \TODO{Polvorgabe eingeben} \\
     \end{quote}  % Ende Subsection Polvorgabe
         
@@ -457,7 +476,7 @@ xrightmargin=-1.5cm
     \begin{quote}
         \TODO{Empfindlichkeitsfunktion eingeben} \\
     \end{quote}  % Ende Subsection Empfindlichkeitsfunktion
-
+    
 \end{quote} %Ende Section Vorbereitungsaufgaben 
 
 %--------------------------------------------------------------------
