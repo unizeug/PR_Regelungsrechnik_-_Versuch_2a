@@ -55,7 +55,7 @@ clf(9);
 Z2 = z2(stoe_anfang:stoe_ende);
 
 plot2d(T2,Z2,2)
-xtitle("Position des Wagens","Zeit [s]","Position");
+xtitle("Position des Wagens","Zeit [s]","Position [m]");
 //legend("mit anti-Windup","ohne anti-Windup",2);
 
 
@@ -65,8 +65,8 @@ clf(10);
 
 Phi2 = phi2(stoe_anfang:stoe_ende);
 
-plot(T2,Phi2)
-xtitle("Winkel des pendels","Zeit [s]","Winkel [rad/s]");
+plot2d(T2,Phi2,2)
+xtitle("Winkel des pendels","Zeit [s]","Winkel [rad]");
 //legend("mit anti-Windup","ohne anti-Windup",1);
 
 
@@ -75,7 +75,7 @@ clf(11);
 
 V2 = v2(stoe_anfang:stoe_ende);
 
-plot(T2,V2)
+plot2d(T2,V2,2)
 xtitle("Geschwindigkeit des Wagens","Zeit [s]","Geschwindigkeit [m/s]");
 //legend("mit anti-Windup","ohne anti-Windup",1);
 
@@ -86,8 +86,8 @@ clf(12);
 
 Z_soll2 = z_soll2(stoe_anfang:stoe_ende);
 
-plot(T2,Z_soll2)
-xtitle("ReferenzPosition","Zeit [s]","[rad/s]");
+plot2d(T2,Z_soll2,2)
+xtitle("Referenzposition","Zeit [s]","Position [m]");
 //legend("m
 
 
@@ -95,7 +95,7 @@ xtitle("ReferenzPosition","Zeit [s]","[rad/s]");
 scf(13);
 clf(13);
 
-plot2d(T2,Z2,rect=[5,-0.55,30,-0])
+plot2d(T2,Z2,2,rect=[5,-0.55,30,-0])
 plot2d(T2,Z_soll2-0.5,5,rect=[5,-0.55,30,-0])
 xtitle("Position","Zeit [s]","Position [m]");
 legend("Position des Wagens","Referenzposition",2);
@@ -107,7 +107,7 @@ legend("Position des Wagens","Referenzposition",2);
 //
 //S2 = s2(stoe_anfang:stoe_ende);
 //
-//plot(T2,S2)
+//plot2d(T2,S2)
 //xtitle("Referenzwinkel","Zeit [s]","[rad/s]");
 ////legend("m
 
