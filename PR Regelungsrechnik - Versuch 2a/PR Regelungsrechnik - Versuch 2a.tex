@@ -445,26 +445,38 @@ xrightmargin=-1.5cm
     den beiden Reglern aus?
     \begin{quote}
         
-        Das Führungsverhalten des äußeren Regelkreises soll dem eines dominierenden komplexen Polpaars ent- sprechen mit einer
-        ungefähren Anstiegszeit von 4s und einer Dämpfung von 0,97.
+        Als Vorgabe haben wir bekommen, dass das Führungsverhalten des äußeren Regelkreises dem eines dominierenden komplexen
+        Polpaars entsprechen soll deren Standardübertragungsfunktion (2. Ordnung) eine ungefähre Anstiegszeit von $tr =$
+        \SI{4}{\second} und eine Dämpfung von $D =$ \SI{0,97}{} besitzt.\\
+        Um das Polpaar zu erhalten haben wir die vorgaben in die Übertragungsfunktion eingesetzt:
         
         
         \begin{equation*}
             \begin{split}
-                tr &= 4s\\
-                D &= 0.97\\
                 \\
-                w_0 &= \frac{1}{t_r} * exp( D/sqrt(1-D^2) * acos(D) )\\
+                \frac{1}{s^2 + 2 D \p w_0 \p s + w_0^2}\\
+                \\
+                w_0 = \frac{1}{t_r} e^{ \frac{D}{\sqrt{1-D^2}} \p \arccos(D) }\\
+                \\
             \end{split}
         \end{equation*}
         
+        daraus ergeben sich die Pole:
+        \TODO{Pole einfügen (welche haben wir denn letztendlich benutzt?)}
         
-        Da der Regler aber mehr pole
-        nenner
+        Da wir für unseren Regler aber 7 Pole benötigen wählen wir noch weitere Reelle Pole die schnell genug sind unser
+        dominierendes Polpaar nicht zu sehr zu beeinflussen.
         
-        dominantes polpaar
+        \TODO{Bild davon?}
         
-        \TODO{Polvorgabe eingeben} \\
+        Aus diesen Polen ergeben sich die Koeffizienten:
+        
+        \TODO{Koeffiienten}
+        
+        Mit diesen Koeffizienten und der Blamatrix
+        
+        \TODO{Matrix erstelung, rechnung?}
+        
     \end{quote}  % Ende Subsection Polvorgabe
         
     \subsection{Darstellung von Empfindlichkeits- und komplementärer Empfindlichkeitsfunktion}
