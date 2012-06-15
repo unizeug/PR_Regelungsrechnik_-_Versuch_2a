@@ -6,7 +6,8 @@
 // ############################################################################
 
 // Boris: cd "/Users/borishenckell/Documents/eclipse workspace/PR_Regelungsrtechnik_-_Versuch_2a/PR Regelungsrechnik - Versuch 2a"
-// Dirk: cd "/media/daten/workspace/PR_Regelungsrechnik_-_Versuch_2a/PR Regelungsrechnik - Versuch 2a/Scilab/"
+// Dirk: 
+cd "/media/daten/workspace/PR_Regelungsrechnik_-_Versuch_2a/PR Regelungsrechnik - Versuch 2a/Scilab/"
 
 
 // Fehlermeldung bei neudefinition vermeiden
@@ -16,7 +17,8 @@ funcprot(1);
 exec("bode_w_farbe.sci", -1);
 exec("bode_w.sci", -1);
 exec("globalPlot.sci", -1);
-exec("scicos_model_Einfachpendel_neu.sce", -1);
+exec('scicos_model_Einfachpendel_neu.sce', -1);
+exec('polvorgabe.sci', -1);
 
 PROCESS_PLOTS = 1;
 
@@ -155,7 +157,7 @@ cvek=cvek1([8 7 6 5 4 3 2 1])';
 //cvek(3,1) = 3;
 
 kcoeff=inv(As)*cvek;
-Kpos = syslin('c',kcoeff(n+1)*s^(n-1)+kcoeff(n+2)*s^(n-2) + kcoeff(n+3)*s^(n-3)+kcoeff(n+4)*s^(n-4),kcoeff(1)*s^(n-1)+kcoeff(2)*s^(n-2)+kcoeff(3)*s^(n-3)+kcoeff(4)*s^(n-4));
+Kpos = syslin('c',kcoeff(n+1)*s^(n-1)+kcoeff(n+2)*s^(n-2) + kcoeff(n+3)*s^(n-3)+kcoeff(n+4)*s^(n-4),kcoeff(1)*s^(n-1)+kcoeff(2)*s^(n-2)+kcoeff(3)*s^(n-3)+kcoeff(4)*s^(n-4))
 
 
 // - - - - Reglerentwurf mit Integrator - - - - - - - - - -//

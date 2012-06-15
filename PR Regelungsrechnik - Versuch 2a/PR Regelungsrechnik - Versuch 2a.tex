@@ -462,20 +462,67 @@ xrightmargin=-1.5cm
         \end{equation*}
         
         daraus ergeben sich die Pole:
-        \TODO{Pole einfügen (welche haben wir denn letztendlich benutzt?)}
+        
+        \begin{equation}
+        \begin{split}
+             - 0,646013 \pm 0,1619061i
+        \end{split}
+        \end{equation}
         
         Da wir für unseren Regler aber 7 Pole benötigen wählen wir noch weitere Reelle Pole die schnell genug sind unser
-        dominierendes Polpaar nicht zu sehr zu beeinflussen.
+        dominierendes Polpaar nicht zu sehr zu beeinflussen. Die Pole ergeben sich damit zu:
         
-        \TODO{Bild davon?}
+        \begin{equation*}
+        \begin{split}
+            - 0.646013 + 0.1619061i\\
+            - 0.646013 - 0.1619061i\\
+            - 8.398169\\
+            - 9.398169\\
+            - 10.398169\\
+            - 11.398169\\
+            - 12.398169\\
+        \end{split}
+        \end{equation*}
+        
+        
+        Der unterschied der Regler ist, wie in Abb. \ref{fig:positionsregler_vergleich} zu erkennen nicht gravierend.
+        
+        \begin{figure}[H]
+        \centering
+            \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{Bilder/positionsregler_vergleich}
+                \caption{Vergleich der Sprungantworten des Positionsreglers mit 2 und 7 Polen}
+                \label{fig:positionsregler_vergleich}
+        \end{figure}
+        
         
         Aus diesen Polen ergeben sich die Koeffizienten:
         
-        \TODO{Koeffiienten}
         
-        Mit diesen Koeffizienten und der Blamatrix
+        \begin{equation*}
+        \begin{split}
+            51441.831\\
+            175055.68\\
+            194326.85\\
+            71635.611\\
+            12500.291\\
+            1143.8363\\
+            53.282871\\
+            1.
+        \end{split}
+        \end{equation*}
         
-        \TODO{Matrix erstelung, rechnung?}
+        
+        Mit diesen Koeffizienten können wir nun durch die Sylvestermatrix unseren Regler errechnen:
+        
+        
+        \TODO{entgültiger Regler}
+        
+        
+        Bzw. über die andere Matrix einen Regler mit integrator, der Regelabweichungen vermeidet.
+        
+        \TODO{Boris: Matrix erstelung, rechnung?}
+        
+        
         
     \end{quote}  % Ende Subsection Polvorgabe
         
@@ -496,7 +543,9 @@ xrightmargin=-1.5cm
 
 \section{Ergebnisse}
 \begin{quote}
- 
+
+    
+    
 \end{quote} %Ende Section Ergebnisse
 
 %--------------------------------------------------------------------
