@@ -4,8 +4,7 @@
 
 
 // Boris: cd "/Users/borishenckell/Documents/eclipse workspace/PR_Regelungsrtechnik_-_Versuch_2a/PR Regelungsrechnik - Versuch 2a"
-// Dirk: 
-cd "/media/daten/workspace/PR_Regelungsrechnik_-_Versuch_2a/PR Regelungsrechnik - Versuch 2a/Scilab/"
+// Dirk: cd "/media/daten/workspace/PR_Regelungsrechnik_-_Versuch_2a/PR Regelungsrechnik - Versuch 2a/Scilab/"
 
 
 
@@ -36,7 +35,7 @@ phi_soll1=daten1(:,7);
 [val min_ind] = min(s1)//max(s1(1:length(s1)-1) - s1(2:length(s1)));
 stoe_anfang = min_ind;
 [val max_ind] = max(abs(z1))
-stoe_ende = max_ind-195;
+stoe_ende = max_ind//-195;
 
 
 
@@ -95,13 +94,26 @@ xtitle("Referenzwinkel","Zeit [s]","Winkel [rad]");
 //xs2pdf(gcf(),'../Bilder/win_ref.pdf');
 
 
+
+scf(4);
+clf(4);
+
+plot2d(T1,Phi1,2)//,rect=[5,-0.55,30,-0])
+plot2d(T1,Phi_soll1,5)//,rect=[5,-0.55,30,-0])
+xtitle('Winkel','Zeit [s]','Winkel [rad]');
+legend('Winkel des Pendels','Referenzwinkel',4);
+//xs2pdf(gcf(),'../Bilder/win_win_ref.pdf');
+
+
+
+
 // --- pdf abspeichern --- //
 
 //xs2pdf(5,'../Bilder/win_pos.pdf');
 //xs2pdf(6,'../Bilder/win_win.pdf');
 //xs2pdf(7,'../Bilder/win_gesch.pdf');
 //xs2pdf(8,'../Bilder/win_ref.pdf');
-
+//xs2pdf(4,'../Bilder/win_win_ref.pdf');
 
 
 
