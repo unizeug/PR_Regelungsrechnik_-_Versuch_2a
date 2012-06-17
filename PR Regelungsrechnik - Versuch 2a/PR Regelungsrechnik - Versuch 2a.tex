@@ -586,7 +586,49 @@ xrightmargin=-1.5cm
     und komplementärer Empfindlichkeitsfunktion dar (Betrag der Verstärkung nicht in $dB$, logarithmische Frequenz in
     $\frac{rad}{s}$).
     \begin{quote}
-        \TODO{Empfindlichkeitsfunktion eingeben} \\
+        Die Empfindlichkeitsfunktion $S$ beschreibt die Auswirkung all der Einflüsse auf die Regelgröße, die am Ausgang
+        des Regelkreises auftreten. Ein Beispiel hierfür wäre eine Störung wie ein Windstoß, der das
+        Pendel ein wenig zur Seite drückt. Diese Störungen sind niederfrequent. Die Funktion $S$ sollte daher eine
+        starke Dämpfung im niederfrequenten Bereich aufweisen.\vspace{1em}
+        
+        Die komplimentäre Empfindlichskeitfunktion $T$ wiederum beschreibt die Auswirkung von den Einflüsse auf die
+        Regelgröße, die am Eingang des Reglkreises auftreten. Hierfür wäre beispielhaft der Führungssprung genannt.
+        Dieser ist meistens niedrigfrequent und sollte daher für niedrige Frequenzen eine konstante Verstärkung
+        aufweisen. Für hohe Frequenzen, wie beispielsweise dem Rauschen sollte sie stark dämpfen.\vspace{1em}
+        
+        Zusätzlich gilt der Zusammenhang:
+        
+        \begin{equation*}
+        	\begin{split}
+        		S + T =1
+        	\end{split}
+        \end{equation*}
+        
+        Die beiden Funktionenen lauten:
+        
+        \begin{equation*}
+        	\begin{split}
+        		S &= \frac{- K_1 \frac{1}{s}}{1 + K_1 G_{innen} + K_{pos} K_1 \frac{1}{s}}\\
+        		&= -\frac{K_1}{s + K_1 G_{innen} s + K_{pos} K_1}\\ \\
+        		T &= \frac{K_pos K_1 \frac{1}{s}}{1 + K_1 G_{innen} + K_{pos}K_1 \frac{1}{s}}\\
+        		&= \frac{K_pos K_1}{s + K_1 G_{innen}s + K_{pos}K_1}
+        	\end{split}
+        \end{equation*}
+        
+        Daraus resultiert folgende Amplitudengänge:
+        \begin{figure}[H]
+        \centering
+            \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/Empfindlichkeitsfunktion_ohne_I}
+                \caption{T und S ohne Integrator}
+        \end{figure}
+    
+        \begin{figure}[H]
+        \centering
+            \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/Empfindlichkeitsfunktion_mit_I}
+                \caption{T und S mit Integrator}
+        \end{figure}
+    
+        
     \end{quote}  % Ende Subsection Empfindlichkeitsfunktion
     
 \end{quote} %Ende Section Vorbereitungsaufgaben 

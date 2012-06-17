@@ -191,11 +191,13 @@ h3=csim('step',t2,T);
 xgrid();
 
 //SI = 1/(1+Ginnen*KposI)
-SI = syslin('c',Ginnen.den*KposI.den/(Ginnen.num*KposI.num+Ginnen.den*KposI.den));
+SI = syslin('c',Ginnen.den*Kpos.den/(Ginnen.num*Kpos.num+Ginnen.den*KposI.den));
 //TI = (Ginnen*KposI)/(1+Ginnen*KposI)
-TI = syslin('c',Ginnen.num*KposI.num/(KposI.num*Ginnen.num+KposI.den*Ginnen.den))
+TI = syslin('c',Ginnen.num*Kpos.num/(Kpos.num*Ginnen.num+Kpos.den*Ginnen.den))
 
-
+clf(7);scf(7);
+plot(abs(SI));
+plot(abs(TI));
 //clf(7);scf(7);
 //bode_w_farbe(SI, -3, 3, 'Bodeplot', 'false', 1000, 2);
 //bode_w_farbe(TI, -3, 3, 'Bodeplot', %f, 1000, 5);
