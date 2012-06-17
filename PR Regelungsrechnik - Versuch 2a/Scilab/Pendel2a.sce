@@ -199,32 +199,33 @@ TI = syslin('c',Ginnen.num*Kpos.num/(Kpos.num*Ginnen.num+Kpos.den*Ginnen.den))
     f = w/(2*%pi);
 
    [f,rSI]=repfreq(SI,f);
-   [dbSI,phi]=dbphi(rSI);
-    betragSI = 10^(dbSI/10);
+//   [dbSI,phi]=dbphi(rSI);
+//    betragSI = 10^(dbSI/20);
 
    [f,rTI]=repfreq(TI,f);
-   [dbTI,phi]=dbphi(rTI);
-    betragTI = 10^(dbTI/10);
+    
+//   [dbTI,phi]=dbphi(rTI);
+//    betragTI = 10^(dbTI/20);
     
    [f,rS]=repfreq(S,f);
-   [dbS,phi]=dbphi(rS);
-    betragS = 10^(dbS/10);
+//   [dbS,phi]=dbphi(rS);
+//    betragS = 10^(dbS/20);
 
    [f,rT]=repfreq(T,f);
-   [dbT,phi]=dbphi(rT);
-    betragT = 10^(dbT/10);    
-
+//   [dbT,phi]=dbphi(rT);
+//    betragT = 10^(dbT/20);    
+   
     clf(16);scf(16);    
-    plot2d(f*2*%pi,betragS,2,logflag='ln' );
-    plot2d(f*2*%pi,betragT,5,logflag='ln' );
-    xtitle('S und T ohne Integrator','Frequenz in [rad/s]', 'Verstaerkung in [dB]');
+    plot2d(f*2*%pi,rS,2,logflag='ln' );
+    plot2d(f*2*%pi,rT,5,logflag='ln' );
+    xtitle('S und T ohne Integrator','Frequenz in [rad/s]', 'Verstaerkung');
     legend("Sensitivitätsfunktion","Komplimentäre Sensitivitätsfunktion",2)
     xgrid();
     
     clf(17);scf(17);    
-    plot2d(f*2*%pi,betragSI,2,logflag='ln' );
-    plot2d(f*2*%pi,betragTI,5,logflag='ln' );
-    xtitle('S und T mit Integrator','Frequenz in [rad/s]', 'Verstaerkung in [dB]');
+    plot2d(f*2*%pi,rSI,2,logflag='ln' );
+    plot2d(f*2*%pi,rTI,5,logflag='ln' );
+    xtitle('S und T mit Integrator','Frequenz in [rad/s]', 'Verstaerkung');
     legend("Sensitivitätsfunktion","Komplimentäre Sensitivitätsfunktion",2)
     xgrid();
 
