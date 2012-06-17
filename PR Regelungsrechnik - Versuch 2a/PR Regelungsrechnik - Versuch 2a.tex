@@ -533,26 +533,25 @@ xrightmargin=-1.5cm
         \begin{tabular}{c c c c c c c c}
 
             1.           &0.           &0.           &0.           &0.           &0.           &0.           &0. \\
-            1.3530262    &1.           &0.           &0.           &1.           &0.           &0.           &0. \\      
-            15.146959    &1.3530262    &1.           &0.           &20.065291    &1.           &0.           &0. \\        
-            2.9189357    &15.146959    &1.3530262    &1.         &- 13.28885     &20.065291    &1.           &0. \\      
-            0.           &2.9189357    &15.146959    &1.3530262  &- 291.89357  &- 13.28885     &20.065291    &1. \\      
+            1.3530262    &1.           &0.           &0.           &1.           &0.           &0.           &0. \\
+            15.146959    &1.3530262    &1.           &0.           &20.065291    &1.           &0.           &0. \\
+            2.9189357    &15.146959    &1.3530262    &1.         &- 13.28885     &20.065291    &1.           &0. \\
+            0.           &2.9189357    &15.146959    &1.3530262  &- 291.89357  &- 13.28885     &20.065291    &1. \\
             0.           &0.           &2.9189357    &15.146959    &0.         &- 291.89357  &- 13.28885     &20.065291\\
-            0.           &0.           &0.           &2.9189357    &0.           &0.         &- 291.89357  &- 13.28885\\   
-            0.           &0.           &0.           &0.           &0.           &0.           &0.         &-
-            291.89357\\
+            0.           &0.           &0.           &2.9189357    &0.           &0.         &- 291.89357  &- 13.28885\\
+            0.           &0.           &0.           &0.           &0.           &0.         &0.         &- 291.89357\\
         
         \end{tabular}
         \caption{Sylvestermatrix}
         \end{table} 
-         \TODO{Antwort an Boris:^^ Mit [H]} \\ %TODO
+         \TODO{Antwort an Boris: ^\wedge ^\wedge Mit [H]} \\
          
          Mit Hilfe der Sylvestermatrix und den Polen aus der Polvorgabe erechnen wir uns nun die Koeffizenten des
          äußeren Reglers.
          
          \begin{equation*}
         	\begin{split}
-        		kcoeff = inv(As) \cdot cvek.
+        		Reglerkoeffizienten = inv(Sylvestermatrix) \cdot Polvorgabekoeffizienten
         	\end{split}
         \end{equation*}
                 
@@ -566,8 +565,9 @@ xrightmargin=-1.5cm
         	\end{split}
         \end{equation*}
         
-        Wie wir im nächsten Aufgabenteil sehen werden wird dieser Regler jedoch eine Regelabweichung besitzen, die wir
-        mir einem Integrator verhindern. Die Übertragungsfunktion dieses Reglers lautet dann:
+        Wie wir im nächsten Aufgabenteil sehen werden, wird dieser Regler jedoch eine Regelabweichung besitzen. Diese
+        können wir aber mit einem Integrator verhindern. Die Übertragungsfunktion des Reglers mit Integrator lautet
+        dann:
         
         \begin{equation*}
         	\begin{split}
@@ -575,7 +575,7 @@ xrightmargin=-1.5cm
         		         &= \frac{- 176.23489 - 500.56683s - 154.18837s^2 - 84.664893s^3 }{9113.4176s + 2796.8872s^2 +
         		         136.59474s^3 + s^4 }
         	\end{split}
-        \end{equation*}        
+        \end{equation*}
     \end{quote}  % Ende Subsection Polvorgabe
         
     \subsection{Darstellung von Empfindlichkeits- und komplementärer Empfindlichkeitsfunktion}
@@ -585,7 +585,61 @@ xrightmargin=-1.5cm
     und komplementärer Empfindlichkeitsfunktion dar (Betrag der Verstärkung nicht in $dB$, logarithmische Frequenz in
     $\frac{rad}{s}$).
     \begin{quote}
-        \TODO{Empfindlichkeitsfunktion eingeben} \\
+        Die Empfindlichkeitsfunktion $S$ beschreibt die Auswirkung all der Einflüsse auf die Regelgröße, die am Ausgang
+        des Regelkreises auftreten. Ein Beispiel hierfür wäre eine Störung wie ein Windstoß, der das
+        Pendel ein wenig zur Seite drückt. Diese Störungen sind niederfrequent. Die Funktion $S$ sollte daher eine
+        starke Dämpfung im niederfrequenten Bereich aufweisen.\vspace{1em}
+        
+        Die komplimentäre Empfindlichskeitfunktion $T$ wiederum beschreibt die Auswirkung von den Einflüsse auf die
+        Regelgröße, die am Eingang des Reglkreises auftreten. Hierfür wäre beispielhaft der Führungssprung genannt.
+        Dieser ist meistens niedrigfrequent und sollte daher für niedrige Frequenzen eine konstante Verstärkung
+        aufweisen. Für hohe Frequenzen, wie beispielsweise dem Rauschen sollte sie stark dämpfen.\vspace{1em}
+        
+        Zusätzlich gilt der Zusammenhang:
+        
+        \begin{equation*}
+        	\begin{split}
+        		S + T =1
+        	\end{split}
+        \end{equation*}
+        
+        Die beiden Funktionenen lauten:
+        
+        \begin{equation*}
+        	\begin{split}
+        		S &= \frac{- K_1 \frac{1}{s}}{1 + K_1 G_{innen} + K_{pos} K_1 \frac{1}{s}}\\
+        		&= -\frac{K_1}{s + K_1 G_{innen} s + K_{pos} K_1}\\ \\
+        		T &= \frac{K_pos K_1 \frac{1}{s}}{1 + K_1 G_{innen} + K_{pos}K_1 \frac{1}{s}}\\
+        		&= \frac{K_pos K_1}{s + K_1 G_{innen}s + K_{pos}K_1}
+        	\end{split}
+        \end{equation*}
+        
+        Daraus resultiert folgende Amplitudengänge:
+        \begin{figure}[H]
+        \centering
+            \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/Empfindlichkeitsfunktion_ohne_I}
+                \caption{T und S ohne Integrator}
+        \end{figure}
+    
+        \begin{figure}[H]
+        \centering
+            \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/Empfindlichkeitsfunktion_mit_I}
+                \caption{T und S mit Integrator}
+        \end{figure}
+        
+        \begin{figure}[H]
+        \centering
+            \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/Empfindlichkeitsfunktion_ohne_I_ohne_dB}
+                \caption{T und S ohne Integrator}
+        \end{figure}
+    
+        \begin{figure}[H]
+        \centering
+            \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/Empfindlichkeitsfunktion_mit_I_ohne_dB}
+                \caption{T und S mit Integrator}
+        \end{figure}        
+    
+        
     \end{quote}  % Ende Subsection Empfindlichkeitsfunktion
     
 \end{quote} %Ende Section Vorbereitungsaufgaben 

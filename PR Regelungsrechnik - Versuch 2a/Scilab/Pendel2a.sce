@@ -191,13 +191,46 @@ h3=csim('step',t2,T);
 xgrid();
 
 //SI = 1/(1+Ginnen*KposI)
-SI = syslin('c',Ginnen.den*KposI.den/(Ginnen.num*KposI.num+Ginnen.den*KposI.den));
+SI = syslin('c',Ginnen.den*Kpos.den/(Ginnen.num*Kpos.num+Ginnen.den*KposI.den));
 //TI = (Ginnen*KposI)/(1+Ginnen*KposI)
-TI = syslin('c',Ginnen.num*KposI.num/(KposI.num*Ginnen.num+KposI.den*Ginnen.den))
+TI = syslin('c',Ginnen.num*Kpos.num/(Kpos.num*Ginnen.num+Kpos.den*Ginnen.den))
 
+    w = logspace(-3,3,10^5);
+    f = w/(2*%pi);
 
-//clf(7);scf(7);
-//bode_w_farbe(SI, -3, 3, 'Bodeplot', 'false', 1000, 2);
+   [f,rSI]=repfreq(SI,f);
+   [dbSI,phi]=dbphi(rSI);
+    betragSI = 10^(dbSI/10);
+
+   [f,rTI]=repfreq(TI,f);
+   [dbTI,phi]=dbphi(rTI);
+    betragTI = 10^(dbTI/10);
+    
+   [f,rS]=repfreq(S,f);
+   [dbS,phi]=dbphi(rS);
+    betragS = 10^(dbS/10);
+
+   [f,rT]=repfreq(T,f);
+   [dbT,phi]=dbphi(rT);
+    betragT = 10^(dbT/10);    
+
+    clf(16);scf(16);    
+    plot2d(f*2*%pi,betragS,2,logflag='ln' );
+    plot2d(f*2*%pi,betragT,5,logflag='ln' );
+    xtitle('S und T ohne Integrator','Frequenz in [rad/s]', 'Verstaerkung in [dB]');
+    legend("Sensitivitätsfunktion","Komplimentäre Sensitivitätsfunktion",2)
+    xgrid();
+    
+    clf(17);scf(17);    
+    plot2d(f*2*%pi,betragSI,2,logflag='ln' );
+    plot2d(f*2*%pi,betragTI,5,logflag='ln' );
+    xtitle('S und T mit Integrator','Frequenz in [rad/s]', 'Verstaerkung in [dB]');
+    legend("Sensitivitätsfunktion","Komplimentäre Sensitivitätsfunktion",2)
+    xgrid();
+
+//plot(abs(SI));
+//plot(abs(TI));
+//betrag = bode_w_farbe(SI, -3, 3, 'Bodeplot', 'false', 1000, 2);
 //bode_w_farbe(TI, -3, 3, 'Bodeplot', %f, 1000, 5);
 //legend("Sensitivitätsfunktion","Komplimentäre Sensitivitätsfunktion",3);
-xgrid();
+//xgrid();
