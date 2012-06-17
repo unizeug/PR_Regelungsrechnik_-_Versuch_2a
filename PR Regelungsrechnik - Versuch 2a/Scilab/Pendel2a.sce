@@ -164,11 +164,32 @@ Kpos = syslin('c',kcoeff(n+1)*s^(n-1)+kcoeff(n+2)*s^(n-2) + kcoeff(n+3)*s^(n-3)+
 // Ordnung der Strecke
 
 // erstellen der Streckenmatrix
-AsI=As
+GinnenI = Ginnen*1/s
+nI=length(roots(GinnenI.den));
+AsI=zeros(2*nI,2*nI);
+//As(Zeile,Spalte)
+for k = 1:2*nI+1
+    for l = 1:2*nI
+        if k<nI+2 then
+            if l < nI+1 then
+                AsI(k+l-1,l) = coeff(GinnenI.den,nI+1-k);
+            end
+            if l > nI then
+                AsI(k+l-1-nI,l) = coeff(GinnenI.num,nI+1-k);
+            end
+        end
+    end
+end
+
+crootsI = polvorgabe(4,0.97)
+crootsI = [crootsI; crootsI(7)-1; crootsI(7)-2]
+wunschI=poly(crootsI,'s','r')
+cvek1I=coeff(wunschI)
+cvekI=cvek1I([10 9 8 7 6 5 4 3 2 1])';
 
 //kcoeff=invr(AsI)*cvek;
-kcoeff=inv(AsI)*cvek;
-KposI = syslin('c',kcoeff(n+1)*s^(n-1)+kcoeff(n+2)*s^(n-2) + kcoeff(n+3)*s^(n-3)+kcoeff(n+4)*s^(n-4),s*(kcoeff(1)*s^(n-1)+kcoeff(2)*s^(n-2)+kcoeff(3)*s^(n-3)+kcoeff(4)*s^(n-4)));
+kcoeffI=inv(AsI)*cvekI;
+KposI = syslin('c',kcoeffI(nI+1)*s^(nI-1)+kcoeffI(nI+2)*s^(nI-2) + kcoeffI(nI+3)*s^(nI-3)+kcoeffI(nI+4)*s^(nI-4)+kcoeffI(nI+5)*s^(nI-5),s*(kcoeffI(1)*s^(nI-1)+kcoeffI(2)*s^(nI-2)+kcoeffI(3)*s^(nI-3)+kcoeffI(4)*s^(nI-4)+kcoeffI(5)*s^(nI-5)));
 
 // - -  Sensitivitätsfunktion und kompl. Sensistivitätsfunktion - -//
 
@@ -190,30 +211,16 @@ h3=csim('step',t2,T);
 //legend("Sensitivitätsfunktion","Komplimentäre Sensitivitätsfunktion",3);
 xgrid();
 
-//SI = 1/(1+Ginnen*KposI)
-SI = syslin('c',Ginnen.den*Kpos.den/(Ginnen.num*Kpos.num+Ginnen.den*KposI.den));
-//TI = (Ginnen*KposI)/(1+Ginnen*KposI)
-TI = syslin('c',Ginnen.num*Kpos.num/(Kpos.num*Ginnen.num+Kpos.den*Ginnen.den))
+SI = syslin('c',Ginnen.den*KposI.den/(Ginnen.num*KposI.num+Ginnen.den*KposI.den));
+TI = syslin('c',Ginnen.num*KposI.num/(KposI.num*Ginnen.num+KposI.den*Ginnen.den))
 
     w = logspace(-3,3,10^5);
     f = w/(2*%pi);
 
    [f,rSI]=repfreq(SI,f);
-//   [dbSI,phi]=dbphi(rSI);
-//    betragSI = 10^(dbSI/20);
-
    [f,rTI]=repfreq(TI,f);
-    
-//   [dbTI,phi]=dbphi(rTI);
-//    betragTI = 10^(dbTI/20);
-    
    [f,rS]=repfreq(S,f);
-//   [dbS,phi]=dbphi(rS);
-//    betragS = 10^(dbS/20);
-
    [f,rT]=repfreq(T,f);
-//   [dbT,phi]=dbphi(rT);
-//    betragT = 10^(dbT/20);    
    
     clf(16);scf(16);    
     plot2d(f*2*%pi,rS,2,logflag='ln' );
@@ -226,12 +233,15 @@ TI = syslin('c',Ginnen.num*Kpos.num/(Kpos.num*Ginnen.num+Kpos.den*Ginnen.den))
     plot2d(f*2*%pi,rSI,2,logflag='ln' );
     plot2d(f*2*%pi,rTI,5,logflag='ln' );
     xtitle('S und T mit Integrator','Frequenz in [rad/s]', 'Verstaerkung');
-    legend("Sensitivitätsfunktion","Komplimentäre Sensitivitätsfunktion",2)
+    legend("Sensitivitätsfunktion","Komplimentäre Sensitivitätsfunktion",3);
     xgrid();
 
-//plot(abs(SI));
-//plot(abs(TI));
-//betrag = bode_w_farbe(SI, -3, 3, 'Bodeplot', 'false', 1000, 2);
-//bode_w_farbe(TI, -3, 3, 'Bodeplot', %f, 1000, 5);
-//legend("Sensitivitätsfunktion","Komplimentäre Sensitivitätsfunktion",3);
-//xgrid();
+clf(26);scf(26);
+bode_w_farbe(S, -3, 3, 'Bodeplot', 'false', 1000, 2);
+bode_w_farbe(T, -3, 3, 'Bodeplot', 'false', 1000, 5);
+xgrid();
+
+clf(27);scf(27);
+bode_w_farbe(SI, -3, 3, 'Bodeplot', 'false', 1000, 2);
+bode_w_farbe(TI, -3, 3, 'Bodeplot', 'false', 1000, 5);
+xgrid();
