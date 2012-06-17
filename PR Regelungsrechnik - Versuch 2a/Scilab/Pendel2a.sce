@@ -1,4 +1,4 @@
-// ############################################################################
+//cd "U    b    Doc    "// ############################################################################
 // Scilab Script zum 2 Praktikum
 //
 // Reglerentwurf eines invertierten Pendels,
@@ -7,7 +7,7 @@
 
 // Boris: cd "/Users/borishenckell/Documents/eclipse workspace/PR_Regelungsrtechnik_-_Versuch_2a/PR Regelungsrechnik - Versuch 2a"
 // Dirk: 
-cd "/media/daten/workspace/PR_Regelungsrechnik_-_Versuch_2a/PR Regelungsrechnik - Versuch 2a/Scilab/"
+//cd "/media/daten/workspace/PR_Regelungsrechnik_-_Versuch_2a/PR Regelungsrechnik - Versuch 2a/Scilab/"
 
 
 // Fehlermeldung bei neudefinition vermeiden

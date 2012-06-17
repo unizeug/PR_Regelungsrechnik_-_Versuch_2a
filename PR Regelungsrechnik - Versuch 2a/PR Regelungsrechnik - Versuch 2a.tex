@@ -117,6 +117,8 @@ xrightmargin=-1.5cm
         	\end{split}
         \end{equation*}
         
+        Zu dieser Übertragungsfunktion gehören folgendes Pol-/Nullstellendiagramm:
+        
         \begin{figure}[H]
         \centering
             \includegraphics[scale=1, trim = 3cm 21.5cm 9cm 2cm, clip]{Bilder/Polnullstellen_G}
@@ -234,8 +236,9 @@ xrightmargin=-1.5cm
         Wie oben beschrieben erwarten wir für unseren stabilen Regelkreis eine Phasendrehung von $2\pi$. Daraus resultiert
         automatisch, dass die Nyquistortskurve zweimal den Einheitskreis schneiden wird. Diese beiden Schnittpunkte mit dem
         Einheitskreis werden in dem Bodediagramm durch einen zweifache Schnittstelle mit der $0dB$ Achse im Amplitudengang zu
-        sehen sein.
+        sehen sein.\\
         \TODO{Boris: es könnte doch auch keinen scnittpunkt geben oder?}
+        \TODO{an Dirk: Nein, denn dann hätten wir eine Phasendrehung von 0 und der Regler wäre instabil} \\
         
         
     \end{quote} %Ende Subsection Nyquist
@@ -260,7 +263,8 @@ xrightmargin=-1.5cm
                 \caption{Wurzelortskurve}
         \end{figure}
         
-        Es ist ersichtlich, dass der geschlossene regelkreis für eine genügend große Verstärkung stabil wird.\vspace{1em}
+        Es ist ersichtlich, dass der geschlossene Regelkreis für eine genügend große Verstärkung stabil
+        wird.\vspace{1em}
         
         Außerdem ergibt sich auch folgende Nyquistkurve:
         
@@ -326,8 +330,8 @@ xrightmargin=-1.5cm
         \end{figure}
         
         Es ist zu beobachten, dass der Wagen am Anfang des Ausregelvorgangs zügig seine Geschwindigkeit ändert. Interessant
-        ist, dass er gegen Ende des Ausregelvorgangs bei einer konstanten Geschwindigkeit angekommen ist und auf dieser
-        bleibt. Die Ursache dafür ist, dass unser Regler zu diesem Zeitpunkt lediglich das Ziel hat auf eine
+        ist, dass er gegen Ende des Ausregelvorgangs bei einer konstanten Geschwindigkeit $\neq 0$ angekommen ist und
+        auf dieser bleibt. Die Ursache dafür ist, dass unser Regler zu diesem Zeitpunkt lediglich das Ziel hat auf eine
         Winkelposition von $0^{\circ}$ zu regeln. Die Position des Wagens wird noch nicht berücksichtigt. Daher ist es
         für den Regler vollkommen ausreichend das Pendel unter konstanter Gesamtgeschwingigkeit des Systems bei der
         gewünschten Winkelposition zu belassen.\\
@@ -431,7 +435,17 @@ xrightmargin=-1.5cm
             \end{split}
         \end{equation*}
         
-        Der Geschlossene innere Regelkreis hat demnach die Ordnung $4$.
+        Wenn wir die besherigen Übertragungsfunktionen einsetzen ergibt sich die folgene Übertragungsfunktion des
+        inneren Reglers:
+        
+        \begin{equation*}
+        	\begin{split}
+        		G_{innen} = \frac{- 291.89357 - 13.28885s + 20.065291s^2 + s^3 }{2.9189357s + 15.146959s^2 + 1.3530262s^3 +
+        		s^4 }
+        	\end{split}
+        \end{equation*}
+        
+        Der geschlossene innere Regelkreis hat demnach die Ordnung $4$.
         
     \end{quote}  % Ende Subsection Übertragungsverhalten
     
@@ -512,18 +526,57 @@ xrightmargin=-1.5cm
         \end{equation*}
         
         
-        Mit diesen Koeffizienten können wir nun durch die Sylvestermatrix unseren Regler errechnen:
+        Als nächstes erstellen wir die passende Sylvestermatrix. Dazu sortieren wir die Koeffizienten der
+        Übertragungsfunktion des inneren Reglers in geeineter Weise. Die Sylvestermatrix lautet:
         
+        \begin{table}
+        \hspace{-4em}
+        \begin{tabular}{c c c c c c c c}
+
+            1.           &0.           &0.           &0.           &0.           &0.           &0.           &0. \\
+            1.3530262    &1.           &0.           &0.           &1.           &0.           &0.           &0. \\      
+            15.146959    &1.3530262    &1.           &0.           &20.065291    &1.           &0.           &0. \\        
+            2.9189357    &15.146959    &1.3530262    &1.         &- 13.28885     &20.065291    &1.           &0. \\      
+            0.           &2.9189357    &15.146959    &1.3530262  &- 291.89357  &- 13.28885     &20.065291    &1. \\      
+            0.           &0.           &2.9189357    &15.146959    &0.         &- 291.89357  &- 13.28885     &20.065291\\
+            0.           &0.           &0.           &2.9189357    &0.           &0.         &- 291.89357  &- 13.28885\\   
+            0.           &0.           &0.           &0.           &0.           &0.           &0.         &-
+            291.89357\\
         
-        \TODO{entgültiger Regler}
+        \end{tabular}
+        \caption{Sylvestermatrix}
+        \end{table} 
+         \TODO{Frage an Dirk: wie zwingt man Latex die Tabelle genau dort hin zu tun wo sie im Quelltext auch steht?} \\
+         
+         Mit Hilfe der Sylvestermatrix und den errechneten Polen aus der Polvorgabe erechnen wir uns nun die
+         Koeffizenten des äußeren Reglers.
+         
+         \begin{equation*}
+        	\begin{split}
+        		kcoeff = inv(As) \cdot cvek.
+        	\end{split}
+        \end{equation*}
+                
         
+        Aus dieser Rechnung ergibt sich folgender Regler:
         
-        Bzw. über die andere Matrix einen Regler mit integrator, der Regelabweichungen vermeidet.
+        \begin{equation*}
+        	\begin{split}
+        		K_{pos} = \frac{- 176.23489 - 500.56683s - 154.18837s^2 - 84.664893s^3 }{9113.4176 + 2796.8872s + 136.59474s^2
+        		+ s^3 }
+        	\end{split}
+        \end{equation*}
         
-        \TODO{Boris: Matrix erstelung, rechnung?}
+        Wie wir im nächsten Aufgabenteil sehen werden wird dieser Regler jedoch eine Regelabweichung besitzen, die wir
+        mir einem Integrator verhindern. Die Übertragungsfunktion dieses Reglers lautet dann:
         
-        
-        
+        \begin{equation*}
+        	\begin{split}
+        		K_{PosI} &= \frac{1}{s} K_{pos}\\
+        		         &= \frac{- 176.23489 - 500.56683s - 154.18837s^2 - 84.664893s^3 }{9113.4176s + 2796.8872s^2 +
+        		         136.59474s^3 + s^4 }
+        	\end{split}
+        \end{equation*}        
     \end{quote}  % Ende Subsection Polvorgabe
         
     \subsection{Darstellung von Empfindlichkeits- und komplementärer Empfindlichkeitsfunktion}
@@ -553,14 +606,17 @@ xrightmargin=-1.5cm
 
 \section{Scilabcode}
 \begin{quote}
-	\TODO{Scilabcode einfügen} \\
-	% \begin{quote}
-%     \lstinputlisting[
-%         caption={Scilab-script},
-%         label=lst:scilab]
-%         {./Scilab/Motor.sce}
-%         
-% \end{quote}
+\begin{quote}
+    \lstinputlisting[
+        caption={Scilab-script},
+        label=lst:scilab]
+        {./Scilab/Pendel2a.sce}
+    \lstinputlisting[
+        caption={Polvorgabe-script},
+        label=lst:scilab]
+        {./Scilab/polvorgabe.sci}
+
+\end{quote}
 
 	
 \end{quote} %Ende section
