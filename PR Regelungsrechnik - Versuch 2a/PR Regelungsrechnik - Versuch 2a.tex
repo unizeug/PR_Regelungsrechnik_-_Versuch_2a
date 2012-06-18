@@ -762,7 +762,10 @@ xrightmargin=-1.5cm
         \subsubsection{Positionsregler}
         \begin{quote}
             
-            
+            Als zweites haben wir noch den Positionsregler getestet. Wie in \ref{fig:pos_pos_ref} zu erkennen, hat es
+            der Regler nach circa \SI{11}{\second} geschafft die Wagenposition aus zu regeln.\\
+            Die Änderung der Position die wir nach \SI{15}{\second} durch das Potentiometer vorgegeben haben hat der
+            Regler sehr gut umgesetzt.
             
             \begin{figure}[H]
                 \centering
@@ -772,32 +775,10 @@ xrightmargin=-1.5cm
             \end{figure}
             
             
-            \begin{figure}[H]
-                \centering
-                \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{Bilder/pos_gesch}
-                \caption{Geschwindigkeit des Wagens}
-                \label{fig:pos_gesch}
-            \end{figure}
-            
-            
-            \begin{figure}[H]
-                \centering
-                \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{Bilder/pos_pos}
-                \caption{Position des Wagens}
-                \label{fig:pos_pos}
-            \end{figure}
-            
-            
-            
         \end{quote}% Positionsregler
-
-
-        
         
     \end{quote}% Versuchsstand
-
-
-        
+    
     
 \end{quote} %Ende Section Ergebnisse
 
@@ -812,6 +793,7 @@ xrightmargin=-1.5cm
         language=scilab,
         label=lst:scilab]
         {./Scilab/Pendel2a.sce}
+        
     \lstinputlisting[
         caption={Polvorgabe-script},
         language=scilab,

@@ -1,5 +1,5 @@
                     // * * * * * * * * * * * * * * * * * * * * //
-                    //           -- Positionszeug --           //
+                    //    -- Auswertung Positionsregelung --   //
                     // * * * * * * * * * * * * * * * * * * * * //
 
 
@@ -33,7 +33,7 @@ z_soll2=daten2(:,7);
 
 // Interessanten bereich ausschneiden
 [val min_ind] = min(s2)//max(s2(1:length(s2)-1) - s2(2:length(s2)));
-stoe_anfang = min_ind;
+stoe_anfang = 1//min_ind;
 [val max_ind] = max(abs(z2))
 stoe_ende = length(t2)-1579//max_ind-295;
 
@@ -115,57 +115,3 @@ legend('Position des Wagens','Referenzposition',2);
 //xs2pdf(11,'../Bilder/pos_gesch.pdf');
 //xs2pdf(12,'../Bilder/pos_ref.pdf');
 //xs2pdf(13,'../Bilder/pos_pos_ref.pdf');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//scf(10);
-//clf(10);
-//
-//
-//S2 = s2(stoe_anfang:stoe_ende);
-//
-//plot2d(T2,S2)
-//xtitle('Referenzwinkel','Zeit [s]','[rad/s]');
-////legend('m
-
-
-//// ## Simulation ##
-//scf(10);
-//clf(10);
-//
-//
-//h1=csim('step',T2,Gmw);
-//h1 = h1*(max(W2)/max(h1));
-//
-//plot2d(T2,h1+MatrizenscheissvonGmw(5),5);
-//xgrid();
-//xtitle('Störsprungantwort','Zeit [s]','Winkelgeschwindigkeit [rad/s]');
-//legend('gemessen','simuliert',1);
-
-
-
-
-
-
-

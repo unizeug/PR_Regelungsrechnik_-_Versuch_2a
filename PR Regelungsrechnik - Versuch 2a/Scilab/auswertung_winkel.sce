@@ -1,5 +1,5 @@
                     // * * * * * * * * * * * * * * * * * * * * //
-                    //            -- Winkelzeug --             //
+                    //     -- Auswertung Winkelregelung --     //
                     // * * * * * * * * * * * * * * * * * * * * //
 
 
@@ -115,36 +115,6 @@ legend('Winkel des Pendels','Referenzwinkel',4);
 //xs2pdf(7,'../Bilder/win_gesch.pdf');
 //xs2pdf(8,'../Bilder/win_ref.pdf');
 //xs2pdf(4,'../Bilder/win_win_ref.pdf');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//// ## Simulation ##
-//scf(10);
-//clf(10);
-//
-//
-//h1=csim('step',T2,Gmw);
-//h1 = h1*(max(W2)/max(h1));
-//
-//plot2d(T2,h1+MatrizenscheissvonGmw(5),5);
-//xgrid();
-//xtitle("Störsprungantwort","Zeit [s]","Winkelgeschwindigkeit [rad/s]");
-//legend("gemessen","simuliert",1);
-
-
 
 
 
