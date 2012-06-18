@@ -604,10 +604,10 @@ xrightmargin=-1.5cm
         
         \begin{equation*}
         	\begin{split}
-        		S &= \frac{- K_1 \frac{1}{s}}{1 + K_1 G_{innen} + K_{pos} K_1 \frac{1}{s}}\\
-        		&= -\frac{K_1}{s + K_1 G_{innen} s + K_{pos} K_1}\\ \\
-        		T &= \frac{K_{pos} K_1 \frac{1}{s}}{1 + K_1 G_{innen} + K_{pos}K_1 \frac{1}{s}}\\
-        		&= \frac{K_{pos} K_1}{s + K_1 G_{innen}s + K_{pos}K_1}
+        		S &= \frac{- K_1 \frac{1}{s}}{1 + K_1 G_{1} + K_{pos} K_1 \frac{1}{s}}\\
+        		&= -\frac{K_1}{s + K_1 G_{1} s + K_{pos} K_1}\\ \\
+        		T &= \frac{K_{pos} K_1 \frac{1}{s}}{1 + K_1 G_{1} + K_{pos}K_1 \frac{1}{s}}\\
+        		&= \frac{K_{pos} K_1}{s + K_1 G_{1}s + K_{pos}K_1}
         	\end{split}
         \end{equation*}
 
@@ -629,7 +629,7 @@ xrightmargin=-1.5cm
         Man kann sehr schön sehen, dass ein Führungssprung ohne bleibende Regelabweichung verlaufen wird. In diesem Fall
         ist es egal, ab der Positionsregler einen zusätzlichen Integrator bekommt oder nicht.\\
         
-        Nun betrachten wir da Verhalten des Regelkreises auf einen Störsprung.
+        Nun betrachten wir das Verhalten des Regelkreises auf einen Störsprung.
         
         \begin{equation*}
         	\begin{split}
@@ -642,30 +642,34 @@ xrightmargin=-1.5cm
         \end{equation*}
         
         In dem Fall einer Störung am Ausgang wird nur dann keine bleibende Regelabweichung vorhanden sein, wenn der
-        Regler $K_{pos}$ einen integrierenden Anteil besitzt.
-        
-
-
-
-
-        
-        Daraus resultiert folgende Amplitudengänge:        
+        Regler $K_{pos}$ einen integrierenden Anteil besitzt. Daher ist der Regler mit Integrator der geeignete Regler.
+                
+        Diese Beobachtung lässt sich auch in den Ampitudengängen der Funktionen $S$ und $T$ sehen.
+                
         \begin{figure}[H]
         \centering
-            \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/Empfindlichkeitsfunktion_ohne_I_ohne_dB}
-                \caption{T und S ohne Integrator}
+            \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/smitundohneIntegrator}
+                \caption{S mit und ohne Integrator}
         \end{figure}
+        
+        Es lässt sich sehr schön erkennen, dass die Sensitivitätsfunktion des Regelkreises ohne Integrator eine Wert
+        $\neq 0$ hat während die Sensitivitätsfunktion des Regelkreises mit Integrator den Wert $0$ annimmt.
     
         \begin{figure}[H]
         \centering
-            \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/Empfindlichkeitsfunktion_mit_I_ohne_dB}
-                \caption{T und S mit Integrator}
+            \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/TmitundohneIntegrator}
+                \caption{T mit und ohne Integrator}
         \end{figure}        
-    
-        Es fällt auf, dass der Integrator den Verlauf der Funktionen $S$ und $T$ in den Frequenzen um $10^0$
-        verändert.\\
         
-
+        Der Integrator hat zwar auch auf die komplimentäre Sensitivitätsfunktion einen Einfluss, jedoch bleibt der Wert
+        für $s \rightarrow 0$ gleich. Das zeigt, dass der Integrator auch keinen negativen Einfluss auf die
+        Führungssprungantwort hat.
+        
+        simulation:
+        
+        Wie oben beschrieben hatten wir mit unserem Xcos-Modell Schwierigkeiten. In dieser Simulation bekommen
+        wir jedoch das selbe Ergebniss wie mit dem Xcos-Modell unseres Tutors. Unser Regler hat einen
+        Einzugsbereich von gerade mal $2,18^{\circ}$.
         
         
         

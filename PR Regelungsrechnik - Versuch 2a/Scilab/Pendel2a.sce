@@ -121,7 +121,7 @@ Tw = (G1*K1)/(1+G1*K1)
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
 
 
-// Übertragungsfunktion des inneren Reglers dz/dt zu phi
+// Übertragungsfunktion des inneren Reglers  phi_r zu z
 Ginnen = K1*(1/s)/(1+K1*G1);
 
 // - - - - Reglerentwurf ohne Integrator - - - - - - - - - -//
@@ -193,10 +193,10 @@ KposI = syslin('c',kcoeffI(nI+1)*s^(nI-1)+kcoeffI(nI+2)*s^(nI-2) + kcoeffI(nI+3)
 
 // - -  Sensitivitätsfunktion und kompl. Sensistivitätsfunktion - -//
 
-//S = 1/(1+Ginnen*Kpos)
-S = syslin('c',Ginnen.den*Kpos.den/(Ginnen.num*Kpos.num+Ginnen.den*Kpos.den));
-//T = (Ginnen*Kpos)/(1+Ginnen*Kpos)
-T = syslin('c',Ginnen.num*Kpos.num/(Kpos.num*Ginnen.num+Kpos.den*Ginnen.den));
+S = syslin('c',K1.num*G1.den*Kpos.den/(K1.den*G1.den*Kpos.den*s + K1.num*G1.num*Kpos.den*s+Kpos.num*K1.num*G1.den));
+
+T = syslin('c', Kpos.num*K1.num*G1.den/(K1.den*Kpos.den*G1.den*s+K1.num*G1.num*Kpos.den*s + Kpos.num*K1.num*G1.den));
+//T = syslin('c',G1.num*Kpos.num/(Kpos.num*G1.num+Kpos.den*G1.den));
 
 //erstellen der Spungantwort auf die Störung
 t3=[0:0.01:40];
@@ -211,8 +211,11 @@ h3=csim('step',t2,T);
 //legend("Sensitivitätsfunktion","Komplimentäre Sensitivitätsfunktion",3);
 xgrid();
 
-SI = syslin('c',Ginnen.den*KposI.den/(Ginnen.num*KposI.num+Ginnen.den*KposI.den));
-TI = syslin('c',Ginnen.num*KposI.num/(KposI.num*Ginnen.num+KposI.den*Ginnen.den))
+//SI = syslin('c',Ginnen.den*KposI.den/(Ginnen.num*KposI.num+Ginnen.den*KposI.den));
+SI = syslin('c',K1.num*G1.den*KposI.den/(K1.den*G1.den*KposI.den*s + K1.num*G1.num*KposI.den*s+KposI.num*K1.num*G1.den));
+
+TI = syslin('c', KposI.num*K1.num*G1.den/(K1.den*KposI.den*G1.den*s+K1.num*G1.num*KposI.den*s + KposI.num*K1.num*G1.den));
+//TI = syslin('c',Ginnen.num*KposI.num/(KposI.num*Ginnen.num+KposI.den*Ginnen.den))
 
     w = logspace(-3,3,10^5);
     f = w/(2*%pi);
@@ -224,16 +227,17 @@ TI = syslin('c',Ginnen.num*KposI.num/(KposI.num*Ginnen.num+KposI.den*Ginnen.den)
    
     clf(16);scf(16);    
     plot2d(f*2*%pi,rS,2,logflag='ln' );
-    plot2d(f*2*%pi,rT,5,logflag='ln' );
-    xtitle('S und T ohne Integrator','Frequenz in [rad/s]', 'Verstaerkung');
-    legend("Sensitivitätsfunktion","Komplimentäre Sensitivitätsfunktion",2)
+    plot2d(f*2*%pi,rSI,5,logflag='ln' );
+
+    xtitle('S mit und ohne Integrator','Frequenz in [rad/s]', 'Verstaerkung');
+    legend("S ohne Integrator","S mit Integrator",4)
     xgrid();
     
     clf(17);scf(17);    
-    plot2d(f*2*%pi,rSI,2,logflag='ln' );
+    plot2d(f*2*%pi,rT,2,logflag='ln' );
     plot2d(f*2*%pi,rTI,5,logflag='ln' );
-    xtitle('S und T mit Integrator','Frequenz in [rad/s]', 'Verstaerkung');
-    legend("Sensitivitätsfunktion","Komplimentäre Sensitivitätsfunktion",3);
+    xtitle('T mit und  ohne Integrator','Frequenz in [rad/s]', 'Verstaerkung');
+    legend("T ohne Integrator","T mit Integrator",3);
     xgrid();
 
 clf(26);scf(26);
