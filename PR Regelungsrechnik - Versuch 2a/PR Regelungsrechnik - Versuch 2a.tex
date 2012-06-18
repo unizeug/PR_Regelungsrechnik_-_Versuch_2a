@@ -237,8 +237,6 @@ xrightmargin=-1.5cm
         automatisch, dass die Nyquistortskurve zweimal den Einheitskreis schneiden wird. Diese beiden Schnittpunkte mit dem
         Einheitskreis werden in dem Bodediagramm durch einen zweifache Schnittstelle mit der $0dB$ Achse im Amplitudengang zu
         sehen sein.\\
-        \TODO{Boris: es könnte doch auch keinen scnittpunkt geben oder?}
-        \TODO{an Dirk: Nein, denn dann hätten wir eine Phasendrehung von 0 und der Regler wäre instabil} \\
         
         
     \end{quote} %Ende Subsection Nyquist
@@ -545,8 +543,6 @@ xrightmargin=-1.5cm
         \end{tabular}
         \caption{Sylvestermatrix}
         \end{table} 
-
-         \TODO{Antwort an Boris: ^\wedge ^\wedge Mit [H]} \\
          
          Mit Hilfe der Sylvestermatrix und den Polen aus der Polvorgabe erechnen wir uns nun die Koeffizenten des
          äußeren Reglers.
@@ -573,9 +569,8 @@ xrightmargin=-1.5cm
         
         \begin{equation*}
         	\begin{split}
-        		K_{PosI} &= \frac{1}{s} K_{pos}\\
-        		         &= \frac{- 176.23489 - 500.56683s - 154.18837s^2 - 84.664893s^3 }{9113.4176s + 2796.8872s^2 +
-        		         136.59474s^3 + s^4 }
+        		K_{PosI} &= \frac{- 33997.314 - 119043.19s - 134816.79s^2 - 27985.865s^3 - 8415.9613s^4 }{737539.64s +
+        		         235184.41s^2 + 11110.757s^3 + 79.726183s^4 + s^5 }
         	\end{split}
         \end{equation*}
     \end{quote}  % Ende Subsection Polvorgabe
@@ -611,24 +606,50 @@ xrightmargin=-1.5cm
         	\begin{split}
         		S &= \frac{- K_1 \frac{1}{s}}{1 + K_1 G_{innen} + K_{pos} K_1 \frac{1}{s}}\\
         		&= -\frac{K_1}{s + K_1 G_{innen} s + K_{pos} K_1}\\ \\
-        		T &= \frac{K_pos K_1 \frac{1}{s}}{1 + K_1 G_{innen} + K_{pos}K_1 \frac{1}{s}}\\
-        		&= \frac{K_pos K_1}{s + K_1 G_{innen}s + K_{pos}K_1}
+        		T &= \frac{K_{pos} K_1 \frac{1}{s}}{1 + K_1 G_{innen} + K_{pos}K_1 \frac{1}{s}}\\
+        		&= \frac{K_{pos} K_1}{s + K_1 G_{innen}s + K_{pos}K_1}
+        	\end{split}
+        \end{equation*}
+
+        Nachdem wir die Funktoinen $S$ und $T$ bestimmt haben überprüfen wir nun mittels Endwertsatz
+        ob der Regelkreise eine bleibende Regelabweichung besitzen. Zunächst schauen wir die komplimentäre
+        Sensitivitätsfunktionen $T$ an, die eine Aussage über das Verhalten des Regelkreises auf einen Führungssprung
+        zulässt.
+        
+        \begin{equation*}
+        	\begin{split}
+        		\frac{z}{z_r} &= T\\
+        		z &= T z_r\\ \\
+        		\lim\limits_{t \rightarrow \infty}{z(t)} &= \lim\limits_{s \rightarrow 0}{z(s)} = \lim\limits_{s \rightarrow
+        		0}{s T(s)\frac{1}{s}} = T(0)\\
+        		T(0) &=  \frac{K_{pos}(0) K_1 (0)}{K_{pos}(0) K_1(0)} = 1\\
         	\end{split}
         \end{equation*}
         
-        Daraus resultiert folgende Amplitudengänge:
-        \begin{figure}[H]
-        \centering
-            \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/Empfindlichkeitsfunktion_ohne_I}
-                \caption{T und S ohne Integrator}
-        \end{figure}
-    
-        \begin{figure}[H]
-        \centering
-            \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/Empfindlichkeitsfunktion_mit_I}
-                \caption{T und S mit Integrator}
-        \end{figure}
+        Man kann sehr schön sehen, dass ein Führungssprung ohne bleibende Regelabweichung verlaufen wird. In diesem Fall
+        ist es egal, ab der Positionsregler einen zusätzlichen Integrator bekommt oder nicht.\\
         
+        Nun betrachten wir da Verhalten des Regelkreises auf einen Störsprung.
+        
+        \begin{equation*}
+        	\begin{split}
+        		\frac{z}{D} &= -S\\
+        		z &= -S D\\ \\
+                \lim\limits_{t \rightarrow \infty}{z(t)} &= \lim\limits_{s \rightarrow 0}{z(s)} = \lim\limits_{s \rightarrow
+                0}{s S(s)\frac{1}{s}} = -S(0)\\
+                -S(0) &=  -\frac{K_1 (0)}{K_{pos}(0) K_1(0)} = -\frac{1}{K_{pos}(0)}\\        		
+        	\end{split}
+        \end{equation*}
+        
+        In dem Fall einer Störung am Ausgang wird nur dann keine bleibende Regelabweichung vorhanden sein, wenn der
+        Regler $K_{pos}$ einen integrierenden Anteil besitzt.
+        
+
+
+
+
+        
+        Daraus resultiert folgende Amplitudengänge:        
         \begin{figure}[H]
         \centering
             \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/Empfindlichkeitsfunktion_ohne_I_ohne_dB}
@@ -641,8 +662,14 @@ xrightmargin=-1.5cm
                 \caption{T und S mit Integrator}
         \end{figure}        
     
+        Es fällt auf, dass der Integrator den Verlauf der Funktionen $S$ und $T$ in den Frequenzen um $10^0$
+        verändert.\\
         
-    \end{quote}  % Ende Subsection Empfindlichkeitsfunktion
+
+        
+        
+        
+         \end{quote}  % Ende Subsection Empfindlichkeitsfunktion
     
 \end{quote} %Ende Section Vorbereitungsaufgaben 
 
