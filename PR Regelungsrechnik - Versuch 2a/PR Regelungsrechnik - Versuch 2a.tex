@@ -60,7 +60,8 @@ xrightmargin=-1.5cm
     Aufgabe:\\
     Linearisieren Sie das nichtlineare Modell um die Ruhelage ($z, \varphi$) = ($0, 0$) und berechnen Sie die
     Transferfunktion von der Stellgröße $u$ zum Ausgang $\varphi$. Skizzieren Sie die Pol-/Nullstellenverteilung des
-    Systems.
+    Systems.\vspace{1em}
+    
 	\begin{quote}
 	   Das folgende Systemmodell war in dem Aufgabenblatt gegeben:
 	   \begin{equation*}
@@ -140,7 +141,7 @@ xrightmargin=-1.5cm
     mit $K > 0$. Entscheiden Sie anhand des Wurzelortskurvenverfahrens über die notwendige Lage der Reglerpolstelle
     und -nullstelle, damit das geregelte System für eine genügend große Verstärkung $K$ stabilisiert werden kann.
     Bestimmen Sie nur, in welcher Hälfte der s-Ebene jeweils die Pol- und die Nullstelle liegen muss und nicht die
-    genaue Position.\\
+    genaue Position.\vspace{1em}
     
     \begin{quote}
         
@@ -192,7 +193,8 @@ xrightmargin=-1.5cm
     Pol-/Nullstellenverteilung des Reglers das Nyquistdiagramm des offenen Regelkreises. Gegebenenfalls kann eine
     konkrete Realisierung des Reglers angenommen werden, um das Nyquistdiagramm zeichnen zu können. Welche Bedingungen
     werden nach dem Nyquistkriterium an die Ortskurve der offenen Kette hinsichtlich der Stabilität gestellt und wie
-    kann man dieses Bedingungen im Bodediagramm wiederfinden?
+    kann man dieses Bedingungen im Bodediagramm wiederfinden?\vspace{1em}
+    
     \begin{quote} 
    
     \begin{figure}[H]
@@ -293,7 +295,7 @@ xrightmargin=-1.5cm
     
     Aufgabe\\
     Untersuchen Sie das Verhalten des Regelkreises gegenüber konstanten Sollvorgaben ungleich Null. Wie verhalten sich
-    Wagenposition, Winkel und Wagengeschwindigkeit?
+    Wagenposition, Winkel und Wagengeschwindigkeit?\vspace{1em}
     
     \begin{quote}
         In diesem Aufgabenteil haben wir das Verhalten des bisherigen Regelkreises auf einen Führungssprung untersucht.
@@ -360,7 +362,8 @@ xrightmargin=-1.5cm
     \subsection{Störverhalten}
     Aufgabe\\
     Untersuchen Sie das Verhalten des Regelkreises bei konstanten Ausgangsstörungen (z.B. durch Messfehler oder Wagen
-    auf geneigter Ebene). Wie verhalten sich Wagenposition, Winkel und Wagengeschwindigkeit?
+    auf geneigter Ebene). Wie verhalten sich Wagenposition, Winkel und Wagengeschwindigkeit?\vspace{1em}
+    
     \begin{quote}
         Um die Störsprungantworten mit den Führungssprungantworten vergleichbar zu machen geben wir den selben Sprung auf das
         System. Jedoch nicht als Führungsgröße sondern als Störung am Ausgang des Systems. Eine konstante Ausgangsstörung
@@ -400,7 +403,8 @@ xrightmargin=-1.5cm
     Bestimmen Sie das linearisierte Übertragungsverhalten des inneren Regelkreises am Arbeitspunkt ($\varphi, z$) =
     ($0, 0$) mit dem Regler $G_r(s)$ aus dem Versuch 1a. Gesucht ist die Transferfunktion vom Sollwinkel $\varphi_r$ auf
     die Wagenpositions $z$.\\
-    Welche Ordnung hat der geschlossene innere Regelkreis?
+    Welche Ordnung hat der geschlossene innere Regelkreis?\vspace{1em}
+    
     \begin{quote}
         Die Transferfunktion vom Sollwinkel zur Wagenposition lässt sich sehr gut am Blockschaltbild des Reglers ablesen. 
         
@@ -457,7 +461,8 @@ xrightmargin=-1.5cm
     Bestimmung der Reglerpolynome. Verwenden Sie hier für die Sylvestermatrix.\vspace{1em}
     
     Wie wirken sich Ausgangsstörungen des inneren Regelkreises auf die stationäre Genauigkeit des äußeren Kreises bei
-    den beiden Reglern aus?
+    den beiden Reglern aus?\vspace{1em}
+    
     \begin{quote}
         
         Als Vorgabe haben wir bekommen, dass das Führungsverhalten des äußeren Regelkreises dem eines dominierenden komplexen
@@ -528,7 +533,7 @@ xrightmargin=-1.5cm
         
         
         Als nächstes erstellen wir die passende Sylvestermatrix. Dazu sortieren wir die Koeffizienten der
-        Übertragungsfunktion des inneren Reglers in geeineter Weise. Die Sylvestermatrix lautet:
+        Übertragungsfunktion des inneren Reglers in geeineter Weise. Die Sylvestermatrix lautet:\\
         
         \begin{table}[H]
         \hspace{-4em}
@@ -546,6 +551,7 @@ xrightmargin=-1.5cm
         \end{tabular}
         \caption{Sylvestermatrix}
         \end{table} 
+        \vspace{1em}
          
          Mit Hilfe der Sylvestermatrix und den Polen aus der Polvorgabe erechnen wir uns nun die Koeffizenten des
          äußeren Reglers.
@@ -583,7 +589,8 @@ xrightmargin=-1.5cm
     Wiederholen Sie die Begriffe Empfindlichkeits- und komplementäre Empfindlichkeitsfunktion. Was sagen diese
     Übertragungsfunktionen aus? Stellen Sie für die zuvor entworfenden Regler den Amplitudengang von Empfindlichkeits-
     und komplementärer Empfindlichkeitsfunktion dar (Betrag der Verstärkung nicht in $dB$, logarithmische Frequenz in
-    $\frac{rad}{s}$).
+    $\frac{rad}{s}$).\vspace{1em}
+    
     \begin{quote}
         Die Empfindlichkeitsfunktion $S$ beschreibt die Auswirkung all der Einflüsse auf die Regelgröße, die am Ausgang
         des Regelkreises auftreten. Ein Beispiel hierfür wäre eine Störung wie ein Windstoß, der das
@@ -702,15 +709,15 @@ xrightmargin=-1.5cm
         \subsubsection{Winkelregler}
         \begin{quote}
             
-            Als erstes haben wir nur den inneren Winkelregler untersucht. Hierbei gab es wie erwartet schwierigkeiten, da
-            die zurücklegbare Strecke des Wagens am Versuchstand relativ klein ist und der Regler keine Positionsregelung
+            Als erstes haben wir nur den inneren Winkelregler untersucht. Hierbei gab es wie erwartet Schwierigkeiten,
+            da die zurücklegbare Strecke des Wagens am Versuchstand relativ klein ist und der Regler keine Positionsregelung
             hat. Der Regler achtet somit nicht darauf, dass er auf der kleinen Strecke bleibt und der Wagen fährt, wie in
             Abb. \ref{Winkelregler_Position} zu sehen, einfach in eine Richtung davon, kommt schnell ans Ende
             des Versuchsstandes und löst somit den Notausschalter aus. Um zu verhindern, dass der Wagen sich zu weit von der
             Mitte der Strecke entfernt haben wir per potentiometer einen von null verschiedenen Sollwinkel vorgegeben sobald der Wagen
             zu sehr in eine Richtung fuhr.
-            Dieses nachregeln, was der Positionsregler später übernimmt, erwies sich allerdings als sehr Schwierig, da es
-            sehr schnelle und genaue Reaktionen erfordert. Außerdem hat unser Regler die Kontrolle meistens sehr nahe am
+            Dieses nachregeln, was der Positionsregler später übernimmt, erwies sich allerdings als sehr schwierig, da
+            es sehr schnelle und genaue Reaktionen erfordert. Außerdem hat unser Regler die Kontrolle meistens sehr nahe am
             Rand des Versuchsstandes übergeben bekommen und hatte somit wenig Platz den Winkel auf null zu regeln.\\
             Von den vielen Versuchen die wir durchgeführt haben, waren die folgenden Messwerte am aussagekräftigsten.
             \\
@@ -725,7 +732,7 @@ xrightmargin=-1.5cm
             An der Grafik \ref{fig:win_win_ref} sieht man sehr schön, dass unser Regler das Pendel einfängt und
             stabilisiert. Bei ca. \SI{3,5}{\second} versuchen wir dann gegen zu reglen, weil der Wagen sich zu weit vom
             Mittelpunkt entfernt (siehe Abb. \ref{fig:win_pos}). Der Regler reagiert gut auf unsere Vorgabe, sie kam
-            aber leider zu spät und der Wagen ist aus dem messbereich herausgefahren.
+            aber leider zu spät und der Wagen ist aus dem Messbereich herausgefahren.
             
             \begin{figure}[H]
             \centering
@@ -745,8 +752,8 @@ xrightmargin=-1.5cm
                     \label{fig:win_gesch}
             \end{figure}
             
-            Wie schon in \ref{sec:Fuehrungsverhalten} Simuliert und erklärt nähert sich der wagen einer Konstanten
-            geschwindigkeit, da er davon aus geht keine beschränkung zu haben. 
+            Wie schon in \ref{sec:Fuehrungsverhalten} Simuliert und erklärt nähert sich der Wagen einer konstanten
+            Geschwindigkeit, da er davon aus geht keine beschränkung zu haben. 
             
             
             
@@ -810,6 +817,16 @@ xrightmargin=-1.5cm
         language=scilab,
         label=lst:scilab]
         {./Scilab/polvorgabe.sci}
+    \lstinputlisting[
+        caption={auswertung winkel},
+        language=scilab,
+        label=lst:scilab]
+        {./Scilab/auswertung_winkel.sce}
+    \lstinputlisting[
+        caption={auswertung position},
+        language=scilab,
+        label=lst:scilab]
+        {./Scilab/auswertung_position.sce}
 
 \end{quote}
 
