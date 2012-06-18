@@ -125,21 +125,20 @@ xrightmargin=-1.5cm
                 \caption{Polnullstellendiagramm der Strecke}
                 \label{fig:Polnullstellen_G}
         \end{figure}
-         \\ %scale=1, trim = 2cm 21.5cm 9cm 2cm, clip
-        
+         \\ %scale=1, trim = 2cm 21.5cm 9cm 2cm, clip     
         
 	\end{quote} %Ende Subsection Linearisierung
 	
 	\subsection{Wurzelortskurve}
     Aufgabe:\\
-    Machen Sie sich mit den Konstruktionsregeln für Wurzelortskurven vertraut! Gegeben sei der folgende Regler\\
+    Machen Sie sich mit den Konstruktionsregeln für Wurzelortskurven vertraut! Gegeben sei der folgende Regler\\
     \begin{equation*}
         \begin{split}
             G_r(s) = K\frac{s + \alpha}{s + \beta}, \ \ K,\alpha, \beta \in  \Re
         \end{split}
     \end{equation*}
     mit $K > 0$. Entscheiden Sie anhand des Wurzelortskurvenverfahrens über die notwendige Lage der Reglerpolstelle
-    und -nullstelle, damit das geregelte System für eine genügend große Verstärkung $K$ stabilisiert werden kann.
+    und -nullstelle, damit das geregelte System für eine genügend große Verstärkung $K$ stabilisiert werden kann.
     Bestimmen Sie nur, in welcher Hälfte der s-Ebene jeweils die Pol- und die Nullstelle liegen muss und nicht die
     genaue Position.\\
     
@@ -669,14 +668,6 @@ xrightmargin=-1.5cm
         für $s \rightarrow 0$ gleich. Das zeigt, dass der Integrator auch keinen negativen Einfluss auf die
         Führungssprungantwort hat.
         
-        simulation:
-        
-        Wie oben beschrieben hatten wir mit unserem Xcos-Modell Schwierigkeiten. In dieser Simulation bekommen
-        wir jedoch das selbe Ergebniss wie mit dem Xcos-Modell unseres Tutors. Unser Regler hat einen
-        Einzugsbereich von gerade mal $2,18^{\circ}$.
-        
-        
-        
          \end{quote}  % Ende Subsection Empfindlichkeitsfunktion
     
 \end{quote} %Ende Section Vorbereitungsaufgaben 
@@ -693,19 +684,20 @@ xrightmargin=-1.5cm
     
     \subsection{Simulation}
     \begin{quote}
-        
+        Die Xcos Simulation zeigt, dass unserer Regler schon für einen Winkel von $2,18^{\circ}$ mit eiener
+        Wagengeschwindigkeit von $3,7 \frac{m}{s}$ nahe an die erlaubten $4\frac{m}{s}$ herankommt. Für $2,19^{\circ}$
+        überschreitet er diesen Wert bereits.\\
+        Daher ist der Einzugsbereich unseres Reglers $\pm 2,18^{\circ}$. Das ist zugegebenermaßen nicht besonders viel
+        und spricht für einen nicht optimal dimensionieren Regler.
     \end{quote}% Simulation
-    
-    
-    
-    
-    
+
+
     \subsection{Versuchsstand}
     \begin{quote}
         
         Um das Verhalten unserer Regler zu untersuchen haben wir sie am Prüfstand aufgespielt.\\
-        Um das Pendel in den Einzugsbereich unserer Regler zu bringen wurde ein aufschwingregler zu Hilfe genommen, der nach
-        dem aufschwingen an unsere Regler übergeben hat.
+        Um das Pendel in den Einzugsbereich unserer Regler zu bringen wurde ein Aufschwingregler zu Hilfe genommen, der
+        nach dem aufschwingen an unsere Regler übergeben hat.
         
         \subsubsection{Winkelregler}
         \begin{quote}
