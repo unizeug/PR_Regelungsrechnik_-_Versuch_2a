@@ -290,6 +290,8 @@ xrightmargin=-1.5cm
     \end{quote}  % Ende Subsection Frequenzkennlinienentwurf
     
     \subsection{Führungsverhalten}
+    \label{sec:Fuehrungsverhalten}
+    
     Aufgabe\\
     Untersuchen Sie das Verhalten des Regelkreises gegenüber konstanten Sollvorgaben ungleich Null. Wie verhalten sich
     Wagenposition, Winkel und Wagengeschwindigkeit?
@@ -719,6 +721,7 @@ xrightmargin=-1.5cm
             sehr schnelle und genaue Reaktionen erfordert. Außerdem hat unser Regler die Kontrolle meistens sehr nahe am
             Rand des Versuchsstandes übergeben bekommen und hatte somit wenig Platz den Winkel auf null zu regeln.\\
             Von den vielen Versuchen die wir durchgeführt haben, waren die folgenden Messwerte am aussagekräftigsten.
+            \\
             
             \begin{figure}[H]
             \centering
@@ -727,7 +730,31 @@ xrightmargin=-1.5cm
                     \label{fig:win_win_ref}
             \end{figure}
             
+            An der Grafik \ref{fig:win_win_ref} sieht man sehr schön, dass unser Regler das Pendel einfängt und
+            stabilisiert. Bei ca. \SI{3,5}{\second} versuchen wir dann gegen zu reglen, weil der Wagen sich zu weit vom
+            Mittelpunkt entfernt (siehe Abb. \ref{fig:win_pos}). Der Regler reagiert gut auf unsere Vorgabe, sie kam
+            aber leider zu spät und der Wagen ist aus dem messbereich herausgefahren.
             
+            \begin{figure}[H]
+            \centering
+                \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{Bilder/win_pos}
+                    \caption{Position des Wagens}
+                    \label{fig:win_pos}
+            \end{figure}
+            
+            \vspace{2em}
+            
+            Auch Geschwindigkeit des Wagens verhält sich wie erwartet:
+            
+            \begin{figure}[H]
+            \centering
+                \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{Bilder/win_gesch}
+                    \caption{Geschwindigkeit des Wagens}
+                    \label{fig:win_gesch}
+            \end{figure}
+            
+            Wie schon in \ref{sec:Fuehrungsverhalten} Simuliert und erklärt nähert sich der wagen einer Konstanten
+            geschwindigkeit, da er davon aus geht keine beschränkung zu haben. 
             
             
             
@@ -735,6 +762,33 @@ xrightmargin=-1.5cm
         
         \subsubsection{Positionsregler}
         \begin{quote}
+            
+            
+            
+            \begin{figure}[H]
+                \centering
+                \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{Bilder/pos_pos_ref}
+                \caption{Position und Sollposition des Wagens}
+                \label{fig:pos_pos_ref}
+            \end{figure}
+            
+            
+            \begin{figure}[H]
+                \centering
+                \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{Bilder/pos_gesch}
+                \caption{Geschwindigkeit des Wagens}
+                \label{fig:pos_gesch}
+            \end{figure}
+            
+            
+            \begin{figure}[H]
+                \centering
+                \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{Bilder/pos_pos}
+                \caption{Position des Wagens}
+                \label{fig:pos_pos}
+            \end{figure}
+            
+            
             
         \end{quote}% Positionsregler
 
