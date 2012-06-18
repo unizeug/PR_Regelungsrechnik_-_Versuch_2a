@@ -343,6 +343,7 @@ xrightmargin=-1.5cm
         \centering
             \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{./Bilder/Winkelregler_Position}
                 \caption{Winkelregler Position}
+                \label{Winkelregler_Position}
         \end{figure}
         
         Da wir bei der Wagengeschwindigkeit herausgefunden haben, dass der Regler bei einer konstanten Geschwindigkeit
@@ -647,20 +648,66 @@ xrightmargin=-1.5cm
 %--------------------------------------------------------------------
 %--------------------------------------------------------------------
 
-\section{Ergebnisse}
-\begin{quote}
 
+
+
+
+\section{Auswertung}
+\begin{quote}
     
-    Um das Verhalten unserer Regler zu untersuchen haben wir sie am Prüfstand aufgespielt.\\
-    Um das Pendel in den Einzugsbereich unserer Regler zu bringen wurde ein aufschwingregler zu Hilfe genommen, der nach
-    dem aufschwingen an unsere Regler übergeben hat.
-    
-    \subsection{Winkelregler}
+    \subsection{Simulation}
     \begin{quote}
         
-        Als erstes haben wir nur den inneren Winkelregler untersucht. Hierbei gab es wie erwartet schwierigkeiten, da
-        die zurücklegbare Strecke des Wagens am Versuchstand relativ klein ist und der Regler keine 
-    \end{quote}
+    \end{quote}% Simulation
+    
+    
+    
+    
+    
+    \subsection{Versuchsstand}
+    \begin{quote}
+        
+        Um das Verhalten unserer Regler zu untersuchen haben wir sie am Prüfstand aufgespielt.\\
+        Um das Pendel in den Einzugsbereich unserer Regler zu bringen wurde ein aufschwingregler zu Hilfe genommen, der nach
+        dem aufschwingen an unsere Regler übergeben hat.
+        
+        \subsubsection{Winkelregler}
+        \begin{quote}
+            
+            Als erstes haben wir nur den inneren Winkelregler untersucht. Hierbei gab es wie erwartet schwierigkeiten, da
+            die zurücklegbare Strecke des Wagens am Versuchstand relativ klein ist und der Regler keine Positionsregelung
+            hat. Der Regler achtet somit nicht darauf, dass er auf der kleinen Strecke bleibt und der Wagen fährt, wie in
+            Abb. \ref{Winkelregler_Position} zu sehen, einfach in eine Richtung davon, kommt schnell ans Ende
+            des Versuchsstandes und löst somit den Notausschalter aus. Um zu verhindern, dass der Wagen sich zu weit von der
+            Mitte der Strecke entfernt haben wir per potentiometer einen von null verschiedenen Sollwinkel vorgegeben sobald der Wagen
+            zu sehr in eine Richtung fuhr.
+            Dieses nachregeln, was der Positionsregler später übernimmt, erwies sich allerdings als sehr Schwierig, da es
+            sehr schnelle und genaue Reaktionen erfordert. Außerdem hat unser Regler die Kontrolle meistens sehr nahe am
+            Rand des Versuchsstandes übergeben bekommen und hatte somit wenig Platz den Winkel auf null zu regeln.\\
+            Von den vielen Versuchen die wir durchgeführt haben, waren die folgenden Messwerte am aussagekräftigsten.
+            
+            \begin{figure}[H]
+            \centering
+                \includegraphics[scale=0.7, trim = 0cm 0cm 0cm 0cm, clip]{Bilder/win_win_ref}
+                    \caption{ReferenzWinkel und Winkel des pendels}
+                    \label{fig:win_win_ref}
+            \end{figure}
+            
+            
+            
+            
+            
+        \end{quote}% Winkelregler
+        
+        \subsubsection{Positionsregler}
+        \begin{quote}
+            
+        \end{quote}% Positionsregler
+
+
+        
+        
+    \end{quote}% Versuchsstand
 
 
         

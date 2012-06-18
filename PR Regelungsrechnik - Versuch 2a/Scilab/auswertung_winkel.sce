@@ -4,11 +4,12 @@
 
 
 // Boris: cd "/Users/borishenckell/Documents/eclipse workspace/PR_Regelungsrtechnik_-_Versuch_2a/PR Regelungsrechnik - Versuch 2a"
-// Dirk: cd "/media/daten/workspace/PR_Regelungsrechnik_-_Versuch_2a/PR Regelungsrechnik - Versuch 2a/Scilab/"
+// Dirk: 
+cd "/media/daten/workspace/PR_Regelungsrechnik_-_Versuch_2a/PR Regelungsrechnik - Versuch 2a/Scilab/"
 
 
 
-daten1 = fscanfMat('../Messwerte/win_12');
+daten1 = fscanfMat("../Messwerte/win_12");
 daten1=daten1;
 
 
